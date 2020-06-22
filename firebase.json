@@ -13,7 +13,8 @@
     }
   ],
   "hosting": {
-    "public": "public",
+    "site": "beta-artbid",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
