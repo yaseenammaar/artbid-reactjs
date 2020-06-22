@@ -36,7 +36,7 @@ app.post('/checkLatestBidder', async (req, res) => {
         function successCallback(snap:any) {
 
             const got_uid = snap.child('userid').val()
-            if(uid != got_uid) {
+            if(uid !== got_uid) {
                 //response is yes;
                 //update the database
                 res.status(200).send("he or she becomes latest bidder")
@@ -44,7 +44,7 @@ app.post('/checkLatestBidder', async (req, res) => {
             else {
                 //response is no
                 //don't update database
-                res.status(200).send("he or she is already latest bidder")
+                res.status(200).send("he or she is already latest bidder" + got_uid)
             }
         }
 
