@@ -24,20 +24,24 @@ class Items extends React.Component {
  
   render() {
    const { isLoaded, data } = this.state;
+   const items = []
 
     return (
-
+            
             <div id="columns">
+            {items}
+
             {
+              
               isLoaded?
               Object.keys(data).forEach(function(key) {
+                console.log(data)
                 
-                console.log(data[key].caption)
-                return (<div>{data[key].caption}</div>)
-             
+                items.push(<figure><img src={data[key].featuredimage}/><figcaption>{data[key].caption}</figcaption></figure>)
       
               })
               :console.log('loading ')
+              
            
               
               
