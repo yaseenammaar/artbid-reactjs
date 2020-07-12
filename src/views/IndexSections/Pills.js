@@ -34,10 +34,8 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <Col lg="5">
-          <h3 className="h4 text-success font-weight-bold mb-5">
-            Navigation Pills
-          </h3>
+        <Col lg="12">
+         
           <Nav className="nav-pills-circle" id="tabs_2" pills role="tablist">
             <NavItem>
               <NavLink
@@ -50,7 +48,7 @@ class Index extends React.Component {
                 role="tab"
               >
                 <span className="nav-link-icon d-block">
-                  <i className="ni ni-atom" />
+                  12PM
                 </span>
               </NavLink>
             </NavItem>
@@ -65,7 +63,7 @@ class Index extends React.Component {
                 role="tab"
               >
                 <span className="nav-link-icon d-block">
-                  <i className="ni ni-chat-round" />
+                  3PM
                 </span>
               </NavLink>
             </NavItem>
@@ -80,7 +78,7 @@ class Index extends React.Component {
                 role="tab"
               >
                 <span className="nav-link-icon d-block">
-                  <i className="ni ni-cloud-download-95" />
+                  6PM
                 </span>
               </NavLink>
             </NavItem>

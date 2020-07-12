@@ -52,7 +52,7 @@ ReactDOM.render(
         render={props => <Profile {...props} />}
       />
       <Route
-        path="/product"
+        path="/product/:id"
         exact
         render={props => <Product {...props} />}
       />
