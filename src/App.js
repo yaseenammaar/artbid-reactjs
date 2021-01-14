@@ -1,27 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
-import { Div } from "atomize";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
+import Hero from "./components/molecules/Hero";
+
+import {
+  ThemeProvider,
+  DefaultTheme
+} from "react-atomize";
+
+import {
+	Route,
+	NavLink,
+	HashRouter
+} from "react-router-dom";
 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const theme = {
+...DefaultTheme,
+  grid: {
+  	...DefaultTheme.grid,
+    colCount: 12,
+    gutterWidth: 0
+  }
+};
+
+class Main extends Component {
+	render() {
+		return (
+    <HashRouter>
+			<ThemeProvider theme={theme}>
+				<LoggedOutHeader/>
+				<Route exact path="/" component={Hero}/>
+				<Route exact path="/stuff" component={Hero}/>
+				<Route exact path="/contact" component={Hero}/>
+			</ThemeProvider>
+    </HashRouter>
+
+		);
+	}
 }
 
-export default App;
+export default Main;
