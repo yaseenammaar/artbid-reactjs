@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   ThemeProvider,
   Div,
@@ -25,15 +25,17 @@ const theme = {
 		primary: "equity-text, serif",
 	  }
 	};
-var isOpen = true;
 
-function close(){
-	isOpen = false;
-}
+
 
 
 	
 	export default function LoggedOutHeader() {
+		const [isOpen, setIsOpen] = useState(false);
+		function close(){
+			setIsOpen(false)
+		}
+
 	  return (
 		<ThemeProvider theme={theme}>
 		<Row >
@@ -83,7 +85,7 @@ function close(){
 					p={{ r: "3rem", l: "3rem" }}
 					shadow="1"
 					hoverShadow="2"
-					onClick={isOpen=true}
+					onClick={() => setIsOpen(true)}
 				>
 					Login
 				</Button>
