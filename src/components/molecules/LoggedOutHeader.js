@@ -13,6 +13,7 @@ import {
   Modal,
   Input
 } from "react-atomize";
+import { NavLink } from "react-router-dom";
 
 const theme = {
 	...DefaultTheme,
@@ -20,16 +21,8 @@ const theme = {
 		  ...DefaultTheme.grid,
 		colCount: 12,
 		gutterWidth: 0
-	  },
-	  fontFamily: {
-		primary: "equity-text, serif",
 	  }
 	};
-
-
-
-
-	
 	export default function LoggedOutHeader() {
 		const [isOpen, setIsOpen] = useState(false);
 		function close(){
@@ -54,16 +47,20 @@ const theme = {
 				
 			</Col>
 			<Col size={{ xs: 12, lg: 1 }}>
-				<Button
-					h="2.5rem"
-					p={{ x: "1rem" }}
-					textSize="body"
-					textColor="gray900"
-					bg="white"
-					m={{ r: "0.5rem" }}
-				>
-					About
-				</Button>
+				<NavLink to="/about"
+					style={{ textDecoration: 'none'}} >
+					<Button
+						h="2.5rem"
+						p={{ x: "1rem" }}
+						textSize="body"
+						textColor="gray900"
+						bg="white"
+						fontFamily="primary"
+						m={{ r: "0.5rem" }}
+					>
+						About
+					</Button>
+				</NavLink>
 			</Col>
 			
 			<Col size={{ xs: 12, lg: 1 }}>
@@ -73,6 +70,7 @@ const theme = {
 					textSize="body"
 					textColor="gray900"
 					bg="white"
+					fontFamily="primary"
 					m={{ r: "0.5rem" }}
 				>
 					Contact
@@ -85,6 +83,7 @@ const theme = {
 					p={{ r: "3rem", l: "3rem" }}
 					shadow="1"
 					hoverShadow="2"
+					fontFamily="primary"
 					onClick={() => setIsOpen(true)}
 				>
 					Login
@@ -107,14 +106,15 @@ const theme = {
 		/>
 		<Div fontFamily="secondary" textSize="heading" d="flex" justify="center">
 			<Text>
-				Login/Register
+				
 			</Text>
 		</Div>
-		<Div d="flex" m={{ t: "2rem", b: "2rem" }}>
+		<Div d="flex" m={{ t: "2rem", b: "2rem" , r: "6rem", l: "6rem"}}>
 			<Input
 				placeholder="Phone Number"
-				p={{ x: "2.5rem" }}
-				prefix={
+				
+				size="10px"
+				suffix={
 					<Icon
 					name="UserSolid"
 					color="info800"
@@ -122,7 +122,7 @@ const theme = {
 					cursor="pointer"
 					pos="absolute"
 					top="50%"
-					left="0.75rem"
+					right="0.75rem"
 					transform="translateY(-50%)"
 					/>
 				}
