@@ -63,7 +63,8 @@ const theme = {
                         p={{ r: "1.5rem", l: "1rem" }}
                         shadow="3"
                         hoverShadow="4"
-                        
+                        w="176px"
+                        h="48px"
                         m=".5rem"
                       >
                         Bid
@@ -79,7 +80,8 @@ const theme = {
                         }
                         bg="gray700"
                         hoverBg="gray800"
-                        
+                        w="176px"
+                        h="48px"
                         p={{ r: "1.5rem", l: "1rem" }}
                         shadow="3"
                         hoverShadow="4"

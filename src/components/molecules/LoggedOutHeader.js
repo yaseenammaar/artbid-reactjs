@@ -44,11 +44,12 @@ export default function LoggedOutHeader() {
 
                 </Col>
                 <Col size={{xs: 12, lg: 1}}>
-                    <Image
+                    <NavLink to="/"><Image
                         src="./img/ar_grey.png"
                         h="2rem"
                         w="auto"
                     />
+                    </NavLink>
                 </Col>
 
                 <Col size={{xs: 12, lg: 4}}>

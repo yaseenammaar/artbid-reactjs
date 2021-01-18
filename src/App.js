@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
+import LoggedInHeader from "./components/molecules/LoggedInHeader";
+
+import Footer from "./components/molecules/Footer";
+
 import Hero from "./components/molecules/Hero";
 
 import {
@@ -30,9 +34,11 @@ class Main extends Component {
     <HashRouter>
 			<ThemeProvider theme={theme}>
 				<LoggedOutHeader/>
+				<LoggedInHeader/>
 				<Route exact path="/" component={Hero}/>
 				<Route exact path="/stuff" component={Hero}/>
 				<Route exact path="/contact" component={Hero}/>
+				<Footer/>
 			</ThemeProvider>
     </HashRouter>
 
