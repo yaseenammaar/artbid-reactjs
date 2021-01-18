@@ -1,5 +1,9 @@
 import React, {Component} from "react";
 import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
+import LoggedInHeader from "./components/molecules/LoggedInHeader";
+
+import Footer from "./components/molecules/Footer";
+
 import Hero from "./components/molecules/Hero";
 import {Provider as ReduxProvider} from "react-redux"
 
@@ -26,6 +30,7 @@ const theme = {
 };
 
 class Main extends Component {
+
     render() {
         return (
 
