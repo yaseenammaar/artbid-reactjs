@@ -16,6 +16,7 @@ import {
 import {NavLink} from "react-router-dom";
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import PhoneAuth from "./PhoneAuth";
 
 const theme = {
     ...DefaultTheme,
@@ -124,7 +125,7 @@ export default function LoggedOutHeader() {
                       isSubmitting,
                       /* and other goodies */
                   }) => (
-                    <Modal isOpen={isOpen} onClose={close} align="center" rounded="md" shadow="1">
+                    <Modal isOpen={isOpen} onClose={close} align="center" rounded="md" shadow="1" >
 
                         <Icon
                             name="Cross"
@@ -135,7 +136,7 @@ export default function LoggedOutHeader() {
                             onClick={close}
                             cursor="pointer"
                         />
-                        <Div fontFamily="secondary" textSize="heading" d="flex" justify="center">
+                        {/*<Div fontFamily="secondary" textSize="heading" d="flex" justify="center">
                             <Text>
 
                             </Text>
@@ -167,9 +168,9 @@ export default function LoggedOutHeader() {
                             <Button onClick={close} bg="info700">
                                 Send OTP
                             </Button>
-                        </Div>
+                        </Div>*/}
 
-
+                        <PhoneAuth />
                     </Modal>
                 )}
             </Formik>
