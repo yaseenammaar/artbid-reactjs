@@ -12,6 +12,9 @@ import {
   Text
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
+import {setError, setUser} from "../../redux/actions/authActions";
 
 const theme = {
 	...DefaultTheme,
@@ -26,7 +29,7 @@ const theme = {
    
 	};
 	
-	export default function Hero() {
+	function Hero() {
 	  return (
 		<ThemeProvider theme={theme}>
               <Row>
@@ -143,3 +146,28 @@ const theme = {
 	  </ThemeProvider>
 	  );
 	}
+
+const mapStateToProps = (state) => {
+    const { auth } = state
+
+    /**
+     * Use it as:
+     * const user = props.auth.user
+     * const error = props.auth.error
+    */
+
+    return { auth }
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        //all actions come here
+        /**
+         * props.setUser()
+         * */
+        setUser,
+        setError
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hero)
