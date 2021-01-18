@@ -38,9 +38,11 @@ class Main extends Component {
                 <HashRouter>
                     <ThemeProvider theme={theme}>
                         <LoggedOutHeader/>
+                        <LoggedInHeader/>
                         <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
+                        <Footer/>
                     </ThemeProvider>
                 </HashRouter>
             </ReduxProvider>
