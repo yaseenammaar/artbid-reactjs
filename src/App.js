@@ -1,11 +1,12 @@
-import React, {Component} from "react";
+import React, {Component, useEffect} from "react";
 import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
 import LoggedInHeader from "./components/molecules/LoggedInHeader";
 
 import Footer from "./components/molecules/Footer";
 
 import Hero from "./components/molecules/Hero";
-import {Provider as ReduxProvider} from "react-redux"
+import {connect, Provider as ReduxProvider} from "react-redux"
+import firebaseInstance from "./Firebase/index"
 
 import {
     ThemeProvider,
@@ -18,7 +19,8 @@ import {
     HashRouter
 } from "react-router-dom";
 import reduxStore from "./redux/reduxStore";
-
+import {setError, setUser} from "./redux/actions/authActions";
+import {bindActionCreators} from "redux";
 
 const theme = {
     ...DefaultTheme,
@@ -29,26 +31,57 @@ const theme = {
     }
 };
 
-class Main extends Component {
+function Main(props){
 
-    render() {
+    useEffect(() => {
+        firebaseInstance.auth().onAuthStateChanged(function(user) {
+            console.log("user is : ", user)
+            props.setUser(user)
+        })
+    }, [])
+
         return (
 
-            <ReduxProvider store={reduxStore}>
                 <HashRouter>
                     <ThemeProvider theme={theme}>
-                        <LoggedOutHeader/>
-                        <LoggedInHeader/>
+                        {
+                            props.auth.user == null?
+                                <LoggedOutHeader/>
+                                :
+                                <LoggedInHeader/>
+
+                        }
                         <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
                         <Footer/>
                     </ThemeProvider>
                 </HashRouter>
-            </ReduxProvider>
 
         );
-    }
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+    const { auth } = state
+
+    /**
+     * Use it as:
+     * const user = props.auth.user
+     * const error = props.auth.error
+     */
+
+    return { auth }
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        //all actions come here
+        /**
+         * props.setUser()
+         * */
+        setUser,
+        setError
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

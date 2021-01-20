@@ -21,6 +21,7 @@ function PhoneAuth(props) {
                 // Do something with the returned AuthResult.
                 // Return type determines whether we continue the redirect
                 // automatically or whether we leave that to developer to handle.
+                props.setUser(user);
                 return false;   // Don't redirect
             },
             signInFailure: function(error) {
