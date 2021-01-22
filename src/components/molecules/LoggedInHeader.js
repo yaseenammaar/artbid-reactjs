@@ -11,11 +11,20 @@ import {
     Icon,
     Text,
     Modal,
-    Input
+    Input,
+    Label,
+    Textarea
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
+
+import {DropZone} from "../atoms/DropZone"
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+
+import { format } from 'date-fns'
+import { enGB } from 'date-fns/locale'
+import { DateRangePickerCalendar, START_DATE } from 'react-nice-dates'
+import 'react-nice-dates/build/style.css'
 
 const theme = {
     ...DefaultTheme,
@@ -28,13 +37,14 @@ const theme = {
 export default function LoggedOutHeader() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const loginSchema = Yup.object().shape({
-        phoneNumber: Yup.string().required("Phone Number required."),
-        otp: Yup.number().required("otp required").positive().integer()
-    })
-
     function close() {
         setIsOpen(false)
+    }
+    const [startDate, setStartDate] = useState()
+    const [endDate, setEndDate] = useState()
+    const [focus, setFocus] = useState(START_DATE)
+    const handleFocusChange = newFocus => {
+        setFocus(newFocus || START_DATE)
     }
 
     return (
@@ -116,7 +126,55 @@ export default function LoggedOutHeader() {
                 </Col>
             </Row>
 
+            <Modal isOpen={isOpen} onClose={close} align="center" rounded="md" shadow="1" >
+
+                        <Icon
+                            name="Cross"
+                            pos="absolute"
+                            top="1rem"
+                            right="1rem"
+                            size="16px"
+                            onClick={close}
+                            cursor="pointer"
+                        />
+
+                        <Div>
+                            <Label 
+                                fontFamily="primary"
+                                >Title
+                                <Input />
+                            </Label>
+                            <Label
+                                fontFamily="primary">
+                                Short Description
+                                <Textarea />
+                            </Label> 
+                            <Label
+                                fontFamily="primary">
+                                    Closing Date
+                                    
+                            </Label>
+                            
+                            <DropZone/>
+                            <Button
+                            bg="white"
+                            textColor="info900"
+                            p={{r: "3rem", l: "3rem"}}
+                            shadow="1"
+                            hoverShadow="2"
+                            fontFamily="primary"
+                            onClick={() => setIsOpen(true)}
+                        >
+                            Next
+                        </Button>
+                    </Div>
+
+
+                    </Modal>
+
             
         </ThemeProvider>
     );
+
+    
 }
