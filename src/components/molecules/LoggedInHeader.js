@@ -36,7 +36,20 @@ const theme = {
 };
 export default function LoggedOutHeader() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpenProfile, setIsOpenProfile] = useState(false);
+    const [isOpenContact, setIsOpenContact] = useState(false);
+    const [isOpenAbout, setIsOpenAbout] = useState(false);
 
+    function closeAbout() {
+        setIsOpenAbout(false)
+    }
+    function closeContact() {
+        setIsOpenContact(false)
+    }
+
+    function closeProfile() {
+        setIsOpenProfile(false)
+    }
     function close() {
         setIsOpen(false)
     }
@@ -49,11 +62,13 @@ export default function LoggedOutHeader() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Row>
-                <Col size={{xs: 12, lg: 2}}>
+            <Row
+            m={{t:"1.5rem"}}
+            >
+                <Col size={{xs: 0, lg: 1}}>
 
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}>
                     <NavLink to="/"><Image
                         src="./img/ar_grey.png"
                         h="2rem"
@@ -62,12 +77,10 @@ export default function LoggedOutHeader() {
                     </NavLink>
                 </Col>
 
-                <Col size={{xs: 12, lg: 3}}>
+                <Col size={{xs: 3, lg: 5}}>
 
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
-                    <NavLink to="/about"
-                             style={{textDecoration: 'none'}}>
+                <Col size={{xs: 1, lg: 1}}>
                         <Button
                             h="2.5rem"
                             p={{x: "1rem"}}
@@ -76,13 +89,13 @@ export default function LoggedOutHeader() {
                             bg="white"
                             fontFamily="primary"
                             m={{r: "0.5rem"}}
+                            onClick={() => setIsOpenAbout(true)}
                         >
                             About
                         </Button>
-                    </NavLink>
                 </Col>
 
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 2, lg: 1}}>
                     <Button
                         h="2.5rem"
                         p={{x: "1rem"}}
@@ -91,24 +104,27 @@ export default function LoggedOutHeader() {
                         bg="white"
                         fontFamily="primary"
                         m={{r: "0.5rem"}}
+                        onClick={() => setIsOpenContact(true)}
                     >
                         Contact
                     </Button>
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
-                    <Button
-                        h="2.5rem"
-                        p={{x: "1rem"}}
-                        textSize="body"
-                        textColor="gray900"
-                        bg="white"
-                        fontFamily="primary"
-                        m={{r: "0.5rem"}}
-                    >
-                        Profile
-                    </Button>
+                <Col size={{xs: 2, lg: 1}}>
+                    
+                        <Button
+                            h="2.5rem"
+                            p={{x: "1rem"}}
+                            textSize="body"
+                            textColor="gray900"
+                            bg="white"
+                            fontFamily="primary"
+                            m={{r: "0.5rem"}}
+                            onClick={() => setIsOpenProfile(true)}
+                        >
+                            Profile
+                        </Button>
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 2, lg: 1}}>
                     <Button
                         bg="white"
                         textColor="gray900"
@@ -121,12 +137,86 @@ export default function LoggedOutHeader() {
                         Upload
                     </Button>
                 </Col>
-                <Col size={{xs: 12, lg: 2}}>
+                <Col size={{xs: 1, lg: 1}}>
 
                 </Col>
             </Row>
 
-            <Modal isOpen={isOpen} onClose={close} align="center" rounded="md" shadow="1" >
+            <Modal 
+                isOpen={isOpenAbout} 
+                onClose={closeAbout} 
+                align="center" 
+                rounded="md" 
+                shadow="1"
+                 >
+                     <Div>
+
+                        <Icon
+                            name="Cross"
+                            pos="absolute"
+                            top="1rem"
+                            right="1rem"
+                            size="16px"
+                            onClick={closeAbout}
+                            cursor="pointer"
+                        />
+                         <Text>About</Text>
+                    </Div>
+                </Modal>
+
+
+            <Modal 
+                isOpen={isOpenContact} 
+                onClose={closeContact} 
+                align="center" 
+                rounded="md" 
+                shadow="1"
+                 >
+                     <Div>
+
+                        <Icon
+                            name="Cross"
+                            pos="absolute"
+                            top="1rem"
+                            right="1rem"
+                            size="16px"
+                            onClick={closeContact}
+                            cursor="pointer"
+                        />
+                         <Text>Contact</Text>
+                    </Div>
+                </Modal>
+
+
+            <Modal 
+                isOpen={isOpenProfile} 
+                onClose={closeProfile} 
+                align="center" 
+                rounded="md" 
+                shadow="1"
+                 >
+                     <Div>
+
+                        <Icon
+                            name="Cross"
+                            pos="absolute"
+                            top="1rem"
+                            right="1rem"
+                            size="16px"
+                            onClick={closeProfile}
+                            cursor="pointer"
+                        />
+                         <Text>Profile</Text>
+                    </Div>
+                </Modal>
+
+            <Modal 
+                isOpen={isOpen} 
+                onClose={close} 
+                align="center" 
+                rounded="md" 
+                shadow="1"
+                 >
 
                         <Icon
                             name="Cross"
@@ -152,9 +242,24 @@ export default function LoggedOutHeader() {
                             <Label
                                 fontFamily="primary">
                                     Closing Date
-                                    
                             </Label>
-                            
+                            <p>Selected start date: {startDate ? format(startDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
+                                        <p>Selected end date: {endDate ? format(endDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
+                                        <p>Currently selecting: {focus}.</p>
+                            <DateRangePickerCalendar
+                                            startDate={startDate}
+                                            endDate={endDate}
+                                            focus={focus}
+                                            onStartDateChange={setStartDate}
+                                            onEndDateChange={setEndDate}
+                                            onFocusChange={handleFocusChange}
+                                            locale={enGB}
+                                        />
+                                    
+                            <Label
+                                fontFamily="primary">
+                                    Photos
+                            </Label>
                             <DropZone/>
                             <Button
                             bg="white"
@@ -165,6 +270,7 @@ export default function LoggedOutHeader() {
                             fontFamily="primary"
                             onClick={() => setIsOpen(true)}
                         >
+                            
                             Next
                         </Button>
                     </Div>
@@ -176,5 +282,9 @@ export default function LoggedOutHeader() {
         </ThemeProvider>
     );
 
+    //Photos
+    //Date and Time
+    //Cost
+    //TnC
     
 }

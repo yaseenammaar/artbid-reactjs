@@ -5,8 +5,10 @@ import LoggedInHeader from "./components/molecules/LoggedInHeader";
 import Footer from "./components/molecules/Footer";
 
 import Hero from "./components/molecules/Hero";
+import Profile from "./components/molecules/Profile";
 import {connect, Provider as ReduxProvider} from "react-redux"
 import firebaseInstance from "./Firebase/index"
+
 
 import {
     ThemeProvider,
@@ -31,6 +33,9 @@ const theme = {
     }
 };
 
+const bgImage = "https://source.unsplash.com/collection/1065396/1600x900";
+const bgImageValue = `url(${bgImage})`;
+
 function Main(props){
 
     useEffect(() => {
@@ -54,6 +59,10 @@ function Main(props){
                         <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
+                        <Route exact path="/profile" component={Profile}/>
+
+                       
+
                         <Footer/>
                     </ThemeProvider>
                 </HashRouter>

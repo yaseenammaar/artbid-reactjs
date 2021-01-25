@@ -41,10 +41,10 @@ export default function LoggedOutHeader() {
     return (
         <ThemeProvider theme={theme}>
             <Row>
-                <Col size={{xs: 12, lg: 2}}>
+                <Col size={{xs: 1, lg: 2}}>
 
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 2, lg: 1}}>
                     <NavLink to="/"><Image
                         src="./img/ar_grey.png"
                         h="2rem"
@@ -53,10 +53,10 @@ export default function LoggedOutHeader() {
                     </NavLink>
                 </Col>
 
-                <Col size={{xs: 12, lg: 4}}>
+                <Col size={{xs: 3, lg: 4}}>
 
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}>
                     <NavLink to="/about"
                              style={{textDecoration: 'none'}}>
                         <Button
@@ -73,7 +73,7 @@ export default function LoggedOutHeader() {
                     </NavLink>
                 </Col>
 
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}>
                     <Button
                         h="2.5rem"
                         p={{x: "1rem"}}
@@ -86,7 +86,7 @@ export default function LoggedOutHeader() {
                         Contact
                     </Button>
                 </Col>
-                <Col size={{xs: 12, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}>
                     <Button
                         bg="white"
                         textColor="gray900"

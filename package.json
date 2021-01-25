@@ -8,6 +8,7 @@
     "date-fns": "^2.16.1",
     "firebase": "^8.2.3",
     "formik": "^2.2.6",
+    "node-sass": "^5.0.0",
     "react": "16.8.6",
     "react-atomize": "1.0.14",
     "react-dom": "16.8.6",

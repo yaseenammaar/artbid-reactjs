@@ -22,9 +22,6 @@ const theme = {
 		  ...DefaultTheme.grid,
 		colCount: 12,
 		gutterWidth: 2
-    },
-    shadows: {
-      "new-shadow": "0 0 1px 0 rgba(8, 11, 14, 0.06), 0 16px 16px -1px rgba(8, 11, 14, 0.1)"
     }
    
 	};
@@ -33,22 +30,26 @@ const theme = {
 	  return (
 		<ThemeProvider theme={theme}>
               <Row>
-              <Col size={2} />
-                <Col size={8} >
+              <Col size={1} />
+                <Col size={10} >
                     <Div
-                    m={{ t: "1rem" }}
-                    p={{ b: "2rem"}}
+                    h="30rem"
                     align="center"
                     justify="center"
+                    shadow="1"
+                    rounded="lg"
+                    bg="warning400"
+                    hoverShadow="3"
+                    m={{t:"2rem"}}
+                    p={{t:"8rem"}}
                     >
-                    <Text fontFamily="primary" textSize="display1" textAlign="center">
-                      Welcome to ArtBid
-                    </Text>
-                    <Text fontFamily="primary" textSize="display4" textAlign="center">
-                      Online Public Auction Platform
-                    </Text>
-                    </Div>
-                    <Div
+                      <Text fontFamily="primary" textSize="display1" textAlign="center">
+                        Welcome to ArtBid
+                      </Text>
+                      <Text fontFamily="primary" textSize="display4" textAlign="center">
+                        Online Public Auction Platform
+                      </Text>
+                      <Div
                       d="flex"
                       justify="center">
                         
@@ -93,7 +94,162 @@ const theme = {
                         Explore
                       </Button>
                     </Div>
+                    </Div>
+                    
                     <Div d="flex">
+                    
+                      
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        blurRadius="2"
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                      />
+                      
+                      </Div>
+                      <Div d="flex">
+                      
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        blurRadius="2"
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                      />
+                      
+                      </Div>
+                      <Div d="flex">
+                      
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        blurRadius="2"
+                      />
                       <Div
                         h="20rem"
                         border="1px solid"
@@ -122,6 +278,114 @@ const theme = {
                         bgSize="cover"
                         bgPos="center"
                       />
+                      
+                      </Div>
+                      <Div d="flex">
+                      
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        blurRadius="2"
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      
+                      </Div>
+                      <Div d="flex">
+                      
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        w="15rem" 
+                      />
+                      <Div
+                        h="20rem"
+                        border="1px solid"
+                        borderColor="gray200"
+                        m="2rem"
+                        w="15rem"
+                        p={{ x: "1rem" }}
+                        shadow="new-shadow"
+                        rounded="lg"
+                        textColor="medium"
+                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                        bgSize="cover"
+                        bgPos="center"
+                        blurRadius="2"
+                      />
                       <Div
                         h="20rem"
                         border="1px solid"
@@ -142,7 +406,7 @@ const theme = {
                     
                     
                 </Col>
-                <Col size={2} />
+                <Col size={1} />
             </Row>
             
 	  </ThemeProvider>
