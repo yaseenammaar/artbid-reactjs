@@ -8,9 +8,10 @@ import {connect} from "react-redux";
 function PhoneAuth(props) {
 
     const uiConfig = {
-        signInOptions: [
-            firebaseInstance.auth.PhoneAuthProvider.PROVIDER_ID,
-        ],
+        signInOptions: [ {
+            provider: firebaseInstance.auth.PhoneAuthProvider.PROVIDER_ID,
+            defaultCountry: 'IN',
+        }],
         callbacks: {
             signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                 const user = authResult.user;

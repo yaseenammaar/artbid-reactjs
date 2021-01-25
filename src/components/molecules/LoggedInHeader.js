@@ -26,6 +26,11 @@ import { enGB } from 'date-fns/locale'
 import { DateRangePickerCalendar, START_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
+import Firebase from '../../Firebase/index'
+import {bindActionCreators} from "redux";
+import {setError, setUser} from "../../redux/actions/authActions";
+import {connect} from "react-redux";
+
 const theme = {
     ...DefaultTheme,
     grid: {
@@ -34,7 +39,7 @@ const theme = {
         gutterWidth: 0
     }
 };
-export default function LoggedOutHeader() {
+function LoggedInHeader(props) {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
@@ -207,6 +212,17 @@ export default function LoggedOutHeader() {
                             cursor="pointer"
                         />
                          <Text>Profile</Text>
+                         <Button
+                            onClick={() => {
+                                Firebase.auth().signOut().then(() => {
+                                    // Sign-out successful.
+                                    props.setUser(null)
+
+                                }).catch((error) => {
+                                    // An error happened.
+                                });
+                            }}
+                         >Logout</Button>
                     </Div>
                 </Modal>
 
@@ -288,3 +304,29 @@ export default function LoggedOutHeader() {
     //TnC
     
 }
+
+
+const mapStateToProps = (state) => {
+    const { auth } = state
+
+    /**
+     * Use it as:
+     * const user = props.auth.user
+     * const error = props.auth.error
+     */
+
+    return { auth }
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        //all actions come here
+        /**
+         * props.setUser()
+         * */
+        setUser,
+        setError
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoggedInHeader)
