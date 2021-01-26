@@ -1,5 +1,7 @@
 # How to use Apis...
 
+**_NOTE:_** For APIs documentation and usage examples go to [API index](./apis/index.md).
+
 You may go to [../src/logics/apiRequest.js](../src/logics/apiRequest.js) file to see what are the urls for api and how this method is configured.  
 However, you don't need to know the url or implementation of this method to request an api.
 
