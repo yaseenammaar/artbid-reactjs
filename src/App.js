@@ -3,6 +3,7 @@ import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
 import LoggedInHeader from "./components/molecules/LoggedInHeader";
 
 import Footer from "./components/molecules/Footer";
+import Login from "./components/molecules/Login";
 
 import Hero from "./components/molecules/Hero";
 import Profile from "./components/molecules/Profile";
@@ -56,10 +57,11 @@ function Main(props){
                                 <LoggedInHeader/>
 
                         }
-                        <Route exact path="/" component={Hero}/>
+                        <Route exact path="/" component={Login}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
                         <Route exact path="/profile" component={Profile}/>
+                        <Route exact path="/login" component={Login}/>
 
                        
 

@@ -9,7 +9,8 @@ import {
   Image,
   Button,
   Icon,
-  Text
+  Text,
+  Input
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
@@ -96,14 +97,15 @@ const theme = {
                     </Div>
                     </Div>
                     
-                    <Div d="flex">
+                    <Div d="flex" style={styles.products__container}>
                     
                       
                       <Div
-                        h="20rem"
+                        style={styles.one__product}
+                        // h="150px"
                         border="1px solid"
                         borderColor="gray200"
-                        m="2rem"
+                        // m="2rem"
                         p={{ x: "1rem" }}
                         shadow="new-shadow"
                         rounded="lg"
@@ -111,13 +113,15 @@ const theme = {
                         bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
                         bgSize="cover"
                         bgPos="center"
-                        w="15rem" 
-                      />
+                        // w="150px" 
+                      >
+                      </Div>
                       <Div
-                        h="20rem"
+                        style={styles.one__product}
+                        // h="20rem"
                         border="1px solid"
                         borderColor="gray200"
-                        m="2rem"
+                        // m="2rem"
                         p={{ x: "1rem" }}
                         shadow="new-shadow"
                         rounded="lg"
@@ -125,14 +129,15 @@ const theme = {
                         bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
                         bgSize="cover"
                         bgPos="center"
-                        w="15rem" 
-                      />
+                        // w="15rem" 
+                      ></Div>
                       <Div
-                        h="20rem"
+                        style={styles.one__product}
+                        // h="20rem"
                         border="1px solid"
                         borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
+                        // m="2rem"
+                        // w="15rem"
                         p={{ x: "1rem" }}
                         shadow="new-shadow"
                         rounded="lg"
@@ -141,13 +146,15 @@ const theme = {
                         bgSize="cover"
                         bgPos="center"
                         blurRadius="2"
-                      />
+                      ></Div>
                       <Div
-                        h="20rem"
+                      style={styles.one__product}
+                        className="one__product"
+                        // h="20rem"
                         border="1px solid"
                         borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
+                        // m="2rem"
+                        // w="15rem"
                         p={{ x: "1rem" }}
                         shadow="new-shadow"
                         rounded="lg"
@@ -155,259 +162,18 @@ const theme = {
                         bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
                         bgSize="cover"
                         bgPos="center"
-                      />
+                      >
+                        </Div>
                       
-                      </Div>
-                      <Div d="flex">
+                    </Div>
                       
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        blurRadius="2"
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                      />
-                      
-                      </Div>
-                      <Div d="flex">
-                      
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        blurRadius="2"
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                      />
-                      
-                      </Div>
-                      <Div d="flex">
-                      
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        blurRadius="2"
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      
-                      </Div>
-                      <Div d="flex">
-                      
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        w="15rem" 
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        blurRadius="2"
-                      />
-                      <Div
-                        h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        m="2rem"
-                        w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                      />
-                      
-                      </Div>
                       
                     
                     
                 </Col>
                 <Col size={1} />
             </Row>
+
             
 	  </ThemeProvider>
 	  );
@@ -435,5 +201,28 @@ const mapDispatchToProps = dispatch => (
         setError
     }, dispatch)
 );
+
+const styles ={
+
+  products__container:{
+    flexWrap: "wrap"
+  },
+
+  one__product:{
+    width: "290px",
+    height: "400px",
+    minHeigth:"150px",
+    minWidth: "200px",
+    margin: "10px"
+  },
+
+  //############# Login Card##############
+  login__card:{
+    padding: "10px"
+  }
+
+
+
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hero)

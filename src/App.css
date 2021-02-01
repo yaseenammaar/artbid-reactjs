@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+.products__container{
+  flex-wrap: wrap;
+}
+
+.one__product{
+width: 150px !important;
+height: 200px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
