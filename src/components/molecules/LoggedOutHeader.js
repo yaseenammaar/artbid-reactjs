@@ -17,6 +17,8 @@ import {NavLink} from "react-router-dom";
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import PhoneAuth from "./PhoneAuth";
+import styles from "../styles/style";
+import Login from './Login';
 
 const theme = {
     ...DefaultTheme,
@@ -125,55 +127,21 @@ export default function LoggedOutHeader() {
                       isSubmitting,
                       /* and other goodies */
                   }) => (
-                    <Modal isOpen={isOpen} onClose={close} align="center" rounded="md" shadow="1" >
+                    <Modal 
+                        w="25rem"
+                        isOpen={isOpen} 
+                        onClose={close} 
+                        align="center" 
+                        rounded="md" 
+                        shadow="1" 
+                    >
+                        <Login/>
 
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            onClick={close}
-                            cursor="pointer"
-                        />
-                        {/*<Div fontFamily="secondary" textSize="heading" d="flex" justify="center">
-                            <Text>
-
-                            </Text>
-                        </Div>
-                        <Div d="flex" m={{t: "2rem", b: "2rem", r: "6rem", l: "6rem"}}>
-                            <Input
-                                name={"phoneNumber"}
-                                placeholder="Phone Number"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.phoneNumber}
-                                size="10px"
-                                suffix={
-                                    <Icon
-                                        name="UserSolid"
-                                        color="info800"
-                                        size="16px"
-                                        cursor="pointer"
-                                        pos="absolute"
-                                        top="50%"
-                                        right="0.75rem"
-                                        transform="translateY(-50%)"
-                                    />
-                                }
-                            />
-
-                        </Div>
-                        <Div d="flex" justify="center">
-                            <Button onClick={close} bg="info700">
-                                Send OTP
-                            </Button>
-                        </Div>*/}
-
-                        <PhoneAuth />
+                        <PhoneAuth /> 
                     </Modal>
                 )}
             </Formik>
         </ThemeProvider>
     );
 }
+

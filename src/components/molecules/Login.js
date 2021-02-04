@@ -3,6 +3,7 @@ import React, {Component, useEffect, Image} from "react";
 import { Input, Button, Icon, Div } from "react-atomize";
 
 import personImg from '../../assets/images/personImg.jpg';
+import styles from '../styles/style'
 
 
 class Login extends React.Component {
@@ -24,21 +25,20 @@ class Login extends React.Component {
 
     return (
 
-      <div style={styles.wrapper}>
+      // <div style={styles.wrapper}>
 
-        {/* ##########Login Form Start############### */}
 
-      <div style={styles.card__login}>
+      <Div 
+      
+      >
         
-        <h4 style={styles.loginHeading}>Login to your account</h4>
-        <p style={styles.loginText}>Don't have an account yet! 
-        <a href="#" style={styles.createNewLink}>Create New
-        </a>
+        <h4 style={styles.loginHeading}>Get Into Your Account</h4>
+        <p style={styles.loginText}>Enter Phone Number 
         </p>
 
         {/* Email Input */}
         <Input
-          placeholder="someone@something.com"
+          placeholder="Phone"
           style={styles.basic__input}
           suffix={
               <Icon
@@ -56,7 +56,7 @@ class Login extends React.Component {
      />
 
      {/* Password Input */}
-      <Input
+      {/* <Input
         placeholder="Password"
         style={styles.basic__input}
 
@@ -79,7 +79,7 @@ class Login extends React.Component {
           </Button>
          
         }
-      />
+      /> */}
 
           <Button
           style={styles.loginButton}
@@ -98,240 +98,14 @@ class Login extends React.Component {
             >
               Login
             </Button>
-       </div>
-        {/* ##########Login Form End############### */}
-
-
-        {/* ##################### Person Card Start ################## */}
-        <div style={styles.person__card}>
-          <img src={personImg} style={styles.person__image} />
-          <h4 style={styles.person__name}>Taylor Swift</h4>
-          <p style={styles.person__designation}>Singer</p>
-          <div style={styles.personBtnCont}>
-
-          <Button
-            bg="info700"
-                suffix={
-                  <Icon
-                    name="Plus"
-                    size="16px"
-                    color="white"
-                    m={{ l: "1rem" }}
-                  />
-                }
-                shadow="3"
-                rounded="circle"
-                hoverShadow="4"
-                m={{ r: "1rem" }}
-              >
-            Contact Us
-          </Button>
-
-          <Button
-          bg='white'
-          textColor='black'
-          border='1'
-                suffix={
-                  <Icon
-                    name="Message"
-                    size="16px"
-                    color="black"
-                    m={{ l: "1rem" }}
-                  />
-                }
-                shadow="3"
-                rounded="circle"
-                hoverShadow="4"
-                m={{ r: "1rem" }}
-              >
-            Message
-          </Button>
-          </div>
-        </div>
-        {/* ##################### Person Card End ################## */}
-
-
-        {/* ##################### Person Snippet Start ################## */}
-                <div style={styles.person__snippet}>
-                  <img style={styles.snippet__image} src={personImg} />
-                  <div style={styles.snippet__data}>
-                    <h4 style={styles.snippetName}>Taylor Swift</h4>
-                    <p style={styles.snippetDesignation}>Singer</p>
-                  </div>
-                  <Icon name="Edit" size="20px" />
-                </div>
-
-        {/* ##################### Person Snippet End ################## */}
+       </Div>
+     
 
 
 
-        {/* ##################### Person Card Width Image Start ################## */}
-
-                <div style={styles.personImageCard}>
-                  <div style={styles.personImage__cont}>
-                    <img style={styles.personCard__image} src={personImg} />
-                  </div>
-                  <div style={{display:'flex',alignItems:'center',padding:'10px 10px', height:'50px'}}>
-                  <img style={styles.snippet__image} src={personImg} />
-                  <div style={styles.snippet__data}>
-                    <h4 style={styles.snippetName}>Taylor Swift</h4>
-                  </div>
-                  <Icon name="Edit" size="20px" />
-                </div>
-                </div>
-
-        {/* ##################### Person Card Width Image End ################## */}
-
-
-              
-                
-
-
-       </div>
+      //  </div>
     );
   }
 }
-
-const styles ={
-
-  wrapper:{
-    // display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    // height:'90vh'
-  },
-  card__login:{
-    margin:'30px auto',
-    padding:'50px 25px',
-    width:'280px',
-    // border:'1px solid #dedede',
-    borderRadius:'25px',
-    shadowColor: '#000',
-   
-    webkitBoxShadow: "1px 3px 1px #9E9E9E",
-    mozBoxShadow: "1px 3px 1px #9E9E9E",
-    boxShadow: "7px 7px 18px #d9d9d9,-7px -7px 18px #e7e7e7"
-  },
-
-  loginText:{
-    textAlign:'center',
-    marginBottom:'50px',
-    color:'#878787'
-
-  },
-  createNewLink:{
-    textDecoration:'none',
-
-  }
-  ,
-
-  loginHeading:{
-    fontSize:'28px',
-    margin:'0',
-    marginBottom:'10px',
-    marginRight:'auto',
-    marginLeft:'auto',
-    textAlign:'center'
-  },
-
-  basic__input:{
-    display:'block',
-    marginBottom:'10px',
-    borderRadius:"25px"
-  },
-
-  loginButton:{
-    marginTop:'50px',
-    borderRadius:'25px',
-    background:'#eef7fe',
-    borderWidth:'0'
-  },
-
-
-  // ############### Person Card #####################
-  person__card:{
-    width: '300px',
-    background: 'white',
-    border:'1px solid #dedede',
-    borderRadius:'20px',
-    padding:'30px 15px',
-    textAlign:'center',
-    margin:'0 auto'
-  },
-  person__image:{
-    width:'100px',
-    height:'100px',
-    borderRadius:'50%',
-  },
-  person__name:{
-    fontSize:'25px',
-    margin: '10px 0',
-  },
-  person__designation:{
-    color:'#878787',
-    margin:'10px 0 40px 0'
-  },
-  personBtnCont:{
-    display:'flex'
-  },
-
-
-  // ########################### Person Snippet ########################
-
-  person__snippet:{
-    width:'300px',
-    display:'flex',
-    justifyContent:'space-between',
-    border:'1px solid #dedede',
-    alignItems:'center',
-    padding:'8px 12px',
-    borderRadius: '10px',
-    margin:'20px auto',
-  },
-  snippet__image:{
-    width:'50px', height:'50px',
-    borderRadius:'50%', objectFit:'cover',
-    marginRight:'10px'
-
-  },
-  snippet__data:{
-    flex:'2'
-  },
-  snippetName:{
-    margin:'2px 0'
-  },
-  snippetDesignation:{
-    margin:'0',
-    color:'#878787'
-  },
-
-
-  // ############################## Person Image Card ###########################
-
-  personImageCard:{
-    border:'1px solid #dedede',
-    width:'320px',
-    // height:'300px',
-    borderRadius:'25px',
-    margin:'20px auto'
-  },
-  personImage__cont:{
-    height:'200px',
-  },
-  personCard__image:{
-    width:'100%',
-    height:'100%',
-    objectFit:'cover',
-    borderTopLeftRadius:'25px',
-    borderTopRightRadius:'25px'
-  },
-  personImageCardSnippet:{
-    border:'none',
-    width:'100%'
-  }
-
- 
-};
-
 
 export default Login;

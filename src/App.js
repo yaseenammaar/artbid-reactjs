@@ -57,7 +57,7 @@ function Main(props){
                                 <LoggedInHeader/>
 
                         }
-                        <Route exact path="/" component={Login}/>
+                        <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
                         <Route exact path="/profile" component={Profile}/>

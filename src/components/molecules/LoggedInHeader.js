@@ -20,6 +20,7 @@ import {NavLink} from "react-router-dom";
 import {DropZone} from "../atoms/DropZone"
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import styles from '../styles/style';
 
 import { format } from 'date-fns'
 import { enGB } from 'date-fns/locale'
@@ -30,6 +31,7 @@ import Firebase from '../../Firebase/index'
 import {bindActionCreators} from "redux";
 import {setError, setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
+import PersonCard from './PersonCard';
 
 const theme = {
     ...DefaultTheme,
@@ -194,24 +196,15 @@ function LoggedInHeader(props) {
 
 
             <Modal 
+                style={styles.person__card}
                 isOpen={isOpenProfile} 
                 onClose={closeProfile} 
                 align="center" 
                 rounded="md" 
                 shadow="1"
                  >
-                     <Div>
-
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            onClick={closeProfile}
-                            cursor="pointer"
-                        />
-                         <Text>Profile</Text>
+                     <PersonCard/>
+                     
                          <Button
                             onClick={() => {
                                 Firebase.auth().signOut().then(() => {
@@ -223,7 +216,7 @@ function LoggedInHeader(props) {
                                 });
                             }}
                          >Logout</Button>
-                    </Div>
+                    
                 </Modal>
 
             <Modal 

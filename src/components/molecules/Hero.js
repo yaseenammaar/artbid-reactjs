@@ -16,6 +16,8 @@ import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setError, setUser} from "../../redux/actions/authActions";
+import styles from "../styles/style";
+import PersonCardWithImage from './PersonCardWithImage'
 
 const theme = {
 	...DefaultTheme,
@@ -99,71 +101,43 @@ const theme = {
                     
                     <Div d="flex" style={styles.products__container}>
                     
-                      
-                      <Div
-                        style={styles.one__product}
-                        // h="150px"
-                        border="1px solid"
-                        borderColor="gray200"
-                        // m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        // w="150px" 
-                      >
-                      </Div>
-                      <Div
-                        style={styles.one__product}
-                        // h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        // m="2rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        // w="15rem" 
-                      ></Div>
-                      <Div
-                        style={styles.one__product}
-                        // h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        // m="2rem"
-                        // w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                        blurRadius="2"
-                      ></Div>
-                      <Div
-                      style={styles.one__product}
-                        className="one__product"
-                        // h="20rem"
-                        border="1px solid"
-                        borderColor="gray200"
-                        // m="2rem"
-                        // w="15rem"
-                        p={{ x: "1rem" }}
-                        shadow="new-shadow"
-                        rounded="lg"
-                        textColor="medium"
-                        bgImg="https://images.unsplash.com/photo-1559963629-38ed0fbd4c86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-                        bgSize="cover"
-                        bgPos="center"
-                      >
-                        </Div>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    
+                     
                       
                     </Div>
                       
@@ -202,27 +176,6 @@ const mapDispatchToProps = dispatch => (
     }, dispatch)
 );
 
-const styles ={
 
-  products__container:{
-    flexWrap: "wrap"
-  },
-
-  one__product:{
-    width: "290px",
-    height: "400px",
-    minHeigth:"150px",
-    minWidth: "200px",
-    margin: "10px"
-  },
-
-  //############# Login Card##############
-  login__card:{
-    padding: "10px"
-  }
-
-
-
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hero)
