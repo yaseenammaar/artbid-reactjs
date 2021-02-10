@@ -34,16 +34,24 @@
 import apiRequest from "./apiRequest";
 import APIS from "./Apis";
 
-const saveNewUserInFirestore = async (bio, firebaseUser) => {
+const saveNewUserInFirestore = async (bio, city) => {
     const requestData = {
         bio,
-        username: firebaseUser.displayName,
-        email: firebaseUser.email,
-        phone_no: firebaseUser.phoneNumber,
-        profile_pic: firebaseUser.photoURL,
-        creation_date: firebaseUser.metadata.creationTime,
-        last_signin: firebaseUser.metadata.lastSignInTime,
+        city
     };
+    
+    /** All other data:
+     * username,
+     * last_signin,
+     * profile_pic,
+     * creation_time,
+     * email,
+     * phone_no
+     * 
+     * are being taken in the server directly.
+     * No need to pass the user records,
+     * keep in mind that before using this api update the firebase user record accordingly.
+    * */
     
     const response = await apiRequest('post', APIS.PROTECTED_APIS.SAVE_NEW_USER_IN_DB, requestData, 'json', true);
     return response;

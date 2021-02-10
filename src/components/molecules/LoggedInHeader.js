@@ -29,7 +29,7 @@ import 'react-nice-dates/build/style.css'
 
 import Firebase from '../../Firebase/index'
 import {bindActionCreators} from "redux";
-import {setError, setUser} from "../../redux/actions/authActions";
+import {setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
 import PersonCard from './PersonCard';
 
@@ -318,7 +318,6 @@ const mapDispatchToProps = dispatch => (
          * props.setUser()
          * */
         setUser,
-        setError
     }, dispatch)
 );
 

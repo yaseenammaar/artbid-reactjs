@@ -2,7 +2,7 @@ import authConstants from "../constants/authConstants";
 
 const INITIAL_STATE = {
     user: null,
-    error: "no user found"
+    isNewUser: null,
 }
 
 const authReducer = (state = INITIAL_STATE, action) => {
@@ -10,8 +10,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
         case authConstants.SET_USER:
             return {...state, user: action.payload}
 
-        case authConstants.SET_ERROR:
-            return {...state, error: action.payload}
+        case authConstants.SET_IS_NEW_USER:
+            return {...state, isNewUser: action.payload}
 
         case authConstants.RESET_AUTH_DATA_STATE:
             return INITIAL_STATE

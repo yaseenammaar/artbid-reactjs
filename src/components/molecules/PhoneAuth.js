@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import firebaseInstance from "../../Firebase/index";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {bindActionCreators} from "redux";
-import {setError, setUser} from "../../redux/actions/authActions";
+import {setIsNewUser, setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
 
 function PhoneAuth(props) {
@@ -22,6 +22,7 @@ function PhoneAuth(props) {
                 // Do something with the returned AuthResult.
                 // Return type determines whether we continue the redirect
                 // automatically or whether we leave that to developer to handle.
+                props.setIsNewUser(isNewUser);
                 props.setUser(user);
                 return false;   // Don't redirect
             },
@@ -66,7 +67,7 @@ const mapDispatchToProps = dispatch => (
          * props.setUser()
          * */
         setUser,
-        setError
+        setIsNewUser
     }, dispatch)
 );
 

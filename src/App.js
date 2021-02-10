@@ -21,8 +21,7 @@ import {
     NavLink,
     HashRouter
 } from "react-router-dom";
-import reduxStore from "./redux/reduxStore";
-import {setError, setUser} from "./redux/actions/authActions";
+import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
 
 const theme = {
@@ -91,7 +90,6 @@ const mapDispatchToProps = dispatch => (
          * props.setUser()
          * */
         setUser,
-        setError
     }, dispatch)
 );
 

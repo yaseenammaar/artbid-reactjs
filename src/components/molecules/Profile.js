@@ -12,7 +12,7 @@ import {
 import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import {setError, setUser} from "../../redux/actions/authActions";
+import {setUser} from "../../redux/actions/authActions";
 
 const theme = {
 	...DefaultTheme,
@@ -107,7 +107,6 @@ const mapDispatchToProps = dispatch => (
          * props.setUser()
          * */
         setUser,
-        setError
     }, dispatch)
 );
 

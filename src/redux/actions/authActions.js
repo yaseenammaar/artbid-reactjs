@@ -7,9 +7,9 @@ export const setUser = data => (
     }
 );
 
-export const setError = data => (
+export const setIsNewUser = data => (
     {
-        type: authConstants.SET_ERROR,
+        type: authConstants.SET_IS_NEW_USER,
         payload: data,
     }
 );
