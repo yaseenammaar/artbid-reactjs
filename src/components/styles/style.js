@@ -9,7 +9,7 @@ const styles ={
         height: "400px",
         minHeigth:"150px",
         minWidth: "200px",
-        margin: "10px"
+        margin: "4px"
       },
     
       login__card:{
@@ -64,7 +64,7 @@ const styles ={
     },
   
     loginButton:{
-      marginTop:'50px',
+      marginTop:'20px',
       borderRadius:'25px',
       background:'#eef7fe',
       borderWidth:'0'
@@ -103,6 +103,7 @@ const styles ={
   
     person__snippet:{
       width:'300px',
+      height:'50px',
       display:'flex',
       justifyContent:'space-between',
       border:'1px solid #dedede',
@@ -136,7 +137,8 @@ const styles ={
       width:'320px',
       // height:'300px',
       borderRadius:'25px',
-      margin:'20px auto'
+      margin:'10px auto',
+      cursor:"pointer"
     },
     personImage__cont:{
       height:'200px',

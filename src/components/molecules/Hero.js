@@ -18,6 +18,10 @@ import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import styles from "../styles/style";
 import PersonCardWithImage from './PersonCardWithImage'
+import PersonSnippet from './PersonSnippet'
+import heroImage from '../../assets/images/hero.webp';
+import Profile from "./Profile";
+
 
 const theme = {
 	...DefaultTheme,
@@ -42,14 +46,18 @@ const theme = {
                     shadow="1"
                     rounded="lg"
                     bg="warning400"
-                    hoverShadow="3"
+                    bgImg={heroImage}
+                    bgSize="cover"
+                    bgPos="center"
+                    hoverShadow="5"
                     m={{t:"2rem"}}
                     p={{t:"8rem"}}
+                    transition
                     >
-                      <Text fontFamily="primary" textSize="display1" textAlign="center">
+                      <Text fontFamily="primary" textColor="white" textSize="display1" textAlign="center">
                         Welcome to ArtBid
                       </Text>
-                      <Text fontFamily="primary" textSize="display4" textAlign="center">
+                      <Text fontFamily="primary" textColor="white" textSize="display4" textAlign="center">
                         Online Public Auction Platform
                       </Text>
                       <Div
@@ -103,8 +111,8 @@ const theme = {
                     
                     <PersonCardWithImage/>
                     <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
+                    {/* <PersonSnippet/> */}
+                    {/* <Profile/> */}
                     <PersonCardWithImage/>
                     <PersonCardWithImage/>
                     <PersonCardWithImage/>

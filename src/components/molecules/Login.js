@@ -44,7 +44,7 @@ class Login extends React.Component {
               <Icon
                 name="Email"
                 size="16px"
-                cursor="none"
+                
                 // onClick={() => console.log("clicked")}
                 color="light"
                 pos="absolute"
@@ -56,8 +56,8 @@ class Login extends React.Component {
      />
 
      {/* Password Input */}
-      {/* <Input
-        placeholder="Password"
+      <Input
+        placeholder="OTP"
         style={styles.basic__input}
 
         type={showPassword ? "text" : "password"}
@@ -79,7 +79,7 @@ class Login extends React.Component {
           </Button>
          
         }
-      /> */}
+      /> 
 
           <Button
           style={styles.loginButton}
@@ -96,7 +96,7 @@ class Login extends React.Component {
               hoverBorderColor="info900"
               m={{ r: "0.5rem" }}
             >
-              Login
+              Proceed
             </Button>
        </Div>
      

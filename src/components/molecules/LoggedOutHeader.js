@@ -19,6 +19,7 @@ import * as Yup from 'yup';
 import PhoneAuth from "./PhoneAuth";
 import styles from "../styles/style";
 import Login from './Login';
+import Register from "./Register";
 
 const theme = {
     ...DefaultTheme,
@@ -135,7 +136,8 @@ export default function LoggedOutHeader() {
                         rounded="md" 
                         shadow="1" 
                     >
-                        <Login/>
+                        {/* <Login/> */}
+                        {/* <Register/> */}
 
                         <PhoneAuth /> 
                     </Modal>
