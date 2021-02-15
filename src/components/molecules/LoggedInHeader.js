@@ -71,11 +71,14 @@ function LoggedInHeader(props) {
         <ThemeProvider theme={theme}>
             <Row
             m={{t:"1.5rem"}}
+//            pos="fixed"
+
             >
                 <Col size={{xs: 0, lg: 1}}>
 
                 </Col>
-                <Col size={{xs: 1, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}
+              >
                     <NavLink to="/"><Image
                         src="./img/ar_grey.png"
                         h="2rem"

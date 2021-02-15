@@ -133,22 +133,22 @@ const styles ={
     // ############################## Person Image Card ###########################
   
     personImageCard:{
-      border:'1px solid #dedede',
-      width:'320px',
-      // height:'300px',
-      borderRadius:'25px',
+      border:'1px #dedede',
+      width:'300px',
+      height:'300px',
+      borderRadius:'10px',
       margin:'10px auto',
       cursor:"pointer"
     },
     personImage__cont:{
-      height:'200px',
+      height:'250px',
     },
     personCard__image:{
       width:'100%',
       height:'100%',
       objectFit:'cover',
-      borderTopLeftRadius:'25px',
-      borderTopRightRadius:'25px'
+      borderTopLeftRadius:'10px',
+      borderTopRightRadius:'10px'
     },
     personImageCardSnippet:{
       border:'none',

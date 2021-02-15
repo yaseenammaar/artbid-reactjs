@@ -7,7 +7,7 @@ import personImg from '../../assets/images/tie.jpg';
 import styles from '../styles/style'
 
 
-class PersonCardWithImage extends React.Component {
+class CreditCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -31,28 +31,21 @@ class PersonCardWithImage extends React.Component {
 
       
                 <Div 
-                shadow="1"
-                hoverShadow="3"
+                shadow="4"
+                hoverShadow="5"
+                pos="fixed"
+                right="0px"
+                bottom="0px"
                 transition
-                style={styles.personImageCard} >
+                h="23rem"
+                w="12rem"
+                m="5rem"
+                cursor="pointer"
+                blurRadius={100}
+                
+                rounded="lg"
+                 >
 
-
-                  <div style={styles.personImage__cont}>
-                    <img style={styles.personCard__image} src={personImg} />
-                  </div>
-                  <div style={{display:'flex',alignItems:'center',padding:'15px 10px', height:'20px'}}>
-                  <img style={styles.snippet__image} src={nImg} />
-                  <div style={styles.snippet__data}>
-                    <h4 style={styles.snippetName}>Taylor Swift</h4>
-                  </div>
-                  {
-                  notificationState?
-                  <Icon name="BookmarkSolid" size="20px" color="info800" 
-                  onClick={() => this.setState({ notificationState: !notificationState })}/>
-                  :<Icon name="Bookmark" size="20px" color="info800" 
-                  onClick={() => this.setState({ notificationState: !notificationState })}/>}
-                    
-                </div>
 
                 <Notification
                   bg="info300"
@@ -83,4 +76,4 @@ class PersonCardWithImage extends React.Component {
   }
 }
 
-export default PersonCardWithImage;
+export default CreditCard;

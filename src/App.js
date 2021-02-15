@@ -23,6 +23,7 @@ import {
 } from "react-router-dom";
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
+import CreditCard from "./components/molecules/CreditCard";
 
 const theme = {
     ...DefaultTheme,
@@ -53,9 +54,13 @@ function Main(props){
                             props.auth.user == null?
                                 <LoggedOutHeader/>
                                 :
-                                <LoggedInHeader/>
+                                
+                                    
+                                    <LoggedInHeader/>
+                                
 
                         }
+                        <CreditCard/>
                         <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
