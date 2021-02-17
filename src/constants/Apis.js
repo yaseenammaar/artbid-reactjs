@@ -5,7 +5,8 @@ export const PROTECTED_APIS = {
     UPDATE_USER_DATA: 'updateUserData',
     GET_FIRESTORE_RECORD: 'getFirestoreRecord',
     TOGGLE_FOLLOW_UNFOLLOW: 'toggleFollowUnfollow',
-    SAVE_ITEM_FOR_USER: 'saveItemForUser.md',
+    SAVE_ITEM_FOR_USER: 'saveItemForUser',
+    GET_ITEMS: 'getItems'
 }
 
 export const UNPROTECTED_APIS = {
