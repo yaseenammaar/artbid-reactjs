@@ -1,9 +1,11 @@
 // Show Hide Password
-import React, {Component, useEffect, Image} from "react";
+import React, {Component, useEffect, Image, useState} from "react";
 import { Input, Button, Icon, Div,  Dropdown, Anchor } from "react-atomize";
 
 import personImg from '../../assets/images/personImg.jpg';
 import styles from '../styles/style'
+import saveNewUserInDb from "../../logics/saveNewUserInFirestore";
+import apiRequest from "../../logics/apiRequest";
 
 
 
@@ -26,25 +28,32 @@ const menuList = (
 );
 
 
-class Register extends React.Component {
-  constructor(props) {
-    super(props);
+function Register(props){
 
-    this.state = {
-      showPassword: false,
-      showDropdown: false,
+    const [showPassword, setShowPassword] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
 
-    };
-  }
-  
-  render() {
-    const { showDropdown } = this.state;
-    const { showPassword } = this.state;
+
     const theme = {
       shadows: {
         "new-shadow": "0 16px 24px -2px rgba(0, 0, 0, 0.08)"
       }
     };
+
+    async function handleSave() {
+        console.log("save button clicked")
+        if(isDataValid()) {
+            const bio = "";
+            const city = "Delhi";
+            const res = await saveNewUserInDb(bio, city);
+            console.log(res.data.error)
+        }
+    }
+
+    function isDataValid() {
+        //TODO: make the logic
+        return true;
+    }
 
     return (
 
@@ -124,7 +133,7 @@ class Register extends React.Component {
         textColor="info800"
         textWeight="500"
         onClick={() =>
-          this.setState({ showDropdown: !showDropdown })
+          setShowDropdown(!showDropdown)
         }
         menu={menuList}
       >
@@ -145,6 +154,7 @@ class Register extends React.Component {
               borderColor="info700"
               hoverBorderColor="info900"
               m={{ r: "0.5rem" }}
+          onClick={() => handleSave()}
             >
               Save
             </Button>
@@ -155,7 +165,7 @@ class Register extends React.Component {
 
       //  </div>
     );
-  }
+
 }
 
 export default Register;

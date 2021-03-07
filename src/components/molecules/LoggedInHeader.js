@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     ThemeProvider,
     Div,
@@ -32,6 +32,7 @@ import {bindActionCreators} from "redux";
 import {setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
 import PersonCard from './PersonCard';
+import Register from "./Register";
 
 const theme = {
     ...DefaultTheme,
@@ -46,6 +47,7 @@ function LoggedInHeader(props) {
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
+    const [isRegisterOpen, setIsRegisterOpen] = useState(true);
 
     function closeAbout() {
         setIsOpenAbout(false)
@@ -290,6 +292,18 @@ function LoggedInHeader(props) {
 
                     </Modal>
 
+            <Modal
+                isOpen={isRegisterOpen}
+                onClose={() => setIsRegisterOpen(false)}
+                align="center"
+                rounded="md"
+                shadow="1"
+            >
+
+                <Register />
+
+            </Modal>
+
             
         </ThemeProvider>
     );
@@ -308,7 +322,7 @@ const mapStateToProps = (state) => {
     /**
      * Use it as:
      * const user = props.auth.user
-     * const error = props.auth.error
+     * const error = props.auth.isNewUser
      */
 
     return { auth }

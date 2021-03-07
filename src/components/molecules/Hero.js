@@ -1,16 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {
-  ThemeProvider,
-  Div,
-  Row,
-  Col,
-  Container,
-  DefaultTheme,
-  Image,
-  Button,
-  Icon,
-  Text,
-  Input
+    ThemeProvider,
+    Div,
+    Row,
+    Col,
+    Container,
+    DefaultTheme,
+    Image,
+    Button,
+    Icon,
+    Text,
+    Input, Modal
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
@@ -21,6 +21,7 @@ import PersonCardWithImage from './PersonCardWithImage'
 import PersonSnippet from './PersonSnippet'
 import heroImage from '../../assets/images/hero.webp';
 import Profile from "./Profile";
+import PhoneAuth from "./PhoneAuth";
 
 
 const theme = {
@@ -34,7 +35,8 @@ const theme = {
 	};
 	
 	function Hero() {
-	  return (
+
+        return (
 		<ThemeProvider theme={theme}>
               <Row>
               <Col size={1} />

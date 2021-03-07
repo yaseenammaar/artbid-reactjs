@@ -15,14 +15,14 @@ const apiRequest = async (method, api, data, contentType, isAuth) => {
     if(isAuth) {
         const user = Firebase.auth().currentUser
         const token = await user.getIdToken()
+        console.log(token)
         const url = 'protectedApi/' + api
         apiConfig = {
             method: method,
             url: apiUrl + url,
             headers: {
                 'Content-Type': contentType,
-                'Access-Control-Allow-Origin': '*',
-                'authorization':'Bearer '+token
+                'authorization':'Bearer '+token,
             },
             data: data
         }

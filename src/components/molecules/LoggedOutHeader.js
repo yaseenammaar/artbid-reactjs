@@ -127,9 +127,9 @@ export default function LoggedOutHeader() {
                       handleBlur,
                       handleSubmit,
                       isSubmitting,
-                      /* and other goodies */
+
                   }) => (
-                    <Modal 
+                    <Modal
                         w="25rem"
                         isOpen={isOpen} 
                         onClose={close} 
@@ -137,8 +137,8 @@ export default function LoggedOutHeader() {
                         rounded="md" 
                         shadow="1" 
                     >
-                        {/* <Login/> */}
-                        {/* <Register/> */}
+                         {/*<Login/> */}
+                         {/*<Register/> */}
 
                         <PhoneAuth /> 
                     </Modal>

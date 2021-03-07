@@ -54,10 +54,7 @@ function Main(props){
                             props.auth.user == null?
                                 <LoggedOutHeader/>
                                 :
-                                
-                                    
-                                    <LoggedInHeader/>
-                                
+                                <LoggedInHeader/>
 
                         }
                         <CreditCard/>
