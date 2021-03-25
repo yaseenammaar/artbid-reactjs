@@ -40,8 +40,11 @@ const bgImageValue = `url(${bgImage})`;
 function Main(props){
 
     useEffect(() => {
-        firebaseInstance.auth().onAuthStateChanged(function(user) {
+        firebaseInstance.auth().onAuthStateChanged(async function(user) {
             console.log("user is : ", user)
+            if(user == null) {
+                await firebaseInstance.auth().signInAnonymously();
+            }
             props.setUser(user)
         })
     }, [])
@@ -51,7 +54,7 @@ function Main(props){
                 <HashRouter>
                     <ThemeProvider theme={theme}>
                         {
-                            props.auth.user == null?
+                            props.auth.user == null || props.auth.user.isAnonymous ?
                                 <LoggedOutHeader/>
                                 :
                                 <LoggedInHeader/>
