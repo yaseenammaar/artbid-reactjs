@@ -36,6 +36,7 @@ class CreditCard extends React.Component {
                 pos="fixed"
                 right="0px"
                 bottom="0px"
+                
                 transition
                 h="23rem"
                 w="12rem"

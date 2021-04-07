@@ -13,6 +13,7 @@ import {
     Input, Modal
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
+
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
@@ -87,10 +88,14 @@ const theme = {
                         Bid
                       </Button><br/>*/}
 
-                       <Input
-                          placeholder="Search..."
-                          style={styles.basic__input}
-                     />
+                      <Div
+                        w="400px"
+                        m={{ t:"2.0rem"}}
+                        >
+
+                        <SearchLoading/>
+
+                      </Div>
                       
                     </Div>
                     </Div>

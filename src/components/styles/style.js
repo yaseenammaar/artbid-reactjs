@@ -59,8 +59,6 @@ const styles ={
   
     basic__input:{
       display:'block',
-      
-      margin:'100px',
       marginBottom:'10px',
       borderRadius:"25px"
     },
