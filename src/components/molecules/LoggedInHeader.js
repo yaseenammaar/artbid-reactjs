@@ -33,6 +33,7 @@ import {setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
 import PersonCard from './PersonCard';
 import Register from "./Register";
+import Upload from "./Upload";
 
 const theme = {
     ...DefaultTheme,
@@ -231,63 +232,8 @@ function LoggedInHeader(props) {
                 rounded="md" 
                 shadow="1"
                  >
+                     <Upload/>
 
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            onClick={close}
-                            cursor="pointer"
-                        />
-
-                        <Div>
-                            <Label 
-                                fontFamily="primary"
-                                >Title
-                                <Input />
-                            </Label>
-                            <Label
-                                fontFamily="primary">
-                                Short Description
-                                <Textarea />
-                            </Label> 
-                            <Label
-                                fontFamily="primary">
-                                    Closing Date
-                            </Label>
-                            <p>Selected start date: {startDate ? format(startDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
-                                        <p>Selected end date: {endDate ? format(endDate, 'dd MMM yyyy', { locale: enGB }) : 'none'}.</p>
-                                        <p>Currently selecting: {focus}.</p>
-                            <DateRangePickerCalendar
-                                            startDate={startDate}
-                                            endDate={endDate}
-                                            focus={focus}
-                                            onStartDateChange={setStartDate}
-                                            onEndDateChange={setEndDate}
-                                            onFocusChange={handleFocusChange}
-                                            locale={enGB}
-                                        />
-                                    
-                            <Label
-                                fontFamily="primary">
-                                    Photos
-                            </Label>
-                            <DropZone/>
-                            <Button
-                            bg="white"
-                            textColor="info900"
-                            p={{r: "3rem", l: "3rem"}}
-                            shadow="1"
-                            hoverShadow="2"
-                            fontFamily="primary"
-                            onClick={() => setIsOpen(true)}
-                        >
-                            
-                            Next
-                        </Button>
-                    </Div>
 
 
                     </Modal>

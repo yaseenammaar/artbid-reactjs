@@ -107,36 +107,7 @@ const theme = {
                     {/* <PersonSnippet/> */}
                     {/* <Profile/> */}
                     <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
+                    
                     
                      
                       

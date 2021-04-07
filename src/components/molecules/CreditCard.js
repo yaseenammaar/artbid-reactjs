@@ -1,11 +1,6 @@
 // Show Hide Password
 import React, {Component, useEffect, Image} from "react";
-import { Input, Button, Icon, Div, Notification } from "react-atomize";
-
-import nImg from '../../assets/images/dp.png';
-import personImg from '../../assets/images/tie.jpg';
-import styles from '../styles/style'
-
+import { Icon, Div, Notification } from "react-atomize";
 
 class CreditCard extends React.Component {
   constructor(props) {
@@ -28,51 +23,39 @@ class CreditCard extends React.Component {
     };
 
     return (
-
-      
                 <Div 
                 shadow="4"
                 hoverShadow="5"
                 pos="fixed"
                 right="0px"
                 bottom="0px"
-                
                 transition
                 h="23rem"
                 w="12rem"
                 m="5rem"
                 cursor="pointer"
                 blurRadius={100}
-                
                 rounded="lg"
+                onClick={()=>this.setState({notificationState:true})}
                  >
-
-
                 <Notification
-                  bg="info300"
+                  bg="success500"
                   hoverBg="info400"
-                  textColor="info800"
+                  textColor="white"
                   isOpen={notificationState}
                   onClose={() => this.setState({ notificationState: false })}
                   prefix={
                     <Icon
                       name="Bookmark"
-                      color="info800"
+                      color="white"
                       size="18px"
                       m={{ r: "0.5rem" }}
                     />
                   }
                   >
-                  Item Saved
+                  Card Tapped
                   </Notification>
-
-
                 </Div>
-
-
-  
-                
-
     );
   }
 }
