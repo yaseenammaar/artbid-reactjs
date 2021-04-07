@@ -8,7 +8,7 @@
   {  
   **_limit_** :  number of items to send at a time,  
   **_startingDoc_** : doc from which the search should start now,  
-  **_searchText_** : user id ,
+  **_searchTag_** : search tag ,
   }
 
 ------------------
@@ -30,11 +30,11 @@
 import apiRequest from "./apiRequest";
 import APIS from "./Apis";
 
-const searchItems = async (limit, startingDoc, searchText) => {
+const searchItems = async (limit, startingDoc, searchTag) => {
     const requestData = {
         limit,
         startingDoc, 
-        searchText
+        searchTag
     };
     
     const response = await apiRequest('post', APIS.PROTECTED_APIS.SEARCH_ITEMS, requestData, 'json', true);

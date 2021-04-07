@@ -7,11 +7,27 @@ import {connect} from "react-redux";
 
 function PhoneAuth(props) {
 
+    const handleError = async (error) => {
+        if (error.code !== 'firebaseui/anonymous-upgrade-merge-conflict') {
+            return Promise.resolve();
+        }
+        // The credential the user tried to sign in with.
+        const cred = error.credential;
+        const currentAnonymousUser = firebaseInstance.auth().currentUser
+
+        // TODO:Copy data from anonymous user to permanent user and delete anonymous user.
+        await currentAnonymousUser.delete()
+
+        // Finish sign-in after data is copied.
+        return firebaseInstance.auth().signInWithCredential(cred);
+    }
+
     const uiConfig = {
         signInOptions: [ {
             provider: firebaseInstance.auth.PhoneAuthProvider.PROVIDER_ID,
             defaultCountry: 'IN',
         }],
+        autoUpgradeAnonymousUsers: true,
         callbacks: {
             signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                 const user = authResult.user;
@@ -33,7 +49,7 @@ function PhoneAuth(props) {
                 // 'firebaseui/anonymous-upgrade-merge-conflict' when merge conflict
                 // occurs. Check below for more details on this.
 
-                // return handleError(error)
+                return handleError(error)
             },
             uiShown: function() {
                 // The widget is rendered.
