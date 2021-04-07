@@ -13,7 +13,7 @@ export default class SearchLoading extends React.Component {
     const { isLoading } = this.state;
     return (
       <Input
-        placeholder="Loading on Search"
+        placeholder="Search"
         suffix={
           <Button
             pos="absolute"
