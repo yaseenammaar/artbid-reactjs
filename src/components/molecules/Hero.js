@@ -66,7 +66,7 @@ const theme = {
                       d="flex"
                       justify="center">
                         
-                    <Button
+                    {/*<Button
                       prefix={
                           <Icon
                             name="EyeSolid"
@@ -85,27 +85,13 @@ const theme = {
                         m=".5rem"
                       >
                         Bid
-                      </Button>
-                      <Button
-                      prefix={
-                          <Icon
-                            name="Search"
-                            size="16px"
-                            color="white"
-                            m={{ r: "0.5rem" }}
-                          />
-                        }
-                        bg="gray700"
-                        hoverBg="gray800"
-                        w="176px"
-                        h="48px"
-                        p={{ r: "1.5rem", l: "1rem" }}
-                        shadow="3"
-                        hoverShadow="4"
-                        m=".5rem"
-                      >
-                        Explore
-                      </Button>
+                      </Button><br/>*/}
+
+                       <Input
+                          placeholder="Search..."
+                          style={styles.basic__input}
+                     />
+                      
                     </Div>
                     </Div>
                     
