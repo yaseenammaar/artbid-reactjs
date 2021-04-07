@@ -4,6 +4,8 @@ import {
     Div,
     Row,
     Col,
+    Dropdown,
+    Anchor,
     Container,
     DefaultTheme,
     Image,
@@ -22,6 +24,7 @@ import PersonSnippet from './PersonSnippet'
 import heroImage from '../../assets/images/hero.webp';
 import Profile from "./Profile";
 import PhoneAuth from "./PhoneAuth";
+import getSuggestions from "../../logics/getSuggestions";
 
 
 const theme = {
@@ -35,6 +38,20 @@ const theme = {
 	};
 	
 	function Hero() {
+
+	    const [showDropdown, setShowDropdown] = useState(false)
+        const [suggestions, setSuggestions] = useState([])
+
+        const menuList = (
+            <Div>
+                {suggestions.map((name, index) => (
+                    <Anchor d="block" p={{ y: "0.25rem" }}>
+                        {name}
+                    </Anchor>
+                ))}
+            </Div>
+        );
+
 
         return (
 		<ThemeProvider theme={theme}>
@@ -66,7 +83,7 @@ const theme = {
                       d="flex"
                       justify="center">
                         
-                    <Button
+                    {/*<Button
                       prefix={
                           <Icon
                             name="EyeSolid"
@@ -105,7 +122,27 @@ const theme = {
                         m=".5rem"
                       >
                         Explore
-                      </Button>
+                      </Button>*/}
+
+                          <Dropdown
+                              style={{margin: 20}}
+                              isOpen={showDropdown}
+                              onClick={() => {
+                                  (async () => {
+                                      console.time("suggestions fetch execution time")
+                                      setShowDropdown(!showDropdown)
+                                      const res = await getSuggestions("ge")
+                                      console.log(res)
+                                      setSuggestions(res)
+                                      console.timeEnd("suggestions fetch execution time")
+                                  })()
+
+                              }}
+                              menu={menuList}
+                          >
+                              Click me
+                          </Dropdown>
+
                     </Div>
                     </Div>
                     
