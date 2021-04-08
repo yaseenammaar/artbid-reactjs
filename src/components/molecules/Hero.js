@@ -125,11 +125,15 @@ function Hero() {
                                 }}
 
                                 onBlurSearch={() => {
-                                    setShowSuggestions(false)
+                                    //setShowSuggestions(false)
                                 }}
 
                                 onChangeSearch={(e) => {
                                     setSearchText(e.target.value)
+                                }}
+
+                                setShowDropdown={(bool) => {
+                                    setShowSuggestions(bool)
                                 }}
 
                                 DropdownComponent={() => (
