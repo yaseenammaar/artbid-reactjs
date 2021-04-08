@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   ThemeProvider,
     Div,
@@ -13,13 +13,15 @@ import {
     Modal,
     Input,
     Label,
-    Textarea
+    Textarea,
+    Checkbox
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
+import { DateRangePickerCalendar } from "react-nice-dates";
 
 const theme = {
 	...DefaultTheme,
@@ -29,59 +31,221 @@ const theme = {
 		gutterWidth: 2
     }
    
-	};
+    };
+    
 	
 	function Upload() {
+        const [step, setSteps] = useState(0);
+
 	  return (
 		<ThemeProvider theme={theme}>
-              
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            cursor="pointer"
-                        />
+            <Icon
+                    name="Cross"
+                    pos="absolute"
+                    top="1rem"
+                    right="1rem"
+                    size="16px"
+                    cursor="pointer"
+                />
+            
+            {
+            step==0?
+            (
 
-                        <Div>
-                            <Label 
-                                fontFamily="primary"
-                                textColor="gray800"
-                                >Title
-                                <Input />
-                            </Label>
-                            <Label
-                                fontFamily="primary"
-                                textColor="gray800">
-                                Short Description
-                                <Textarea />
-                            </Label> 
-                            <Label
-                                fontFamily="primary"
-                                textColor="gray800">
-                                    Closing Date
-                            </Label>
+                <Div>
+                    Step {step}
+                    <Label 
+                        fontFamily="primary"
+                        textColor="gray800"
+                        >Title 
+                        <Input />
+                    </Label>
+                    <Label
+                        fontFamily="primary"
+                        textColor="gray800">
+                        Short Description
+                        <Textarea />
+                    </Label> 
+                    
+                    
                             
-                                    
-                            <Label
-                                fontFamily="primary"
-                                textColor="gray800">
-                                    Photos
-                            </Label>
-                            <DropZone/>
-                            <Button
-                            bg="white"
-                            textColor="info900"
-                            p={{r: "3rem", l: "3rem"}}
-                            shadow="1"
-                            hoverShadow="2"
-                            fontFamily="primary"
-                        >
-                            
-                            Next
-                        </Button>
-                    </Div>
+                    
+                    <Button
+                    bg="white"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"   
+                    onClick={()=>setSteps(1)}
+                >
+                    Next
+                </Button>
+            </Div>
+            )
+              : null
+
+              
+
+              
+              }
+              {
+              step==1?<Div>
+                Step {step}
+                <Label
+                        fontFamily="primary"
+                        textColor="gray800">
+                            Closing Date
+                    </Label>
+
+                    <DateRangePickerCalendar/>
+                <Button
+                    bg="info500"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"
+                    onClick={()=>setSteps(0)}
+                    
+                >
+                    
+                    Back
+                </Button>
+            
+            <Button
+            bg="white"
+            textColor="info900"
+            p={{r: "3rem", l: "3rem"}}
+            shadow="1"
+            hoverShadow="2"
+            fontFamily="primary"
+            onClick={()=>setSteps(2)}
+        >
+            
+            Next
+        </Button>
+    </Div>:null
+    }
+
+{
+              step==2?<Div>
+                Step {step}
+                <Label
+                        fontFamily="primary"
+                        textColor="gray800">
+                            Photos
+                    </Label>
+                    <DropZone/>
+               
+                <Button
+                    bg="info500"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"
+                    onClick={()=>setSteps(1)}
+                    
+                >
+                    
+                    Back
+                </Button>
+            
+            <Button
+            bg="white"
+            textColor="info900"
+            p={{r: "3rem", l: "3rem"}}
+            shadow="1"
+            hoverShadow="2"
+            fontFamily="primary"
+            onClick={()=>setSteps(3)}
+        >
+            
+            Next
+        </Button>
+    </Div>:null
+    }
+
+{
+              step==3?<Div>
+                Step {step}
+               <Label 
+                        fontFamily="primary"
+                        textColor="gray800"
+                        >Price 
+                        <Input />
+                    </Label>
+                <Button
+                    bg="info500"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"
+                    onClick={()=>setSteps(2)}
+                    
+                >
+                    
+                    Back
+                </Button>
+            
+            <Button
+            bg="white"
+            textColor="info900"
+            p={{r: "3rem", l: "3rem"}}
+            shadow="1"
+            hoverShadow="2"
+            fontFamily="primary"
+            onClick={()=>setSteps(4)}
+        >
+            
+            Next
+        </Button>
+    </Div>:null
+    }
+
+{
+              step==4?<Div>
+                Step {step}
+                <Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
+                <Checkbox
+                />
+                I Agree all the shit.
+            </Label>
+                <Button
+                    bg="info500"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"
+                    onClick={()=>setSteps(2)}
+                    
+                >
+                    
+                    Back
+                </Button>
+            
+            <Button
+            bg="white"
+            textColor="info900"
+            p={{r: "3rem", l: "3rem"}}
+            shadow="1"
+            hoverShadow="2"
+            fontFamily="primary"
+            onClick={()=>setSteps(4)}
+        >
+            
+            Next
+        </Button>
+    </Div>:null
+    }
+              
+                    
+            
+              
+                       
 
             
 	  </ThemeProvider>
