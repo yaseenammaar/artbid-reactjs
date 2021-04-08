@@ -48,7 +48,7 @@ function LoggedInHeader(props) {
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
-    const [isRegisterOpen, setIsRegisterOpen] = useState(true);
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
     function closeAbout() {
         setIsOpenAbout(false)
