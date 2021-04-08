@@ -23,7 +23,6 @@ import styles from "../styles/style";
 import PersonCardWithImage from './PersonCardWithImage'
 import PersonSnippet from './PersonSnippet'
 import heroImage from '../../assets/images/hero.webp';
-import Profile from "./Profile";
 import PhoneAuth from "./PhoneAuth";
 import getSuggestions from "../../logics/getSuggestions";
 
@@ -123,44 +122,10 @@ function Hero() {
                     </Div>
 
                     <Div d="flex" style={styles.products__container}>
-
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        {/* <PersonSnippet/> */}
-                        {/* <Profile/> */}
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-
-
+                    
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
+                    <PersonCardWithImage/>
                     </Div>
 
 

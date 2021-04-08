@@ -38,10 +38,20 @@ export default function LoggedOutHeader() {
                       d="flex"
                       justify="center">
                         
-                    <Text>Docs</Text>
-                    <Text>ArtBid</Text>
-                    <Text>About</Text>
-                    <Text>Contact</Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700">Docs</Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700">ArtBid</Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700" >About</Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700">Contact</Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700">Docs</Text>
+                    </Div>
+                    <Div
+                      d="flex"
+                      justify="center">
+                        
+                    <Text fontFamily="secondary" m="4px" textColor="gray700"></Text>
+                    <Text fontFamily="secondary" m="4px" textColor="gray700"> © ArtBid 2021</Text>
+                 
+                   
                     </Div>
                 </Col>
             </Row>

@@ -10,10 +10,10 @@ const getSearchSuggestions = async (searchText) => {
         searchText
         };
 
-        const res = await apiRequest('post', APIS.PROTECTED_APIS.GET_SEARCH_SUGGESTIONS, requestData, 'application/json', true);
-        return res.data.suggestions
+        // const res = await apiRequest('post', APIS.PROTECTED_APIS.GET_SEARCH_SUGGESTIONS, requestData, 'application/json', true);
+        // return res.data.suggestions
 
-        /*const db = firebaseInstance.firestore()
+        const db = firebaseInstance.firestore()
         const itemCollection = db.collection('keywords')
 
         const snapshots = await itemCollection
@@ -27,7 +27,7 @@ const getSearchSuggestions = async (searchText) => {
             suggestions.push(snap.id)
         })
 
-        return suggestions*/
+        return suggestions
     } catch (e) {
         console.log(e.message)
     }
