@@ -8,15 +8,24 @@ function SearchLoading(props){
 
     const {
         showSuggestions = true,
-        searchButtonOnClick
+        searchButtonOnClick,
+        DropdownComponent = () => {
+            return (
+                <div style={{margin: 10}}>
+                    No suggestions
+                </div>
+            )
+        },
     } = props
 
     return (
         <div className={styles.search_container}>
             <Input
                 placeholder="Search"
-                className={showSuggestions? styles.search_bar_invisible_bottom_radius : styles.search_bar_visible_bottom_radius}
-                w={"400px"}
+                className={showSuggestions? styles.search_bar_invisible_bottom_radius + " " + styles.search_bar : styles.search_bar_visible_bottom_radius + " " + styles.search_bar}
+                w={"500px"}
+                onFocus={props?.onFocusSearch}
+                onBlur={props?.onBlurSearch}
                 suffix={
                     <Button
                         pos="absolute"
@@ -39,7 +48,7 @@ function SearchLoading(props){
                 }
             />
             <div className={showSuggestions? styles.dropdown_content + " " + styles.dropdown_visible : styles.dropdown_content + " " + styles.dropdown_invisible}>
-                <p>Hello World!</p>
+                <DropdownComponent />
             </div>
         </div>
     );

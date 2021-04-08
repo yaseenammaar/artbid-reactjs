@@ -2,19 +2,25 @@
     position: relative;
     display: inline-block;
     z-index: 1;
-    elevation: above;
+}
+
+.search_bar {
+    border-color: white;
+}
+
+.search_bar:focus {
+    border-color: white;
 }
 
 .search_bar_visible_bottom_radius {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    border-color: white;
 }
 
 .search_bar_invisible_bottom_radius {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-color: white;
+    border-bottom-color: lightgray;
 }
 
 .dropdown_visible {
@@ -28,7 +34,7 @@
 .dropdown_content {
     position: absolute;
     background-color: #ffffff;
-    width: 400px;
+    width: 100%;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }

@@ -114,7 +114,15 @@ function Hero() {
                             <SearchLoading
                                 showSuggestions={showSuggestions}
                                 searchButtonOnClick={() => {
-                                    setShowSuggestions(!showSuggestions)
+
+                                }}
+
+                                onFocusSearch={() => {
+                                    setShowSuggestions(true)
+                                }}
+
+                                onBlurSearch={() => {
+                                    setShowSuggestions(false)
                                 }}
                             />
 
