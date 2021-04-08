@@ -4,12 +4,14 @@
   "private": true,
   "dependencies": {
     "@callstack/react-theme-provider": "3.0.2",
+    "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.3",
     "formik": "^2.2.6",
     "node-sass": "^5.0.0",
     "react": "16.8.6",
+    "react-async-hook": "^3.6.2",
     "react-atomize": "1.0.14",
     "react-dom": "16.8.6",
     "react-dropzone": "^11.2.4",
@@ -21,6 +23,7 @@
     "react-transition-group": "4.1.1",
     "redux": "^4.0.5",
     "styled-components": "4.3.2",
+    "use-constant": "^1.1.0",
     "yup": "^0.32.8"
   },
   "scripts": {

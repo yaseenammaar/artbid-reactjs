@@ -26,6 +26,7 @@ function SearchLoading(props){
                 w={"500px"}
                 onFocus={props?.onFocusSearch}
                 onBlur={props?.onBlurSearch}
+                onChange={props?.onChangeSearch}
                 suffix={
                     <Button
                         pos="absolute"
