@@ -42,6 +42,7 @@ function Hero() {
 
     const [showDropdown, setShowDropdown] = useState(false)
     const [suggestions, setSuggestions] = useState([])
+    const [showSuggestions, setShowSuggestions] = useState(false)
 
     const menuList = (
         <Div>
@@ -106,11 +107,17 @@ function Hero() {
 
                         </Div>
                         <Div
-                            w="400px"
                             m={{t: "2.0rem"}}
+                            d={"flex"}
+                            justify={"center"}
                         >
 
-                            <SearchLoading/>
+                            <SearchLoading
+                                showSuggestions={showSuggestions}
+                                searchButtonOnClick={() => {
+                                    setShowSuggestions(!showSuggestions)
+                                }}
+                            />
 
                         </Div>
                     </Div>
