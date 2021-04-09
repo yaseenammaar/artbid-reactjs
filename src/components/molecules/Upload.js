@@ -14,7 +14,8 @@ import {
     Input,
     Label,
     Textarea,
-    Checkbox
+    Checkbox,
+    Dropdown, Anchor, Radiobox
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
@@ -32,10 +33,60 @@ const theme = {
     }
    
     };
+
+    const menuList = (
+        <Div p={{ x: "1rem", y: "0.5rem" }}>
+          {["Option 1", "Option 2", "Option 3"].map((name, index) => (
+            <Anchor d="block" p={{ y: "0.25rem" }}>
+              {name}
+            </Anchor>
+          ))}
+        </Div>
+      );
     
 	
 	function Upload() {
         const [step, setSteps] = useState(0);
+        const [title, setTitle] = useState('');
+        const [caption, setCaption] = useState('');
+        const [basePrice, setBasePrice] = useState(0);
+        const [imageUrls, setImgUrls] = useState(null);
+        const [featuredImageUrl, setFeaturedImageUrl] = useState(null);
+        const [availableState, setAvailableState] = useState('All');
+        const [byUser, setByUser] = useState('')
+        const [category, setCategory] = useState('')
+        const [closingDate, setClosingDate] = useState('')
+        const [closingTime, setClosingTime] = useState(12)
+        const [state, setState] = useState('')
+        const [status, setStatus] = useState(0)
+
+        const closingDays = []
+
+        const today = new Date();
+
+        var date = new Date();
+        date.setDate(date.getDate() + 1);
+        // setClosingDate(date)
+
+
+        for(var i=0;i<8;i++){
+
+
+            closingDays.push( <Label
+                align="center"
+                textWeight="600"
+                m={{ b: "0.5rem", r: "2rem" }}
+            >
+                <Radiobox
+                onChange={() => setClosingDate(date.getDate()+i)}
+                checked={ closingDate === date.getDate()+i }
+                name="date"
+                />
+                {date.getDate()+i}
+            </Label>
+            )
+          }
+
 
 	  return (
 		<ThemeProvider theme={theme}>
@@ -53,23 +104,32 @@ const theme = {
             (
 
                 <Div>
-                    Step {step}
+                    Step {step+1}
                     <Label 
                         fontFamily="primary"
                         textColor="gray800"
                         >Title 
-                        <Input />
+                        <Input 
+                            value={title}
+                            onChange={e => {
+                                console.log(e.target.value)
+                                setTitle(e.target.value)
+                            }}
+                        />
                     </Label>
                     <Label
                         fontFamily="primary"
                         textColor="gray800">
                         Short Description
-                        <Textarea />
-                    </Label> 
-                    
-                    
+                        <Textarea 
+                        value={caption}
+                        onChange={e => {
+                            console.log(e.target.value)
+                            setCaption(e.target.value)
                             
-                    
+                            
+                        }}/>
+                    </Label> 
                     <Button
                     bg="white"
                     textColor="info900"
@@ -91,14 +151,57 @@ const theme = {
               }
               {
               step==1?<Div>
-                Step {step}
+                Step {step + 1}
                 <Label
                         fontFamily="primary"
                         textColor="gray800">
                             Closing Date
                     </Label>
 
-                    <DateRangePickerCalendar/>
+                    <Div d="flex" >
+                        {closingDays}
+                    </Div>
+
+
+
+                    <Div d="flex">
+                        <Label
+                        align="center"
+                        textWeight="600"
+                        m={{ b: "0.5rem", r: "2rem" }}
+                    >
+                        <Radiobox
+                        onChange={() => setClosingTime(12)}
+                        checked={ closingTime === 12 }
+                        name="count"
+                        />
+                        12AM
+                    </Label>
+                    <Label
+                        align="center"
+                        textWeight="600"
+                        m={{ b: "0.5rem", r: "2rem" }}
+                    >
+                        <Radiobox
+                        onChange={() => setClosingTime(15)}
+                        checked={ closingTime === 15 }
+                        name="count"
+                        />
+                        3PM
+                    </Label>
+                    <Label
+                        align="center"
+                        textWeight="600"
+                        m={{ b: "0.5rem", r: "2rem" }}
+                    >
+                        <Radiobox
+                        onChange={() => setClosingTime(18)}
+                        checked={ closingTime === 18 }
+                        name="count"
+                        />
+                        6PM
+                    </Label>
+                    </Div>
                 <Button
                     bg="info500"
                     textColor="info900"
@@ -130,7 +233,7 @@ const theme = {
 
 {
               step==2?<Div>
-                Step {step}
+                Step {step+1}
                 <Label
                         fontFamily="primary"
                         textColor="gray800">
@@ -169,7 +272,7 @@ const theme = {
 
 {
               step==3?<Div>
-                Step {step}
+                Step {step+1}
                <Label 
                         fontFamily="primary"
                         textColor="gray800"
@@ -207,12 +310,55 @@ const theme = {
 
 {
               step==4?<Div>
-                Step {step}
+                Step {step+1}
                 <Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
                 <Checkbox
                 />
                 I Agree all the shit.
             </Label>
+                <Button
+                    bg="info500"
+                    textColor="info900"
+                    p={{r: "3rem", l: "3rem"}}
+                    shadow="1"
+                    hoverShadow="2"
+                    fontFamily="primary"
+                    onClick={()=>setSteps(2)}
+                    
+                >
+                    
+                    Back
+                </Button>
+            
+            <Button
+            bg="white"
+            textColor="info900"
+            p={{r: "3rem", l: "3rem"}}
+            shadow="1"
+            hoverShadow="2"
+            fontFamily="primary"
+            onClick={()=>setSteps(5)}
+        >
+            
+            Next
+        </Button>
+    </Div>:null
+    }
+
+{
+              step==5?<Div>
+                Step {step+1}
+                Closing
+                
+
+                {()=>{
+                            // date = new Date();
+                            
+                            // date.setDate(date.getDate() + 1);
+                            // console.log(date);
+                            
+                }
+                }
                 <Button
                     bg="info500"
                     textColor="info900"
@@ -241,6 +387,7 @@ const theme = {
         </Button>
     </Div>:null
     }
+        
               
                     
             
