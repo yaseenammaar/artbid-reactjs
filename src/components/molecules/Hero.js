@@ -80,31 +80,7 @@ function Hero() {
                         <Text fontFamily="primary" textColor="white" textSize="display4" textAlign="center">
                             Online Public Auction Platform
                         </Text>
-                        <Div
-                            d="flex"
-                            justify="center">
-
-                            <Dropdown
-                                style={{margin: 20}}
-                                isOpen={showDropdown}
-                                onClick={() => {
-                                    (async () => {
-                                        console.time("suggestions fetch execution time")
-                                        setShowDropdown(!showDropdown)
-                                        const res = await getSuggestions("ge")
-                                        console.log(res)
-                                        setSuggestions(res)
-                                        console.timeEnd("suggestions fetch execution time")
-                                    })()
-
-                                }}
-                                menu={menuList}
-                            >
-                                Click me
-                            </Dropdown>
-
-
-                        </Div>
+                        
                         <Div
                             m={{t: "2.0rem"}}
                             d={"flex"}
