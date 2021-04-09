@@ -1,6 +1,7 @@
 import { Input, Button, Icon } from "react-atomize";
 import styles from '../styles/searchBarStyles.module.css'
 import React, {useState} from "react";
+import onClickOutside from "react-onclickoutside";
 
 function SearchLoading(props){
 
@@ -18,6 +19,8 @@ function SearchLoading(props){
         },
     } = props
 
+    SearchLoading.handleClickOutside = () => props?.setShowDropdown(false);
+
     return (
         <div className={styles.search_container}>
             <Input
@@ -26,6 +29,7 @@ function SearchLoading(props){
                 w={"500px"}
                 onFocus={props?.onFocusSearch}
                 onBlur={props?.onBlurSearch}
+                onChange={props?.onChangeSearch}
                 suffix={
                     <Button
                         pos="absolute"
@@ -55,4 +59,8 @@ function SearchLoading(props){
 
 }
 
-export default SearchLoading
+const clickOutsideConfig = {
+    handleClickOutside: () => SearchLoading.handleClickOutside
+};
+
+export default onClickOutside(SearchLoading, clickOutsideConfig);

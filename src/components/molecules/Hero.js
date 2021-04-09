@@ -25,6 +25,7 @@ import PersonSnippet from './PersonSnippet'
 import heroImage from '../../assets/images/hero.webp';
 import PhoneAuth from "./PhoneAuth";
 import getSuggestions from "../../logics/getSuggestions";
+import useSearchSuggestions from "../../hooks/useSearchSuggestions";
 
 
 const theme = {
@@ -38,6 +39,8 @@ const theme = {
 };
 
 function Hero() {
+
+    const {searchText, setSearchText, search} = useSearchSuggestions();
 
     const [showDropdown, setShowDropdown] = useState(false)
     const [suggestions, setSuggestions] = useState([])
@@ -98,18 +101,44 @@ function Hero() {
                                 }}
 
                                 onBlurSearch={() => {
-                                    setShowSuggestions(false)
+                                    //setShowSuggestions(false)
                                 }}
+
+                                onChangeSearch={(e) => {
+                                    setSearchText(e.target.value)
+                                }}
+
+                                setShowDropdown={(bool) => {
+                                    setShowSuggestions(bool)
+                                }}
+
+                                DropdownComponent={() => (
+                                    <React.Fragment>
+                                        {search.loading && <div>Loading</div>}
+                                        {search.error && <div>Error: {search.error.message}</div>}
+                                        {search.result && (
+                                            <React.Fragment>
+                                                <div>Results: {search.result.length}</div>
+                                                <ul>
+                                                    {search.result.map(suggestion => (
+                                                        <li key={suggestion}>{suggestion}</li>
+                                                    ))}
+                                                </ul>
+                                            </React.Fragment>
+
+                                        )}
+                                    </React.Fragment>
+                                )}
                             />
 
                         </Div>
                     </Div>
 
                     <Div d="flex" style={styles.products__container}>
-                    
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
-                    <PersonCardWithImage/>
+
+                        <PersonCardWithImage/>
+                        <PersonCardWithImage/>
+                        <PersonCardWithImage/>
                     </Div>
 
 
