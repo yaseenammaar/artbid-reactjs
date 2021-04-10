@@ -23,6 +23,8 @@ import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
 import { DateRangePickerCalendar } from "react-nice-dates";
+import apiRequest from "../../logics/apiRequest";
+import APIS from "../../constants/Apis";
 
 const theme = {
 	...DefaultTheme,
@@ -33,6 +35,29 @@ const theme = {
     }
    
     };
+
+    
+
+    async function up() {
+        const requestData = {
+            available_state: "All",
+            base_price: 4500,
+            by_user: "Test",
+            caption: "Caption New",
+            category: "Education",
+            closing_date: "14",
+            closing_time: "6PM",
+            status: 0,
+            title: "We are going insance",
+            featured_image: "URL",
+            supporting_images: ["URL", "URL", "URL"],
+        };
+    
+        const res = await apiRequest('post', APIS.PROTECTED_APIS.ITEM_UPLOAD, requestData, 'application/json', true);
+        console.log(res)
+        // return res.data.suggestions
+      }
+
 
     const menuList = (
         <Div p={{ x: "1rem", y: "0.5rem" }}>
@@ -46,6 +71,7 @@ const theme = {
     
 	
 	function Upload() {
+        up();
         const [step, setSteps] = useState(0);
         const [title, setTitle] = useState('');
         const [caption, setCaption] = useState('');
