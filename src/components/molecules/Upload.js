@@ -23,8 +23,7 @@ import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
 import { DateRangePickerCalendar } from "react-nice-dates";
-import apiRequest from "../../logics/apiRequest";
-import APIS from "../../constants/Apis";
+import runUploadItemsApi from "../../logics/runUploadItemsApi";
 
 const theme = {
 	...DefaultTheme,
@@ -35,43 +34,11 @@ const theme = {
     }
    
     };
-
-    
-
-    async function up() {
-        const requestData = {
-            available_state: "All",
-            base_price: 4500,
-            by_user: "Test",
-            caption: "Caption New",
-            category: "Education",
-            closing_date: "14",
-            closing_time: "6PM",
-            status: 0,
-            title: "We are going insance",
-            featured_image: "URL",
-            supporting_images: ["URL", "URL", "URL"],
-        };
-    
-        const res = await apiRequest('post', APIS.PROTECTED_APIS.ITEM_UPLOAD, requestData, 'application/json', true);
-        console.log(res)
-        // return res.data.suggestions
-      }
-
-
-    const menuList = (
-        <Div p={{ x: "1rem", y: "0.5rem" }}>
-          {["Option 1", "Option 2", "Option 3"].map((name, index) => (
-            <Anchor d="block" p={{ y: "0.25rem" }}>
-              {name}
-            </Anchor>
-          ))}
-        </Div>
-      );
     
 	
 	function Upload() {
-        up();
+	    //runUploadItemsApi({})
+
         const [step, setSteps] = useState(0);
         const [title, setTitle] = useState('');
         const [caption, setCaption] = useState('');
@@ -90,12 +57,12 @@ const theme = {
 
         const today = new Date();
 
-        var date = new Date();
+        const date = new Date();
         date.setDate(date.getDate() + 1);
         // setClosingDate(date)
 
 
-        for(var i=0;i<8;i++){
+        for(let i = 0; i < 8; i++){
 
 
             closingDays.push( <Label
@@ -126,7 +93,7 @@ const theme = {
                 />
             
             {
-            step==0?
+            step === 0?
             (
 
                 <Div>
@@ -176,7 +143,7 @@ const theme = {
               
               }
               {
-              step==1?<Div>
+              step === 1?<Div>
                 Step {step + 1}
                 <Label
                         fontFamily="primary"
@@ -258,7 +225,7 @@ const theme = {
     }
 
 {
-              step==2?<Div>
+              step === 2?<Div>
                 Step {step+1}
                 <Label
                         fontFamily="primary"
@@ -297,7 +264,7 @@ const theme = {
     }
 
 {
-              step==3?<Div>
+              step === 3?<Div>
                 Step {step+1}
                <Label 
                         fontFamily="primary"
@@ -335,7 +302,7 @@ const theme = {
     }
 
 {
-              step==4?<Div>
+              step === 4?<Div>
                 Step {step+1}
                 <Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
                 <Checkbox

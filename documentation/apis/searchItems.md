@@ -37,7 +37,7 @@ const searchItems = async (limit, startingDoc, searchTag) => {
         searchTag
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.SEARCH_ITEMS, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.SEARCH_ITEMS, requestData, 'application/json', true);
     return response;
 }
 ```

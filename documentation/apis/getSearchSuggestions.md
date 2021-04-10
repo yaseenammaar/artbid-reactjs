@@ -33,7 +33,7 @@ const getSearchSuggestions = async (searchText) => {
         searchText
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_SEARCH_SUGGESTIONS, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_SEARCH_SUGGESTIONS, requestData, 'application/json', true);
     return response;
 }
 ```
