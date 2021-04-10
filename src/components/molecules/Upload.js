@@ -79,7 +79,7 @@ const theme = {
             >
                 <Radiobox
                 onChange={() => setClosingDate(date.getDate()+i)}
-                checked={ closingDate === date.getDate()+i }
+                checked={ closingDate+i}
                 name="date"
                 />
                 {date.getDate()+i}
@@ -337,7 +337,9 @@ const theme = {
             shadow="1"
             hoverShadow="2"
             fontFamily="primary"
-            onClick={()=>setSteps(5)}
+            onClick={()=>{
+
+            }}
         >
             
             Next
@@ -345,49 +347,6 @@ const theme = {
     </Div>:null
     }
 
-{
-              step==5?<Div>
-                Step {step+1}
-                Closing
-                
-
-                {()=>{
-                            // date = new Date();
-                            
-                            // date.setDate(date.getDate() + 1);
-                            // console.log(date);
-                            
-                }
-                }
-                <Button
-                    bg="info500"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"
-                    onClick={()=>setSteps(2)}
-                    
-                >
-                    
-                    Back
-                </Button>
-            
-            <Button
-            bg="white"
-            textColor="info900"
-            p={{r: "3rem", l: "3rem"}}
-            shadow="1"
-            hoverShadow="2"
-            fontFamily="primary"
-            onClick={()=>setSteps(4)}
-        >
-            
-            Next
-        </Button>
-    </Div>:null
-    }
-        
               
                     
             
