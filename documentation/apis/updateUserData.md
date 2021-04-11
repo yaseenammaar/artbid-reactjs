@@ -43,7 +43,7 @@ const updateUserData = async (ph_no, photo_url, email, name, uid) => {
         uid
     };
 
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.UPDATE_USER_DATA, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.UPDATE_USER_DATA, requestData, 'application/json', true);
     return response;
 }
 ```

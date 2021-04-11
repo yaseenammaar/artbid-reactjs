@@ -4,15 +4,9 @@ import {
     Div,
     Row,
     Col,
-    Dropdown,
     Anchor,
-    Container,
     DefaultTheme,
-    Image,
-    Button,
-    Icon,
-    Text,
-    Input, Modal
+    Text
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
 
@@ -21,10 +15,7 @@ import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import styles from "../styles/style";
 import PersonCardWithImage from './PersonCardWithImage'
-import PersonSnippet from './PersonSnippet'
 import heroImage from '../../assets/images/hero.webp';
-import PhoneAuth from "./PhoneAuth";
-import getSuggestions from "../../logics/getSuggestions";
 import useSearchSuggestions from "../../hooks/useSearchSuggestions";
 
 

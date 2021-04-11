@@ -9,7 +9,6 @@ import {
   Icon,
   Text
 } from "react-atomize";
-import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";

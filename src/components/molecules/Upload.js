@@ -2,29 +2,20 @@ import React, {useState} from "react";
 import {
   ThemeProvider,
     Div,
-    Row,
-    Col,
-    Container,
     DefaultTheme,
-    Image,
     Button,
     Icon,
-    Text,
-    Modal,
     Input,
     Label,
     Textarea,
     Checkbox,
     Dropdown, Anchor, Radiobox
 } from "react-atomize";
-import SearchLoading from "../atoms/SearchLoading"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
-import { DateRangePickerCalendar } from "react-nice-dates";
-import apiRequest from "../../logics/apiRequest";
-import APIS from "../../constants/Apis";
+import "firebase/storage";
 
 const theme = {
 	...DefaultTheme,
@@ -36,42 +27,59 @@ const theme = {
    
     };
 
+    const categories = require("../../assets/json/categories.json");
+    const states = require("../../assets/json/statesDistrictIndia.json");
+
+
+    // console.log("categories",categories)
+    console.log("state",states.states)
+
     
 
-    async function up() {
-        const requestData = {
-            available_state: "All",
-            base_price: 4500,
-            by_user: "Test",
-            caption: "Caption New",
-            category: "Education",
-            closing_date: "14",
-            closing_time: "6PM",
-            status: 0,
-            title: "We are going insance",
-            featured_image: "URL",
-            supporting_images: ["URL", "URL", "URL"],
-        };
-    
-        const res = await apiRequest('post', APIS.PROTECTED_APIS.ITEM_UPLOAD, requestData, 'application/json', true);
-        console.log(res)
-        // return res.data.suggestions
-      }
 
-
-    const menuList = (
-        <Div p={{ x: "1rem", y: "0.5rem" }}>
-          {["Option 1", "Option 2", "Option 3"].map((name, index) => (
+    const stateList = (
+        <Div>
+        {states.states.map((name, index) => (
             <Anchor d="block" p={{ y: "0.25rem" }}>
-              {name}
+            {name.name}
             </Anchor>
-          ))}
+        ))}
         </Div>
-      );
+    );
+
+    const categoryList = (
+        <Div>
+        {categories.categories.map((name, index) => (
+            <Anchor d="block" p={{ y: "0.25rem" }}>
+            {name.category}
+            </Anchor>
+        ))}
+        </Div>
+    );
+    // runUploadItemsApi()
+
+    function getBase64(e) {
+        // var file = e.target.files[0]
+        // let reader = new FileReader()
+        // reader.readAsDataURL(file)
+        // console.log("File", file)
+        // reader.onload = () => {
+        //     const ref = firebase.storage().ref().child('some-child');
+        //     ref.put(file).then((snapshot) => {
+        //         console.log('Uploaded a blob or file!');
+        //     });
+        // };
+        // reader.onerror = function (error) {
+        //   console.log('Error: ', error);
+        // }
+      }
     
 	
 	function Upload() {
-        up();
+
+        // runUploadImageItemsApi({})
+	    
+
         const [step, setSteps] = useState(0);
         const [title, setTitle] = useState('');
         const [caption, setCaption] = useState('');
@@ -85,17 +93,25 @@ const theme = {
         const [closingTime, setClosingTime] = useState(12)
         const [state, setState] = useState('')
         const [status, setStatus] = useState(0)
+        const [showSDropdown, setShowSDropdown] = useState(false);
+        const [showCDropdown, setShowCDropdown] = useState(false);
+        const [selectedState, setSelectedState] = useState("");
+
+        const handleStateChange = e => {
+            console.log(e.value)
+
+            setSelectedState(e.value);
+          }
+
 
         const closingDays = []
-
         const today = new Date();
-
-        var date = new Date();
+        const date = new Date();
         date.setDate(date.getDate() + 1);
         // setClosingDate(date)
 
 
-        for(var i=0;i<8;i++){
+        for(let i = 0; i < 8; i++){
 
 
             closingDays.push( <Label
@@ -126,7 +142,7 @@ const theme = {
                 />
             
             {
-            step==0?
+            step === 0?
             (
 
                 <Div>
@@ -143,6 +159,33 @@ const theme = {
                             }}
                         />
                     </Label>
+
+                    <input type="file" className="input-file" name="imgUpload" accept='.png' onChange={getBase64} />
+
+                    <Dropdown
+                        isOpen={showSDropdown}
+                        onChange={handleStateChange}
+                        value={selectedState}
+                        menu={stateList}
+                    >
+                        State
+                    </Dropdown>
+
+                    <Dropdown
+                        isOpen={showCDropdown}
+                        
+                        onChange={()=>{
+                            
+                        }}
+                        onClick={() =>
+                            
+                            setShowCDropdown(!showCDropdown)
+                        }
+                        menu={categoryList}
+                    >
+                        Category
+                    </Dropdown>
+
                     <Label
                         fontFamily="primary"
                         textColor="gray800">
@@ -157,26 +200,17 @@ const theme = {
                         }}/>
                     </Label> 
                     <Button
-                    bg="white"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"   
+                     
                     onClick={()=>setSteps(1)}
                 >
                     Next
                 </Button>
             </Div>
             )
-              : null
-
-              
-
-              
+              : null              
               }
               {
-              step==1?<Div>
+              step === 1?<Div>
                 Step {step + 1}
                 <Label
                         fontFamily="primary"
@@ -228,37 +262,29 @@ const theme = {
                         6PM
                     </Label>
                     </Div>
-                <Button
-                    bg="info500"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"
-                    onClick={()=>setSteps(0)}
+
+                    <Div d="flex" >
                     
-                >
-                    
-                    Back
-                </Button>
+                    <Button
+                        onClick={()=>setSteps(0)}
+                    >
+                        
+                        Back
+                    </Button>
             
             <Button
-            bg="white"
-            textColor="info900"
-            p={{r: "3rem", l: "3rem"}}
-            shadow="1"
-            hoverShadow="2"
-            fontFamily="primary"
+         
             onClick={()=>setSteps(2)}
         >
             
             Next
         </Button>
+        </Div>
     </Div>:null
     }
 
 {
-              step==2?<Div>
+              step === 2?<Div>
                 Step {step+1}
                 <Label
                         fontFamily="primary"
@@ -266,38 +292,29 @@ const theme = {
                             Photos
                     </Label>
                     <DropZone/>
+
+                    <Div d="flex">
                
                 <Button
-                    bg="info500"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"
                     onClick={()=>setSteps(1)}
-                    
                 >
                     
                     Back
                 </Button>
             
             <Button
-            bg="white"
-            textColor="info900"
-            p={{r: "3rem", l: "3rem"}}
-            shadow="1"
-            hoverShadow="2"
-            fontFamily="primary"
-            onClick={()=>setSteps(3)}
-        >
+                
+                onClick={()=>setSteps(3)}
+            >
             
             Next
         </Button>
+        </Div>
     </Div>:null
     }
 
 {
-              step==3?<Div>
+              step === 3?<Div>
                 Step {step+1}
                <Label 
                         fontFamily="primary"
@@ -305,13 +322,8 @@ const theme = {
                         >Price 
                         <Input />
                     </Label>
+                    <Div d="flex">
                 <Button
-                    bg="info500"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"
                     onClick={()=>setSteps(2)}
                     
                 >
@@ -320,56 +332,43 @@ const theme = {
                 </Button>
             
             <Button
-            bg="white"
-            textColor="info900"
-            p={{r: "3rem", l: "3rem"}}
-            shadow="1"
-            hoverShadow="2"
-            fontFamily="primary"
             onClick={()=>setSteps(4)}
         >
             
             Next
         </Button>
+        </Div>
     </Div>:null
     }
 
 {
-              step==4?<Div>
+              step === 4?<Div>
                 Step {step+1}
                 <Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
                 <Checkbox
                 />
                 I Agree all the shit.
             </Label>
-                <Button
-                    bg="info500"
-                    textColor="info900"
-                    p={{r: "3rem", l: "3rem"}}
-                    shadow="1"
-                    hoverShadow="2"
-                    fontFamily="primary"
-                    onClick={()=>setSteps(2)}
-                    
-                >
-                    
-                    Back
-                </Button>
-            
-            <Button
-            bg="white"
-            textColor="info900"
-            p={{r: "3rem", l: "3rem"}}
-            shadow="1"
-            hoverShadow="2"
-            fontFamily="primary"
-            onClick={()=>{
 
-            }}
-        >
-            
-            Next
-        </Button>
+            <Div d="flex">
+                    <Button
+                        onClick={()=>setSteps(2)}
+                        
+                    >
+                        
+                        Back
+                    </Button>
+                
+                <Button
+                onClick={()=>{
+                    // runUploadImageItemsApi({})
+
+                }}
+            >
+                
+                Upload
+            </Button>
+            </Div>
     </Div>:null
     }
 

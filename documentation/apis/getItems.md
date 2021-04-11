@@ -39,7 +39,7 @@ const getItems = async (type, limit = 10, last_snapshot = null, product_id = nul
         product_id,
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_ITEMS, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_ITEMS, requestData, 'application/json', true);
     return response;
 }
 ```

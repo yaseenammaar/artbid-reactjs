@@ -1,30 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {
     ThemeProvider,
     Div,
     Row,
     Col,
-    Container,
     DefaultTheme,
     Image,
     Button,
     Icon,
     Text,
     Modal,
-    Input,
-    Label,
-    Textarea
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
 
-import {DropZone} from "../atoms/DropZone"
-import {Formik} from 'formik';
-import * as Yup from 'yup';
 import styles from '../styles/style';
 
-import { format } from 'date-fns'
-import { enGB } from 'date-fns/locale'
-import { DateRangePickerCalendar, START_DATE } from 'react-nice-dates'
+import { START_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
 import Firebase from '../../Firebase/index'

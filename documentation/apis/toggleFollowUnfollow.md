@@ -34,7 +34,7 @@ const toggleFollowUnfollow = async (other_user_id) => {
         other_user_id
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.TOGGLE_FOLLOW_UNFOLLOW, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.TOGGLE_FOLLOW_UNFOLLOW, requestData, 'application/json', true);
     return response;
 }
 ```

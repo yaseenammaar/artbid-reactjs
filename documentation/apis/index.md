@@ -8,3 +8,5 @@
     - [getFirestoreRecord](./getFirestoreRecord.md)
     - [toggleFollowUnfollow](./toggleFollowUnfollow.md)
     - [saveItemForUser](./saveItemForUser.md)
+    - [getSearchSuggestions](./getSearchSuggestions.md)
+    - [getItems](./getItems.md)

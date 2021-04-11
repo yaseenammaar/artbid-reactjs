@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "id":"1",
+            "category":"Art"
+        },
+        {
+            "id":"2",
+            "category":"Code"
+        },
+        {
+            "id":"3",
+            "category":"Art"
+        },
+        {
+            "id":"4",
+            "category":"Art"
+        },
+        {
+            "id":"5",
+            "category":"Art"
+        },
+        {
+            "id":"6",
+            "category":"Art"
+        },
+        {
+            "id":"7",
+            "category":"Art"
+        },
+        {
+            "id":"8",
+            "category":"Art"
+        },
+        {
+            "id":"9",
+            "category":"Art"
+        }
+    ]
+}

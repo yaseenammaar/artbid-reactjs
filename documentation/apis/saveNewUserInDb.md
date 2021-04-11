@@ -53,7 +53,7 @@ const saveNewUserInFirestore = async (bio, city) => {
      * keep in mind that before using this api update the firebase user record accordingly.
     * */
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.SAVE_NEW_USER_IN_DB, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.SAVE_NEW_USER_IN_DB, requestData, 'application/json', true);
     return response;
 }
 ```

@@ -33,7 +33,7 @@ const getFirestoreRecord = async (docPath) => {
         docPath
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_FIRESTORE_RECORD, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.GET_FIRESTORE_RECORD, requestData, 'application/json', true);
     return response;
 }
 ```

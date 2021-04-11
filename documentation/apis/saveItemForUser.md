@@ -33,7 +33,7 @@ const saveItemForUser = async (item_id) => {
         item_id
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.SAVE_ITEM_FOR_USER, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.SAVE_ITEM_FOR_USER, requestData, 'application/json', true);
     return response;
 }
 ```

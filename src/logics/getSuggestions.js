@@ -1,5 +1,4 @@
-import apiRequest from "./apiRequest";
-import APIS from "../constants/Apis";
+
 import firebaseInstance from "../Firebase/index";
 
 const getSearchSuggestions = async (searchText: string) => {

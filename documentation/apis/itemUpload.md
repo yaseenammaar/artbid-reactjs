@@ -52,9 +52,10 @@ const itemUpload = async (uploadData) => {
         title: uploadData.title,
         featured_image: uploadData.featured_image,
         supporting_images: uploadData.supporting_images,
+        state: uploadData.state,
     };
     
-    const response = await apiRequest('post', APIS.PROTECTED_APIS.ITEM_UPLOAD, requestData, 'json', true);
+    const response = await apiRequest('post', APIS.PROTECTED_APIS.ITEM_UPLOAD, requestData, 'application/json', true);
     return response;
 }
 ```
