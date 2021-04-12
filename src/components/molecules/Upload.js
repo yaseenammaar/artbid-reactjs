@@ -165,6 +165,9 @@ const theme = {
                     <Dropdown
                         isOpen={showSDropdown}
                         onChange={handleStateChange}
+                        onClick={() => {
+                            setShowSDropdown(!showSDropdown)
+                        }}
                         value={selectedState}
                         menu={stateList}
                     >
