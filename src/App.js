@@ -24,6 +24,7 @@ import {
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
 import CreditCard from "./components/molecules/CreditCard";
+import SearchResultPage from "./pages/SearchResultPage";
 
 const theme = {
     ...DefaultTheme,
@@ -66,7 +67,7 @@ function Main(props){
                         <Route exact path="/contact" component={Hero}/>
                         <Route exact path="/profile" component={Profile}/>
                         <Route exact path="/login" component={Login}/>
-
+                        <Route exact path={"/search_result"} component={SearchResultPage} />
                        
 
                         <Footer/>

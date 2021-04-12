@@ -9,7 +9,6 @@ import {
     Text
 } from "react-atomize";
 import SearchLoading from "../atoms/SearchLoading"
-
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
@@ -17,7 +16,7 @@ import styles from "../styles/style";
 import PersonCardWithImage from './PersonCardWithImage'
 import heroImage from '../../assets/images/hero.webp';
 import useSearchSuggestions from "../../hooks/useSearchSuggestions";
-
+import { useHistory } from "react-router-dom"
 
 const theme = {
     ...DefaultTheme,
@@ -30,23 +29,9 @@ const theme = {
 };
 
 function Hero() {
-
+    let history = useHistory()
     const {searchText, setSearchText, search} = useSearchSuggestions();
-
-    const [showDropdown, setShowDropdown] = useState(false)
-    const [suggestions, setSuggestions] = useState([])
     const [showSuggestions, setShowSuggestions] = useState(false)
-
-    const menuList = (
-        <Div>
-            {suggestions.map((name, index) => (
-                <Anchor d="block" p={{y: "0.25rem"}}>
-                    {name}
-                </Anchor>
-            ))}
-        </Div>
-    );
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -84,11 +69,18 @@ function Hero() {
                             <SearchLoading
                                 showSuggestions={showSuggestions}
                                 searchButtonOnClick={() => {
+                                    history.push(`/search_result?searchText=${searchText}&method=${2}`)
+                                }}
 
+                                onClickSuggestion={(suggestion) => {
+                                    history.push(`/search_result?searchText=${suggestion}&method=${1}`)
                                 }}
 
                                 onFocusSearch={() => {
-                                    setShowSuggestions(true)
+                                    search.result.length > 0?
+                                        setShowSuggestions(true)
+                                        :
+                                        setShowSuggestions(false)
                                 }}
 
                                 onBlurSearch={() => {
@@ -99,27 +91,18 @@ function Hero() {
                                     setSearchText(e.target.value)
                                 }}
 
-                                setShowDropdown={(bool) => {
-                                    setShowSuggestions(bool)
+                                closeDropdown={() => (
+                                    setShowSuggestions(false)
+                                )}
+
+                                showDropdown={() => {
+                                    setShowSuggestions(true)
                                 }}
 
-                                DropdownComponent={() => (
-                                    <React.Fragment>
-                                        {search.loading && <div>Loading</div>}
-                                        {search.error && <div>Error: {search.error.message}</div>}
-                                        {search.result && (
-                                            <React.Fragment>
-                                                <div>Results: {search.result.length}</div>
-                                                <ul>
-                                                    {search.result.map(suggestion => (
-                                                        <li key={suggestion}>{suggestion}</li>
-                                                    ))}
-                                                </ul>
-                                            </React.Fragment>
+                                loading={search.loading}
+                                suggestions={search.result}
+                                error={search.error}
 
-                                        )}
-                                    </React.Fragment>
-                                )}
                             />
 
                         </Div>

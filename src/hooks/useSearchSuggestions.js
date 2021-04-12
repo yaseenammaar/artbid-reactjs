@@ -4,13 +4,12 @@ import useConstant from "use-constant";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import getSuggestions from "../logics/getSuggestions";
 
-const searchSuggestions = async (text: string) => {
-    const result = await getSuggestions(text)
+const searchSuggestions = async (text) => {
     /*if (result.status !== 200) {
         throw new Error('bad status = ' + result.status);
     }*/
     //const json = await result.json();
-    return result;
+    return await getSuggestions(text);
 };
 
 const useSearchSuggestions = () => {
@@ -23,6 +22,7 @@ const useSearchSuggestions = () => {
     );
 
     const search = useAsync(
+
         async (text) => {
             // If the input is empty, return nothing immediately (without the debouncing delay!)
             if (text.length === 0) {
@@ -30,11 +30,14 @@ const useSearchSuggestions = () => {
             }
             // Else we use the debounced api
             else {
-                return debouncedSearchSuggestions(text);
+                return debouncedSearchSuggestions(text.toString().toLowerCase());
             }
         },
         // Ensure a new request is made everytime the text changes (even if it's debounced)
-        [searchText]
+        [searchText],
+        {
+            setLoading: state => ({...state, loading: true}),
+        }
     );
 
     // Return everything needed for the hook consumer

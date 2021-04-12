@@ -1,7 +1,9 @@
 import { Input, Button, Icon } from "react-atomize";
 import styles from '../styles/searchBarStyles.module.css'
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import onClickOutside from "react-onclickoutside";
+import BarLoader from "react-spinners/BarLoader"
+import { css } from "@emotion/core";
 
 function SearchLoading(props){
 
@@ -10,16 +12,53 @@ function SearchLoading(props){
     const {
         showSuggestions = true,
         searchButtonOnClick,
+        onClickSuggestion,
+        showDropdown,
+        closeDropdown,
         DropdownComponent = () => {
             return (
-                <div style={{margin: 10}}>
-                    No suggestions
+                <div>
+                    {error && <div>Error: {error.message}</div>}
+                    {suggestions && (
+                        <React.Fragment>
+                            {suggestions.map((suggestion, i) => (
+                                <div
+                                    className={suggestions.length - 1 === i ? styles.suggestion + " " + styles.suggestion_with_bottom_radius : styles.suggestion}
+                                    onClick={() => {
+                                        onClickSuggestion(suggestion)
+                                    }}
+                                >{suggestion}</div>
+
+                            ))}
+                        </React.Fragment>
+
+                    )}
                 </div>
             )
         },
+        loading = false,
+        suggestions = [],
+        error = null
     } = props
 
-    SearchLoading.handleClickOutside = () => props?.setShowDropdown(false);
+    useEffect(() => {
+        if(suggestions.length > 0) {
+            showDropdown()
+        }
+        else {
+            closeDropdown()
+        }
+
+    }, [suggestions])
+
+    SearchLoading.handleClickOutside = () => props?.closeDropdown();
+
+    const overrideLoaderCss = css`
+      display: block;
+      margin: 0;
+      width: 100%;
+    `;
+
 
     return (
         <div className={styles.search_container}>
@@ -34,24 +73,26 @@ function SearchLoading(props){
                     <Button
                         pos="absolute"
                         onClick={() => {
-                            setIsLoading(!isLoading)
                             searchButtonOnClick()
                         }}
-                        bg="transparent"
+                        bg="info700"
+                        hoverBg="info800"
                         w="3rem"
                         top="0"
                         right="0"
-                        rounded={{ r: "md" }}
+                        rounded={{l: "0"}}
+                        style={{borderBottomRightRadius: showSuggestions? 0 : 5, borderTopRightRadius: 5}}
                     >
                         <Icon
-                            name={isLoading ? "Loading" : "Search"}
-                            color={isLoading ? "gray900" : "black"}
+                            name={"Search"}
+                            color={"white"}
                             size="16px"
                         />
                     </Button>
                 }
             />
             <div className={showSuggestions? styles.dropdown_content + " " + styles.dropdown_visible : styles.dropdown_content + " " + styles.dropdown_invisible}>
+                <BarLoader loading={loading} color={"#0080ff"} css={overrideLoaderCss} height={2}/>
                 <DropdownComponent />
             </div>
         </div>
