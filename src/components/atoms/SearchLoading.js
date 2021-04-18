@@ -64,8 +64,9 @@ function SearchLoading(props){
         <div className={styles.search_container}>
             <Input
                 placeholder="Search"
+                style={props.inputStyle}
                 className={showSuggestions? styles.search_bar_invisible_bottom_radius + " " + styles.search_bar : styles.search_bar_visible_bottom_radius + " " + styles.search_bar}
-                w={"500px"}
+                value={props?.value}
                 onFocus={props?.onFocusSearch}
                 onBlur={props?.onBlurSearch}
                 onChange={props?.onChangeSearch}

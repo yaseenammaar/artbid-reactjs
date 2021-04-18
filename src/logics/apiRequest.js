@@ -13,7 +13,7 @@ const apiRequest = async (method, api, data, contentType, isAuth) => {
     }
 
     if(isAuth) {
-        const user = Firebase.auth().currentUser
+        const user = await Firebase.auth().currentUser
         const token = await user.getIdToken()
         console.log(token)
         const url = 'protectedApi/' + api

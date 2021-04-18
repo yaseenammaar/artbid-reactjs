@@ -61,19 +61,21 @@ function Hero() {
                         </Text>
                         
                         <Div
-                            m={{t: "2.0rem"}}
+                            m={{t: "2.0rem", x: "auto"}}
                             d={"flex"}
                             justify={"center"}
+                            w={"500px"}
+
                         >
 
                             <SearchLoading
                                 showSuggestions={showSuggestions}
                                 searchButtonOnClick={() => {
-                                    history.push(`/search_result?searchText=${searchText}&method=${2}`)
+                                    history.push(`/search_result?searchText=${searchText}&method=search`)
                                 }}
 
                                 onClickSuggestion={(suggestion) => {
-                                    history.push(`/search_result?searchText=${suggestion}&method=${1}`)
+                                    history.push(`/search_result?searchText=${suggestion}&method=suggestion`)
                                 }}
 
                                 onFocusSearch={() => {

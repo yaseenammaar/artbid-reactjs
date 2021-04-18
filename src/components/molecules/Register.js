@@ -4,7 +4,7 @@ import { Input, Button, Icon, Div,  Dropdown, Anchor } from "react-atomize";
 
 import personImg from '../../assets/images/personImg.jpg';
 import styles from '../styles/style'
-import saveNewUserInDb from "../../logics/saveNewUserInFirestore";
+import saveNewUserInDb from "../../logics/apiCalls/saveNewUserInFirestore";
 import apiRequest from "../../logics/apiRequest";
 
 
