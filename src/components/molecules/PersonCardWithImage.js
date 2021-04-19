@@ -45,6 +45,7 @@ class PersonCardWithImage extends React.Component {
                   <div style={styles.snippet__data}>
                     <h4 style={styles.snippetName}>Taylor Swift</h4>
                   </div>
+                 
                   {
                   notificationState?
                   <Icon name="BookmarkSolid" size="20px" color="info800" 
@@ -53,6 +54,7 @@ class PersonCardWithImage extends React.Component {
                   onClick={() => this.setState({ notificationState: !notificationState })}/>}
                     
                 </div>
+                
 
                 <Notification
                   bg="info300"

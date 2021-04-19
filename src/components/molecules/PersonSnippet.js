@@ -36,9 +36,6 @@ class PersonSnippet extends React.Component {
 
      
               
-                
-
-
     );
   }
 }

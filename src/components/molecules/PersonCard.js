@@ -4,6 +4,8 @@ import { Input, Button, Icon, Div } from "react-atomize";
 
 import personImg from '../../assets/images/personImg.jpg';
 import styles from '../styles/style'
+import Firebase from '../../Firebase/index'
+
 
 
 class PersonCard extends React.Component {
@@ -70,6 +72,17 @@ class PersonCard extends React.Component {
               >
             Message
           </Button>
+          <Button
+                            onClick={() => {
+                                Firebase.auth().signOut().then(() => {
+                                    // Sign-out successful.
+                                    // props.setUser(null)
+
+                                }).catch((error) => {
+                                    // An error happened.
+                                });
+                            }}
+                         >Logout</Button>
           </div>
         </div>
 

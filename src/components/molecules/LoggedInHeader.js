@@ -18,7 +18,6 @@ import styles from '../styles/style';
 import { START_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
-import Firebase from '../../Firebase/index'
 import {bindActionCreators} from "redux";
 import {setUser} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
@@ -202,17 +201,7 @@ function LoggedInHeader(props) {
                  >
                      <PersonCard/>
                      
-                         <Button
-                            onClick={() => {
-                                Firebase.auth().signOut().then(() => {
-                                    // Sign-out successful.
-                                    props.setUser(null)
-
-                                }).catch((error) => {
-                                    // An error happened.
-                                });
-                            }}
-                         >Logout</Button>
+                         
                     
                 </Modal>
 

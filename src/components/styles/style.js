@@ -121,6 +121,9 @@ const styles ={
     snippet__data:{
       flex:'2'
     },
+    snippet__time:{
+      flex:'2'
+    },
     snippetName:{
       margin:'2px 0'
     },
