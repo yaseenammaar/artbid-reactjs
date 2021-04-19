@@ -1,7 +1,7 @@
 export const PROTECTED_APIS = {
     ITEM_UPLOAD: 'itemUpload',
     SAVE_NEW_USER_IN_DB: 'saveNewUserInDb',
-    SEARCH_ITEMS: 'searchItems',
+    GET_SEARCH_RESULTS: 'getSearchResults',
     UPDATE_USER_DATA: 'updateUserData',
     GET_FIRESTORE_RECORD: 'getFirestoreRecord',
     TOGGLE_FOLLOW_UNFOLLOW: 'toggleFollowUnfollow',

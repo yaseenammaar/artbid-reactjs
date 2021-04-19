@@ -1,7 +1,7 @@
 
 import firebaseInstance from "../Firebase/index";
 
-const getSearchSuggestions = async (searchText: string) => {
+const getSearchSuggestions = async (searchText) => {
 
     try {
 

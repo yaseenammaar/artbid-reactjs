@@ -1,4 +1,4 @@
-import React, {Component, useEffect} from "react";
+import React, {Component, useEffect, useState} from "react";
 import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
 import LoggedInHeader from "./components/molecules/LoggedInHeader";
 
@@ -38,47 +38,53 @@ const theme = {
 const bgImage = "https://source.unsplash.com/collection/1065396/1600x900";
 const bgImageValue = `url(${bgImage})`;
 
-function Main(props){
+function Main(props) {
 
+    const [isInitializingApp, setInitializingApp] = useState(true)
     useEffect(() => {
-        firebaseInstance.auth().onAuthStateChanged(async function(user) {
+        firebaseInstance.auth().onAuthStateChanged(async function (user) {
+            setInitializingApp(false)
             console.log("user is : ", user)
-            if(user == null) {
+            if (user == null) {
                 await firebaseInstance.auth().signInAnonymously();
             }
             props.setUser(user)
         })
     }, [])
 
-        return (
-
+    return (
+        isInitializingApp ?
+            <div>loading app...</div>
+            :
+            <ThemeProvider theme={theme}>
                 <HashRouter>
-                    <ThemeProvider theme={theme}>
-                        {
-                            props.auth.user == null || props.auth.user.isAnonymous ?
-                                <LoggedOutHeader/>
-                                :
-                                <LoggedInHeader/>
 
-                        }
-                        <CreditCard/>
-                        <Route exact path="/" component={Hero}/>
-                        <Route exact path="/stuff" component={Hero}/>
-                        <Route exact path="/contact" component={Hero}/>
-                        <Route exact path="/profile" component={Profile}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path={"/search_result"} component={SearchResultPage} />
-                       
+                    {
+                        props.auth.user == null || props.auth.user.isAnonymous ?
+                            <LoggedOutHeader/>
+                            :
+                            <LoggedInHeader/>
 
-                        <Footer/>
-                    </ThemeProvider>
+                    }
+                    {/*<CreditCard/>*/}
+                    <Route exact path="/" component={Hero}/>
+                    <Route exact path="/stuff" component={Hero}/>
+                    <Route exact path="/contact" component={Hero}/>
+                    <Route exact path="/profile" component={Profile}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path={"/search_result"} component={SearchResultPage}/>
+
+
+                    <Footer/>
                 </HashRouter>
+            </ThemeProvider>
 
-        );
+
+    );
 }
 
 const mapStateToProps = (state) => {
-    const { auth } = state
+    const {auth} = state
 
     /**
      * Use it as:
@@ -86,7 +92,7 @@ const mapStateToProps = (state) => {
      * const error = props.auth.error
      */
 
-    return { auth }
+    return {auth}
 };
 
 const mapDispatchToProps = dispatch => (

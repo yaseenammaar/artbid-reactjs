@@ -170,6 +170,7 @@ const theme = {
                         }}
                         value={selectedState}
                         menu={stateList}
+                        bg={"white"}
                     >
                         State
                     </Dropdown>
