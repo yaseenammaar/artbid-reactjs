@@ -112,7 +112,7 @@ function Hero() {
                     <a className="m-0" href="#">See All</a>
             </div>
 
-            <div className="top-artist container mt-md-5 mt-2">
+            <div className="top-artist container mt-4">
 
                 <div className="row">
 

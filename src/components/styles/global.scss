@@ -73,3 +73,52 @@ footer{
         color: #dedede;
     }
 }
+
+
+// ################## Footer Media Queries ##################
+
+@media(max-width: 769px){
+    footer{
+        font-size: 14px !important;
+    }
+}
+
+@media(max-width: 426px){
+    footer{
+        ul{
+            li{
+                margin: 0 12px !important;
+            }
+        }
+        font-size: 14px !important;
+    }
+}
+
+
+@media(max-width: 376px){
+    footer{
+        ul{
+            li{
+                margin: 0 10px !important;
+            }
+        }
+        font-size: 12px !important;
+    }
+}
+
+
+@media(max-width: 321px){
+    footer{
+        height: 35px !important;
+        padding: 5px;
+        display: block;
+        ul{
+            text-align: center;
+            li{
+                margin: 0 8px !important;
+            }
+        }
+        font-size: 10px !important;
+    }
+}
+
