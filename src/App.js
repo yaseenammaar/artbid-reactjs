@@ -61,7 +61,7 @@ function Main(props){
                                 <LoggedInHeader/>
 
                         }
-                        <CreditCard/>
+                        {/* <CreditCard/> */}
                         <Route exact path="/" component={Hero}/>
                         <Route exact path="/stuff" component={Hero}/>
                         <Route exact path="/contact" component={Hero}/>
