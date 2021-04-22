@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import image from '../../assets/images/hero_splash.jpg';
 import '../styles/global.scss'
+import OneCard from './one-card';
 
 
 function Art(props) {
@@ -40,6 +41,42 @@ function Art(props) {
                     </div>
                 </div>
             </section>
+
+
+        {/* ############################# Trending ######################################### */}
+
+        <section id="trending" className="card-collection">
+        <div className="container">
+
+
+            <div className="d-flex justify-content-between align-items-center collection-title">
+                    <h2 className="m-0"> SIMILAR </h2>  
+                    <a className="m-0" href="#">See All</a>
+            </div>
+
+            <div className="row mt-5">
+                <div className="col-md-3 col-6">
+                    <OneCard></OneCard>
+                </div>
+                <div className="col-md-3 col-6">
+                    <OneCard></OneCard>
+                </div>
+                <div className="col-md-3 col-6">
+                    <OneCard></OneCard>
+                </div>
+                <div className="col-md-3 col-6">
+                    <OneCard></OneCard>
+                </div>
+            </div>
+
+        </div>
+        </section>
+
+        {/* ####################################### Trending Section End ############################ */}
+
+
+
+
         </>
     )
 }
