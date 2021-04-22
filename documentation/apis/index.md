@@ -3,7 +3,7 @@
 - ## Protected apis
     - [saveNewUserInDb](./saveNewUserInDb.md)
     - [itemUpload](./itemUpload.md)
-    - [searchItems](./searchItems.md)
+    - [getSearchResults](getSearchResults.md)
     - [updateUserData](./updateUserData.md)
     - [getFirestoreRecord](./getFirestoreRecord.md)
     - [toggleFollowUnfollow](./toggleFollowUnfollow.md)

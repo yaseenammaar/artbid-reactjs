@@ -1,5 +1,5 @@
-import apiRequest from "./apiRequest";
-import APIS from "../constants/Apis";
+import apiRequest from "../apiRequest";
+import APIS from "../../constants/Apis";
 
 
 // const runUploadImageItemsApi = async (file) => {
