@@ -15,6 +15,11 @@ import {
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
 
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/global.scss';
+
+
 const theme = {
     ...DefaultTheme,
     grid: {
@@ -32,7 +37,33 @@ export default function LoggedOutHeader() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Row>
+
+
+
+
+
+                <footer className="container-fluid">
+                    <ul>
+                        <li> <a href="#">Docs</a></li>
+                        <li> <a href="#">ArtBid</a></li>
+                        <li> <a href="#">About</a></li>
+                    </ul>
+
+                    <p className="text-center m-0">Copyright 2021 ArtBid</p>
+                </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+            {/* <Row>
                 <Col>
                     <Div
                       d="flex"
@@ -54,7 +85,7 @@ export default function LoggedOutHeader() {
                    
                     </Div>
                 </Col>
-            </Row>
+            </Row> */}
         </ThemeProvider>
     );
 }

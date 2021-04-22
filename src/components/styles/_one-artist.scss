@@ -1,0 +1,23 @@
+.one-artist{
+    margin-bottom: 20px;
+    img{
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+
+        // border: 5px solid $primary;
+
+    }
+    h4{
+        font-weight: bold;
+        color: $accent;
+    }
+}
+
+@media(max-width: 769px){
+    .one-artist{
+        img{
+            width: 100px !important; height: 100px !important;
+        }
+    }
+}
