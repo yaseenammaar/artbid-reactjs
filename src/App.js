@@ -58,7 +58,6 @@ function Main(props) {
             :
             <ThemeProvider theme={theme}>
                 <HashRouter>
-<<<<<<< HEAD
 
                     {
                         props.auth.user == null || props.auth.user.isAnonymous ?
@@ -77,27 +76,7 @@ function Main(props) {
 
 
                     <Footer/>
-=======
-                    <ThemeProvider theme={theme}>
-                        {
-                            props.auth.user == null || props.auth.user.isAnonymous ?
-                                <LoggedOutHeader/>
-                                :
-                                <LoggedInHeader/>
-
-                        }
-                        {/* <CreditCard/> */}
-                        <Route exact path="/" component={Hero}/>
-                        <Route exact path="/stuff" component={Hero}/>
-                        <Route exact path="/contact" component={Hero}/>
-                        <Route exact path="/profile" component={Profile}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path={"/search_result"} component={SearchResultPage} />
-                       
-
-                        <Footer/>
-                    </ThemeProvider>
->>>>>>> 4d2fd33923d00e907e4ed10809a1dfd962e61db5
+                    
                 </HashRouter>
             </ThemeProvider>
 

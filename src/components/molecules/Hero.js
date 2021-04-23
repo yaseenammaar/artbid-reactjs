@@ -34,94 +34,6 @@ function Hero() {
 
     return (
         <ThemeProvider theme={theme}>
-<<<<<<< HEAD
-            <Row>
-                <Col size={1}/>
-                <Col size={10}>
-                    <Div
-                        h="30rem"
-                        align="center"
-                        justify="center"
-                        shadow="1"
-                        rounded="lg"
-                        bg="warning400"
-                        bgImg={heroImage}
-                        bgSize="cover"
-                        bgPos="center"
-                        hoverShadow="5"
-                        m={{t: "2rem"}}
-                        p={{t: "8rem"}}
-                        transition
-                    >
-                        <Text fontFamily="primary" textColor="white" textSize="display1" textAlign="center">
-                            Welcome to ArtBid
-                        </Text>
-                        <Text fontFamily="primary" textColor="white" textSize="display4" textAlign="center">
-                            Online Public Auction Platform
-                        </Text>
-                        
-                        <Div
-                            m={{t: "2.0rem", x: "auto"}}
-                            d={"flex"}
-                            justify={"center"}
-                            w={"500px"}
-
-                        >
-
-                            <SearchLoading
-                                showSuggestions={showSuggestions}
-                                searchButtonOnClick={() => {
-                                    history.push(`/search_result?searchText=${searchText}&method=search`)
-                                }}
-
-                                onClickSuggestion={(suggestion) => {
-                                    history.push(`/search_result?searchText=${suggestion}&method=suggestion`)
-                                }}
-
-                                onFocusSearch={() => {
-                                    search.result.length > 0?
-                                        setShowSuggestions(true)
-                                        :
-                                        setShowSuggestions(false)
-                                }}
-
-                                onBlurSearch={() => {
-                                    //setShowSuggestions(false)
-                                }}
-
-                                onChangeSearch={(e) => {
-                                    setSearchText(e.target.value)
-                                }}
-
-                                closeDropdown={() => (
-                                    setShowSuggestions(false)
-                                )}
-
-                                showDropdown={() => {
-                                    setShowSuggestions(true)
-                                }}
-
-                                loading={search.loading}
-                                suggestions={search.result}
-                                error={search.error}
-
-                            />
-
-                        </Div>
-                    </Div>
-
-                    <Div d="flex" style={styles.products__container}>
-
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                        <PersonCardWithImage/>
-                    </Div>
-
-
-                </Col>
-                <Col size={1}/>
-            </Row>
-=======
 
 
 
@@ -294,7 +206,6 @@ function Hero() {
             </section>
 
         {/* ###################################### Sketches End###########################*/}
->>>>>>> 4d2fd33923d00e907e4ed10809a1dfd962e61db5
 
 
         </ThemeProvider>
