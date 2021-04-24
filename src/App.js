@@ -25,6 +25,7 @@ import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
 import CreditCard from "./components/molecules/CreditCard";
 import SearchResultPage from "./pages/SearchResultPage";
+import Art from "./components/molecules/art";
 
 const theme = {
     ...DefaultTheme,
@@ -58,25 +59,28 @@ function Main(props) {
             :
             <ThemeProvider theme={theme}>
                 <HashRouter>
+                    <ThemeProvider theme={theme}>
+                        {
+                            props.auth.user == null || props.auth.user.isAnonymous ?
+                                <LoggedOutHeader/>
+                                :
+                                <LoggedInHeader/>
 
-                    {
-                        props.auth.user == null || props.auth.user.isAnonymous ?
-                            <LoggedOutHeader/>
-                            :
-                            <LoggedInHeader/>
+                        }
+                        {/* <CreditCard/> */}
+                        <Route exact path="/" component={Hero}/>
+                        <Route exact path="/stuff" component={Hero}/>
+                        <Route exact path="/contact" component={Hero}/>
+                        <Route exact path="/profile" component={Profile}/>
+                        <Route exact path="/login" component={Login}/>
+                        <Route exact path={"/search_result"} component={SearchResultPage} />
+                        <Route exact path={"/art"} component={Art} />
 
-                    }
-                    {/*<CreditCard/>*/}
-                    <Route exact path="/" component={Hero}/>
-                    <Route exact path="/stuff" component={Hero}/>
-                    <Route exact path="/contact" component={Hero}/>
-                    <Route exact path="/profile" component={Profile}/>
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path={"/search_result"} component={SearchResultPage}/>
+                        <CreditCard/>
+                       
 
-
-                    <Footer/>
-                    
+                        <Footer/>
+                    </ThemeProvider>
                 </HashRouter>
             </ThemeProvider>
 
