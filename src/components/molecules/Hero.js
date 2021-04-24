@@ -1,22 +1,10 @@
 import React, {useState} from "react";
-import {
-    ThemeProvider,
-    Div,
-    Row,
-    Col,
-    Anchor,
-    DefaultTheme,
-    Text
-} from "react-atomize";
-
-import SearchLoading from "../atoms/SearchLoading"
+import {DefaultTheme, ThemeProvider} from "react-atomize";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
-import styles from "../styles/style";
-import PersonCardWithImage from './PersonCardWithImage'
 import useSearchSuggestions from "../../hooks/useSearchSuggestions";
-import { useHistory } from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 
 import OneCard from './one-card';
@@ -34,7 +22,7 @@ function Hero() {
 
     return (
         <ThemeProvider theme={theme}>
-{/*<<<<<<< HEAD
+            {/*<<<<<<< HEAD
             <Row>
                 <Col size={1}/>
                 <Col size={10}>
@@ -123,180 +111,177 @@ function Hero() {
             </Row>
 =======*/}
 
+            {/* ############################# Hero Section ################################# */}
+            <section id="hero" className="container mt-5">
+                <div className="overlay">
+                </div>
 
-
-{/* ############################# Hero Section ################################# */}
-        <section id="hero" className="container mt-5">
-           <div className="overlay">
-            </div>
-
-            <div className="text-center content">
+                <div className="text-center content">
                     <h1> Welcome to ArtBid</h1>
                     <p>Online public auction platform</p>
 
                     <div className="search">
-                       <input placeholder="Search your interests" />
-                       <button>
-                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg></button>
+                        <input placeholder="Search your interests"/>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search"
+                                 viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-        </section>
-{/* ############################# Hero Section End ################################# */}
+            </section>
+            {/* ############################# Hero Section End ################################# */}
 
-{/* ############################# Trending ######################################### */}
+            {/* ############################# Trending ######################################### */}
 
-        <section id="trending" className="card-collection">
-        <div className="container">
+            <section id="trending" className="card-collection">
+                <div className="container">
 
 
-            <div className="d-flex justify-content-between align-items-center collection-title">
-                    <h2 className="m-0"> TRENDING </h2>  
+                    <div className="d-flex justify-content-between align-items-center collection-title">
+                        <h2 className="m-0"> TRENDING </h2>
+                        <a className="m-0" href="#">See All</a>
+                    </div>
+
+                    <div className="row mt-5">
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* ####################################### Trending Section End ############################ */}
+
+
+            {/* ####################################### Top Artists Section ############################ */}
+
+
+            <section id="top-artist" className="card-collection">
+
+                <div className="d-flex justify-content-between align-items-center collection-title container">
+                    <h2 className="m-0"> TOP ARTISTS </h2>
                     <a className="m-0" href="#">See All</a>
-            </div>
-
-            <div className="row mt-5">
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
                 </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard></OneCard>
-                </div>
-            </div>
 
-        </div>
-        </section>
+                <div className="top-artist container mt-4">
 
-        {/* ####################################### Trending Section End ############################ */}
+                    <div className="row">
 
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
-        {/* ####################################### Top Artists Section ############################ */}
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
-        <section id="top-artist" className="card-collection">
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
-        <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0" > TOP ARTISTS </h2>  
-                    <a className="m-0" href="#">See All</a>
-            </div>
+                        <div className="col-md-2 col-6">
+                            <OneArtist/>
+                        </div>
 
-            <div className="top-artist container mt-4">
-
-                <div className="row">
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist></OneArtist>
-                    </div>
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist></OneArtist>
-                    </div>
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist></OneArtist>
-                    </div>
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist></OneArtist>
-                    </div>
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist></OneArtist>
-                    </div>
-
-                    <div className="col-md-2 col-6">
-                        <OneArtist/>
                     </div>
 
                 </div>
+            </section>
 
-            </div>
-        </section>
-
-        {/* ####################################### Top Artists Section End ############################ */}
+            {/* ####################################### Top Artists Section End ############################ */}
 
 
-        {/* ###################################### Sketches ###########################*/}
+            {/* ###################################### Sketches ###########################*/}
 
             <section className="card-collection">
-            <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0" > SKETCHES </h2>  
+                <div className="d-flex justify-content-between align-items-center collection-title container">
+                    <h2 className="m-0"> SKETCHES </h2>
                     <a className="m-0" href="#">See All</a>
-            </div>
+                </div>
 
                 <div className="container">
-                <div className="row mt-5">
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-            </div>
+                    <div className="row mt-5">
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
                     </div>
+                </div>
 
             </section>
 
-        {/* ###################################### Sketches End###########################*/}
+            {/* ###################################### Sketches End###########################*/}
 
 
-         {/* ###################################### Sketches ###########################*/}
+            {/* ###################################### Sketches ###########################*/}
 
-         <section className="card-collection">
-            <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0" > PAINTINGS </h2>  
+            <section className="card-collection">
+                <div className="d-flex justify-content-between align-items-center collection-title container">
+                    <h2 className="m-0"> PAINTINGS </h2>
                     <a className="m-0" href="#">See All</a>
-            </div>
+                </div>
 
                 <div className="container">
-                <div className="row mt-5">
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-                <div className="col-md-3 col-6">
-                    <OneCard/>
-                </div>
-            </div>
+                    <div className="row mt-5">
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
+                        <div className="col-md-3 col-6">
+                            <OneCard/>
+                        </div>
                     </div>
+                </div>
 
             </section>
 
-        {/* ###################################### Sketches End###########################*/}
-{/*
->>>>>>> 4d2fd33923d00e907e4ed10809a1dfd962e61db5
-*/}
+            {/* ###################################### Sketches End###########################*/}
 
 
         </ThemeProvider>
