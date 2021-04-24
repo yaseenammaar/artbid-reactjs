@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
 import LoggedInHeader from "./components/molecules/LoggedInHeader";
 
@@ -76,6 +76,7 @@ function Main(props) {
 
 
                     <Footer/>
+
                 </HashRouter>
             </ThemeProvider>
 
