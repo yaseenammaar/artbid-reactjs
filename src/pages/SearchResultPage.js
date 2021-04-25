@@ -101,6 +101,12 @@ function SearchResultPage(props) {
                             title={result.docData.title}
                             description={result.docData.description}
                             category={result.docData.category}
+                            onItemClicked={() => {
+                                history.push({
+                                    pathname: '/art',
+                                    search: `?itemId=${result.id}`,
+                                })
+                            }}
                         />
                     ))
                 }

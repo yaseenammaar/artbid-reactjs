@@ -1,4 +1,4 @@
-import { Input, Button, Icon } from "react-atomize";
+import { Input, Button, Icon, Div } from "react-atomize";
 import styles from '../styles/searchBarStyles.module.css'
 import React, {useEffect, useState} from "react";
 import onClickOutside from "react-onclickoutside";
@@ -22,12 +22,12 @@ function SearchLoading(props){
                     {suggestions && (
                         <React.Fragment>
                             {suggestions.map((suggestion, i) => (
-                                <div
+                                <Div
                                     className={suggestions.length - 1 === i ? styles.suggestion + " " + styles.suggestion_with_bottom_radius : styles.suggestion}
                                     onClick={() => {
                                         onClickSuggestion(suggestion)
                                     }}
-                                >{suggestion}</div>
+                                >{suggestion}</Div>
 
                             ))}
                         </React.Fragment>

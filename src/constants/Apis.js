@@ -6,7 +6,7 @@ export const PROTECTED_APIS = {
     GET_FIRESTORE_RECORD: 'getFirestoreRecord',
     TOGGLE_FOLLOW_UNFOLLOW: 'toggleFollowUnfollow',
     SAVE_ITEM_FOR_USER: 'saveItemForUser',
-    GET_ITEMS: 'getItems',
+    GET_SPECIFIC_ITEM: 'getSpecificItem',
     GET_SEARCH_SUGGESTIONS: 'getSearchSuggestions',
 }
 
