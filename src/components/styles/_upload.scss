@@ -1,0 +1,34 @@
+.upload-image{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    width: 100px ; height: 100px;
+}
+
+.upload-input,.upload-select{
+    border: 1px solid #dedede;
+    margin: 10px 0;
+    height: 40px;
+    width: 100%;
+
+    border-radius: 6px;
+
+    &::placeholder{
+        color: #979797;
+    }
+
+    &:focus{
+        border: 1px solid $primary !important;
+        outline: none;
+    }
+
+    &[type="file"]{
+        background: $primary;
+    }
+}
+
+
+
+.upload-select option:first-child{
+    color: #979797 !important;
+}

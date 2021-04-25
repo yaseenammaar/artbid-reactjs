@@ -17,11 +17,6 @@ import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
 import "firebase/storage";
 
-
-import image from '../../assets/images/hero_splash.jpg';
-import '../styles/global.scss'
-
-
 const theme = {
 	...DefaultTheme,
 	  grid: {
@@ -152,30 +147,64 @@ const theme = {
 
                 <Div>
                     Step {step+1}
-                    <br />
-                    <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image} />
-                        <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div>
-                    <button type="text" className="upload-input" placeholder="Title" >Upload Image</button>
-                    <input type="text" className="upload-input"  placeholder="Title" />
-                    <select className="upload-select">
-                            <option default >State</option>
-                            <option>Something</option>
-                            <option >Something</option>
-                            <option>Something</option>
-                     </select>
-                     <select className="upload-select">
-                            <option default >Category</option>
-                            <option>Something</option>
-                            <option >Something</option>
-                            <option>Something</option>
-                     </select>
-                     <br />
+                    <Label 
+                        fontFamily="primary"
+                        textColor="gray800"
+                        >Title 
+                        <Input 
+                            value={title}
+                            onChange={e => {
+                                console.log(e.target.value)
+                                setTitle(e.target.value)
+                            }}
+                        />
+                    </Label>
+
+                    <input type="file" className="input-file" name="imgUpload" accept='.png' onChange={getBase64} />
+
+                    <Dropdown
+                        isOpen={showSDropdown}
+                        onChange={handleStateChange}
+                        onClick={() => {
+                            setShowSDropdown(!showSDropdown)
+                        }}
+                        value={selectedState}
+                        menu={stateList}
+                        bg={"white"}
+                    >
+                        State
+                    </Dropdown>
+
+                    <Dropdown
+                        isOpen={showCDropdown}
+                        
+                        onChange={()=>{
+                            
+                        }}
+                        onClick={() =>
+                            
+                            setShowCDropdown(!showCDropdown)
+                        }
+                        menu={categoryList}
+                    >
+                        Category
+                    </Dropdown>
+
+                    <Label
+                        fontFamily="primary"
+                        textColor="gray800">
+                        Short Description
+                        <Textarea 
+                        value={caption}
+                        onChange={e => {
+                            console.log(e.target.value)
+                            setCaption(e.target.value)
+                            
+                            
+                        }}/>
+                    </Label> 
                     <Button
-                     className="btn btn-primary"
+                     
                     onClick={()=>setSteps(1)}
                 >
                     Next
@@ -185,7 +214,7 @@ const theme = {
               : null              
               }
               {
-              step === 1?<Div className="mb-3">
+              step === 1?<Div>
                 Step {step + 1}
                 <Label
                         fontFamily="primary"
@@ -197,10 +226,9 @@ const theme = {
                         {closingDays}
                     </Div>
 
-         
-                    <hr className="my-4" />
 
-                    <Div d="flex" className="mb-3">
+
+                    <Div d="flex">
                         <Label
                         align="center"
                         textWeight="600"
@@ -239,8 +267,6 @@ const theme = {
                     </Label>
                     </Div>
 
-                    <hr className="my-4" />
-
                     <Div d="flex" >
                     
                     <Button
@@ -249,11 +275,12 @@ const theme = {
                         
                         Back
                     </Button>
-                    &emsp;
-                    <Button
-                    className="btn btn-primary"
-                    onClick={()=>setSteps(2)}
-                    >
+            
+            <Button
+         
+            onClick={()=>setSteps(2)}
+        >
+            
             Next
         </Button>
         </Div>
@@ -293,8 +320,12 @@ const theme = {
 {
               step === 3?<Div>
                 Step {step+1}
-                <input type="number" className="upload-input"  placeholder="Price" />
-
+               <Label 
+                        fontFamily="primary"
+                        textColor="gray800"
+                        >Price 
+                        <Input />
+                    </Label>
                     <Div d="flex">
                 <Button
                     onClick={()=>setSteps(2)}
@@ -303,9 +334,8 @@ const theme = {
                     
                     Back
                 </Button>
-            &emsp;
+            
             <Button
-            className="btn btn-primary"
             onClick={()=>setSteps(4)}
         >
             
@@ -332,9 +362,8 @@ const theme = {
                         
                         Back
                     </Button>
-                &emsp;
+                
                 <Button
-                className="btn btn-primary"
                 onClick={()=>{
                     // runUploadImageItemsApi({})
 
