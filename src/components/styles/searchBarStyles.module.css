@@ -64,6 +64,8 @@
     width: 100%;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    color: #282c34;
+    text-align: start;
 
 }
 
