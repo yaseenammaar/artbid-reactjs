@@ -25,7 +25,7 @@ import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
 import CreditCard from "./components/molecules/CreditCard";
 import SearchResultPage from "./pages/SearchResultPage";
-import Art from "./components/molecules/art";
+import Art from "./pages/Art";
 
 const theme = {
     ...DefaultTheme,

@@ -11,7 +11,8 @@ function SearchResultItem(props) {
     } = props
 
     return (
-        <div className={styles.item_card}>
+        <div className={styles.item_card}
+             onClick={props?.onItemClicked}>
             <div className={styles.item_flex_container}>
                 <div className={styles.flex_child}>
                     <img src={imageUrl} alt={"product image"} className={styles.feature_image}/>

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {DefaultTheme, ThemeProvider} from "react-atomize";
+import {DefaultTheme, ThemeProvider, Div} from "react-atomize";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../redux/actions/authActions";
@@ -13,6 +13,7 @@ import OneArtist from './one-artist';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.scss';
+import SearchLoading from "../atoms/SearchLoading";
 
 
 function Hero() {
@@ -120,7 +121,7 @@ function Hero() {
                     <h1> Welcome to ArtBid</h1>
                     <p>Online public auction platform</p>
 
-                    <div className="search">
+                    {/*<div className="search">
                         <input placeholder="Search your interests"/>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search"
@@ -129,7 +130,55 @@ function Hero() {
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
                         </button>
-                    </div>
+                    </div>*/}
+                    <Div
+                        m={{t: "2.0rem", x: "auto"}}
+                        d={"flex"}
+                        justify={"center"}
+                        w={"500px"}
+
+                    >
+
+                        <SearchLoading
+                            showSuggestions={showSuggestions}
+                            searchButtonOnClick={() => {
+                                history.push(`/search_result?searchText=${searchText}&method=search`)
+                            }}
+
+                            onClickSuggestion={(suggestion) => {
+                                history.push(`/search_result?searchText=${suggestion}&method=suggestion`)
+                            }}
+
+                            onFocusSearch={() => {
+                                search.result.length > 0?
+                                    setShowSuggestions(true)
+                                    :
+                                    setShowSuggestions(false)
+                            }}
+
+                            onBlurSearch={() => {
+                                //setShowSuggestions(false)
+                            }}
+
+                            onChangeSearch={(e) => {
+                                setSearchText(e.target.value)
+                            }}
+
+                            closeDropdown={() => (
+                                setShowSuggestions(false)
+                            )}
+
+                            showDropdown={() => {
+                                setShowSuggestions(true)
+                            }}
+
+                            loading={search.loading}
+                            suggestions={search.result}
+                            error={search.error}
+
+                        />
+
+                    </Div>
                 </div>
             </section>
             {/* ############################# Hero Section End ################################# */}
