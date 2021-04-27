@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import image from '../../assets/images/hero_splash.jpg';
 import '../styles/global.scss'
 
-function OneCard() {
+function OneCard(props) {
     const [state, setState] = useState('');
 
     useEffect(() => {
@@ -15,13 +15,13 @@ function OneCard() {
         <>
             <div className="one-card card">
                 <div className="img-container">
-                  <a href="#">  <img src={image} /> </a>
+                  <a href="#">  <img src={props.url} /> </a>
                 </div>
 
                 <div className="content-container p-md-3 p-2">
-                    <span className="category"> Art & Design </span>
-                    <h4 className="item-name"> Item Name </h4>
-                    <p className="artist-name m-0"> by <b> Artist </b> </p>
+                    <span className="category"> {props.category} </span>
+                    <h4 className="item-name"> {props.name} </h4>
+                    <p className="artist-name m-0"> by <b> {props.artist} </b> </p>
                 </div>
 
                 <div className="h-line"> </div>
@@ -36,7 +36,7 @@ function OneCard() {
                         &nbsp;<p className="m-0"> 1hr left </p>
                     </div>
 
-                    <h2 className="bid-price m-0 d-flex align-items-center">₹ 199</h2>
+                    <h2 className="bid-price m-0 d-flex align-items-center">₹ {props.bp}</h2>
                 </div>                
         
             </div>
