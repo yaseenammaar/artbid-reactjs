@@ -153,14 +153,8 @@ const theme = {
                 <Div>
                     Step {step+1}
                     <br />
-                    <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image} />
-                        <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div>
-                    <button type="text" className="upload-input" placeholder="Title" >Upload Image</button>
                     <input type="text" className="upload-input"  placeholder="Title" />
+                    
                     <select className="upload-select">
                             <option default >State</option>
                             <option>Something</option>
@@ -263,12 +257,14 @@ const theme = {
 {
               step === 2?<Div>
                 Step {step+1}
-                <Label
-                        fontFamily="primary"
-                        textColor="gray800">
-                            Photos
-                    </Label>
-                    <DropZone/>
+                <div className="d-flex">
+                        <img className="mx-auto upload-image" src={image} />
+                        <img className="mx-auto upload-image" src={image}  />
+                        <img className="mx-auto upload-image" src={image}  />
+                        <img className="mx-auto upload-image" src={image}  />
+                    </div>
+                    <button type="text" className="upload-input" placeholder="Title" >Upload Image</button>
+                    
 
                     <Div d="flex">
                
