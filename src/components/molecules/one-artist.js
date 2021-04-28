@@ -3,7 +3,7 @@ import image from '../../assets/images/hero_splash.jpg';
 import '../styles/global.scss';
 
 
-function OneArtist() {
+function OneArtist(props) {
     const [state, setState] = useState('');
 
     useEffect(() => {
@@ -15,8 +15,8 @@ function OneArtist() {
     return (
         <>
             <div className="one-artist text-center">
-                <img src={image} className="artist-image rounded-circle shadow-lg mb-2" />
-                <h4 className="mt-2"> Artist Name </h4>
+                <img src={props.url} className="artist-image rounded-circle shadow-lg mb-2" />
+                <h4 className="mt-2"> {props.name} </h4>
             </div>
         </>
     )

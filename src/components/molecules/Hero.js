@@ -243,27 +243,27 @@ function Hero() {
                     <div className="row">
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Picasso" url="https://doitbeforeme.com/wp-content/uploads/2019/09/penguin-listening-to-music-black-white-pencil-sketch-learn-to-draw-with-a-pencil-3-e1570707372114.jpg"/>
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Taylor Swift" url="https://media1.popsugar-assets.com/files/thumbor/hnVKqXE-xPM5bi3w8RQLqFCDw_E/475x60:1974x1559/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/09/09/023/n/1922398/9f849ffa5d76e13d154137.01128738_/i/Taylor-Swift.jpg"/>
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Peter Thiel" url="https://cdn.i-scmp.com/sites/default/files/d8/images/canvas/2021/04/08/6036da87-c29b-484a-bea4-b6382140e09f_59cb4e5e.jpg"/>
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Baymax" url="https://fastly.syfy.com/sites/syfy/files/wire/legacy/bh6-baymax-huggable-award-final-copy1.jpg"/>
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Yusra Mardini" url="https://i.pinimg.com/originals/0a/c6/77/0ac6779019d33e019de09c6f7f5afd53.jpg"/>
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist/>
+                            <OneArtist name="Usain Bolt" url="https://stillmedab.olympic.org/media/Images/OlympicOrg/Athletes/B/Bolt_Usain/Bolt_Usain_mugshot-01.jpg"/>
                         </div>
 
                     </div>
@@ -284,18 +284,19 @@ function Hero() {
 
                 <div className="container">
                     <div className="row mt-5">
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
+                    <div className="col-md-3 col-6">
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://images.barrons.com/im-317412?width=620&size=1.5005861664712778" name="USA cents rare coin" category="Coins" artist="Omar" bp="100"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/goldmedal_660_083118065009.jpg"  name="Gold Medal" category="Medal & Trophy" artist="Usain Bolt" bp="34,800"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFWsmx_wbVSd_akyRiShZWnoem2Ywlc7-9VA&usqp=CAU" name="Very Moment Robbery Footage" category="News" artist="Nightcrawler" bp="5,000"/>
+                            </div>
+                            
                     </div>
                 </div>
 
@@ -315,17 +316,17 @@ function Hero() {
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
-                        <div className="col-md-3 col-6">
-                            <OneCard/>
-                        </div>
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://images.barrons.com/im-317412?width=620&size=1.5005861664712778" name="USA cents rare coin" category="Coins" artist="Omar" bp="100"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://akm-img-a-in.tosshub.com/sites/btmt/images/stories/goldmedal_660_083118065009.jpg"  name="Gold Medal" category="Medal & Trophy" artist="Usain Bolt" bp="34,800"/>
+                            </div>
+                            <div className="col-md-3 col-6">
+                                <OneCard url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFWsmx_wbVSd_akyRiShZWnoem2Ywlc7-9VA&usqp=CAU" name="Very Moment Robbery Footage" category="News" artist="Nightcrawler" bp="5,000"/>
+                            </div>
                     </div>
                 </div>
 
