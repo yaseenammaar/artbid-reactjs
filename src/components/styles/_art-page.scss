@@ -1,118 +1,140 @@
 #art-page{
-    height: 90vh;
-    width: 100%;
+    padding: 50px 0;
+    .art-row{
+        display: flex;
 
-    padding-top: 50px;
-    position: relative;
+        // ############# Image Cont ##################
+        .image-cont{
+            .art-image{
+                width: 500px;
+                height: 500px;
+                border-radius: 20px;
+                box-shadow: $shadow;
+                border: 5px solid white;
+            }
 
-   
+            .bid-data{
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
 
-    .image-button{
-        img{
-            height: 90%;
-            border-radius: 20px;
-            object-fit: cover;
+                .priceandbidders{
+                    p{
+                        margin: 0 !important;
+                        color: #747474;
+                    }
+                }
 
+                .highest-bid{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    
+                    img{
+                        border-radius: 50%;
+                        width: 50px; height: 50px;
+                    }
+                    p,h3{
+                        margin: 0 !important;
+                        color: #747474;
+                    }
+                    h3{
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+        // ############# Image Cont End ##################
+
+        // ############# Bid Data Cont ##################
+        .bid-data-cont{
+            padding: 10px 30px;
+
+            .bid-history{
+                height: 340px;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                &::-webkit-scrollbar {
+                    visibility: hidden;
+                }
             
-    box-shadow: 0px 8px 40px 20px rgba(112, 144, 176, 0.2);
-    -webkit-box-shadow: 0px 8px 40px 20px rgba(112, 144, 176, 0.2);
 
-        }
+                .one-bid{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    // justify-content: center;
+                    padding: 5px;
+                    border: 1px solid #dedede;
+                    border-radius: 6px;
 
-        h2{
-            color: $accent;
-        }
-        p{
-            font-size: 10px;
-            color: #acacac;
-        }
-    }
+                    .bidder-dp{
+                        border-radius: 50%;
+                        height: 40px; width: 40px;
+                    }
 
-    .data{
-        margin: auto 0px;
-        p{
-            color: #9B9898;
-        }
-    }
-}
+                    .nameandbid{
+                        
+                        h6{
+                            font-weight: bold;
+                            margin: 0;
+                            color: rgb(6, 221, 6);
+                        }
 
-@media (max-width: 541px) {
-    #art-page{
-        .data{
-            margin-top:60px !important;
-        }}
-}
+                        .bid{
+                            color: rgb(6, 221, 6);
+                        }
 
+                        .message{
+                            color: $secondary;
+                        }
 
-@media(max-width: 426px){
-    #art-page{
-        height: auto !important;
+                        p{
+                            color: $primary;
+                            font-weight: 600;
+                            margin: 0;
 
-        .data{
-            margin-top:50px !important;
-        }
-
-        img{
-            height: 420px !important;
-         
-        }
-
-        .current-value{
-            font-size: 9px !important;
-        }
-
-    }
-}
-
-@media(max-width: 376px){
-    #art-page{
-        height: auto !important;
-
-        .data{
-            margin-top:50px !important;
-        }
-
-        img{
-            height: 380px !important;
-         
-        }
-        p{
-            font-size: 14px !important;
-        }
-        .current-value{
-            font-size: 8px !important;
-        }
-    }
-}
+                            span{
+                                font-size: 12px;
+                                font-weight: lighter;
+                                color: #747474 !important;
+                            }
+                        }
+                    }
+                }
+            }
 
 
+            .messageandbid{
+                display: flex;
+                width: 100%;
+                margin-top: 20px;
+                input{
+                    height: 70px;
+                    border: 1px solid $primary;
+                    flex: 2;
+                }
+                .buttons{
+                    button{
+                        display: block;
+                        width: 100px;
+                        height: 30px;
+                        background: none;
+                        border: none;
+                        border-radius: 8px;
+                        color: white;
+                        margin: 5px;
+                    }
+                    .bid{
+                        background: $secondary;
+                    }
+                    .message{
+                        background: $primary;
+                    }
+                }
 
-@media(max-width: 321px){
-    #art-page{
-        height: auto !important;
+            }
 
-        .data{
-            margin-top:30px !important;
-        }
-
-        img{
-            height: 300px !important;
-         
-        }
-        p{
-            font-size: 14px !important;
-        }
-        .current-value{
-            font-size: 8px !important;
-        }
-    }
-}
-
-
-@media (max-width: 281px) {
-    #art-page{
-        img{
-            height: 200px !important;
         }
     }
 }

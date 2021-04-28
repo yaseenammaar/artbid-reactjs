@@ -136,7 +136,7 @@ function Hero() {
                         d={"flex"}
                         justify={"center"}
                         w={"500px"}
-
+                        className="search"
                     >
 
                         <SearchLoading
@@ -194,9 +194,9 @@ function Hero() {
                         <a className="m-0" href="#">See All</a>
                     </div>
 
-                    <div className="row mt-5">
+                    <div className="row mt-5 masonry-grid" data-masonry='{"percentPosition": true }'>
                         <div className="col-md-3 col-6">
-                            <OneCard url="https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg" name="Dell Laptop" category="Gadgets" artist="Dormamu" bp="4,800"/>
+                            <OneCard url="https://images-na.ssl-images-amazon.com/images/I/71h6PpGaz9L._AC_SL1500_.jpg" name="Dell Laptop with 69gb ram and 69 gb nvidea graphics" category="Gadgets" artist="Dormamu" bp="4,800"/>
                         </div>
                         <div className="col-md-3 col-6">
                             <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>

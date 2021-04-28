@@ -18,15 +18,15 @@ function OneCard(props) {
                   <a href="#">  <img src={props.url} /> </a>
                 </div>
 
-                <div className="content-container p-md-3 p-2">
+                <div className="content-container ">
                     <span className="category"> {props.category} </span>
-                    <h4 className="item-name"> {props.name} </h4>
-                    <p className="artist-name m-0"> by <b> {props.artist} </b> </p>
+                    <h5 className="item-name" maxlength="5"> {props.name} </h5>
+                    <p className="artist-name m-0" > by <b> {props.artist} </b> </p>
                 </div>
 
-                <div className="h-line"> </div>
+                {/* <div className="h-line"> </div> */}
 
-                <div className="d-flex justify-content-between px-md-3 px-2 py-1">
+                <div className="d-flex justify-content-between  py-1">
 
                     <div className="time-left d-flex align-items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
