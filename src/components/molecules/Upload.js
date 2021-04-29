@@ -17,6 +17,8 @@ import {setUser} from "../../redux/actions/authActions";
 import { DropZone } from "../atoms/DropZone";
 import "firebase/storage";
 
+import ImageUploader from "react-images-upload";
+
 
 import image from '../../assets/images/hero_splash.jpg';
 import '../styles/global.scss'
@@ -39,28 +41,7 @@ const theme = {
     // console.log("categories",categories)
     console.log("state",states.states)
 
-    
 
-
-    const stateList = (
-        <Div>
-        {states.states.map((name, index) => (
-            <Anchor d="block" p={{ y: "0.25rem" }}>
-            {name.name}
-            </Anchor>
-        ))}
-        </Div>
-    );
-
-    const categoryList = (
-        <Div>
-        {categories.categories.map((name, index) => (
-            <Anchor d="block" p={{ y: "0.25rem" }}>
-            {name.category}
-            </Anchor>
-        ))}
-        </Div>
-    );
     // runUploadItemsApi()
 
     function getBase64(e) {
@@ -80,7 +61,7 @@ const theme = {
       }
     
 	
-	function Upload() {
+	function Upload(props) {
 
         // runUploadImageItemsApi({})
 	    
@@ -108,6 +89,28 @@ const theme = {
             setSelectedState(e.value);
           }
 
+          const stateList = (
+            <select className="upload-select">
+                <option>Select State</option>
+            {states.states.map((name, index) => (
+                <option className="upload-select">
+                    {name.name}
+                </option>
+            ))}
+            </select>
+        );
+
+        const categoryList = (
+            <select className="upload-select">
+            <option>Select Category</option>
+            {categories.categories.map((name, index) => (
+                <option className="upload-select">
+                {name.category}
+                </option>
+            ))}
+            </select>
+        );
+
 
         const closingDays = []
         const today = new Date();
@@ -134,6 +137,14 @@ const theme = {
             )
           }
 
+          const [pictures, setPictures] = useState([]);
+
+          const onDrop = picture => {
+            setPictures([...pictures, picture]);
+            console.log("Pics", pictures)
+            console.log("Pics", pictures[0])
+          };
+
 
 	  return (
 		<ThemeProvider theme={theme}>
@@ -154,19 +165,11 @@ const theme = {
                     Step {step+1}
                     <br />
                     <input type="text" className="upload-input"  placeholder="Title" />
+                    <textarea size="20" type="text" className="upload-input"  placeholder="Description" />
                     
-                    <select className="upload-select">
-                            <option default >State</option>
-                            <option>Something</option>
-                            <option >Something</option>
-                            <option>Something</option>
-                     </select>
-                     <select className="upload-select">
-                            <option default >Category</option>
-                            <option>Something</option>
-                            <option >Something</option>
-                            <option>Something</option>
-                     </select>
+                    {stateList}
+
+                    {categoryList}
                      <br />
                     <Button
                      className="btn btn-primary"
@@ -257,8 +260,18 @@ const theme = {
 {
               step === 2?<Div>
                 Step {step+1}
+                <ImageUploader
+                    {...props}
+                    withIcon={true}
+                    onChange={onDrop}
+                    imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
+                    maxFileSize={5242880}
+                    />
+                    
+
+
                 <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image} />
+                        <img className="mx-auto upload-image" />
                         <img className="mx-auto upload-image" src={image}  />
                         <img className="mx-auto upload-image" src={image}  />
                         <img className="mx-auto upload-image" src={image}  />
