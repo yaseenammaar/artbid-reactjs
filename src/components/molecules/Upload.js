@@ -264,19 +264,19 @@ const theme = {
                     {...props}
                     withIcon={true}
                     onChange={onDrop}
+                    buttonText='Choose Featured image'
+                    singleImage="true"
+                    withPreview='true'
                     imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                     maxFileSize={5242880}
                     />
                     
 
 
-                <div className="d-flex">
-                        <img className="mx-auto upload-image" />
+                {/* <div className="d-flex">
                         <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div>
-                    <button type="text" className="upload-input" placeholder="Title" >Upload Image</button>
+                    </div> */}
+                    {/* <button type="text" className="upload-input" placeholder="Title" >Upload Image</button> */}
                     
 
                     <Div d="flex">
@@ -302,7 +302,25 @@ const theme = {
 {
               step === 3?<Div>
                 Step {step+1}
-                <input type="number" className="upload-input"  placeholder="Price" />
+
+                <ImageUploader
+                    {...props}
+                    withIcon={true}
+                    onChange={onDrop}
+                    buttonText='Choose more images (Max 4)'
+                    withPreview='true'
+                    
+                    imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
+                    maxFileSize={5242880}
+                    />
+                    
+{/* 
+
+                <div className="d-flex">
+                        <img className="mx-auto upload-image" src={image}  />
+                    </div> */}
+
+               
 
                     <Div d="flex">
                 <Button
@@ -327,6 +345,10 @@ const theme = {
 {
               step === 4?<Div>
                 Step {step+1}
+
+                <input type="number" className="upload-input"  placeholder="Price" />
+
+
                 <Label align="center" textWeight="600" m={{ b: "0.5rem" }}>
                 <Checkbox
                 />
@@ -335,7 +357,7 @@ const theme = {
 
             <Div d="flex">
                     <Button
-                        onClick={()=>setSteps(2)}
+                        onClick={()=>setSteps(3)}
                         
                     >
                         

@@ -278,7 +278,7 @@ function Hero() {
 
             <section className="card-collection">
                 <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0"> Exclusive </h2>
+                    <h2 className="m-0"> EXCLUSIVE </h2>
                     <a className="m-0" href="#">See All</a>
                 </div>
 
