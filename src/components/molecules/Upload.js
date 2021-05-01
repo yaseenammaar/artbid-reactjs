@@ -42,6 +42,53 @@ const theme = {
     console.log("state",states.states)
 
 
+    function GetDates(startDate, daysToAdd) {
+        var aryDates = [];
+    
+        for (var i = 0; i <= daysToAdd; i++) {
+            var currentDate = new Date();
+            currentDate.setDate(startDate.getDate() + i);
+            aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
+        }
+    
+        return aryDates;
+    }
+    
+    function MonthAsString(monthIndex) {
+        var d = new Date();
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+    
+        return month[monthIndex];
+    }
+    
+    function DayAsString(dayIndex) {
+        var weekdays = new Array(7);
+        weekdays[0] = "Sunday";
+        weekdays[1] = "Monday";
+        weekdays[2] = "Tuesday";
+        weekdays[3] = "Wednesday";
+        weekdays[4] = "Thursday";
+        weekdays[5] = "Friday";
+        weekdays[6] = "Saturday";
+    
+        return weekdays[dayIndex];
+    }
+    
+    
+
+
     // runUploadItemsApi()
 
     function getBase64(e) {
@@ -77,7 +124,7 @@ const theme = {
         const [category, setCategory] = useState('Select Category')
         const [closingDate, setClosingDate] = useState('')
         const [closingTime, setClosingTime] = useState(12)
-        const [state, setState] = useState('Select State')
+        const [state, setState] = useState('State')
         const [status, setStatus] = useState(0)
         const [showSDropdown, setShowSDropdown] = useState(false);
         const [showCDropdown, setShowCDropdown] = useState(false);
@@ -132,27 +179,91 @@ const theme = {
         const today = new Date();
         const date = new Date();
         date.setDate(date.getDate() + 1);
-        // setClosingDate(date)
+
+        const startDate = new Date();
+        const aryDates = GetDates(startDate, 7);
+        console.log(aryDates)
+
+        aryDates.map((d,i) =>(
+            closingDays.push(
+                <Label
+                    align="center"
+                    textWeight="600"
+                    m={{ b: "0.5rem", r: "2rem" }}
+                >
+                    <Radiobox
+                    onChange={() => {
+                        setClosingDate(d)
+                        console.log(d)
+                    }
+                }
+                    name="date"
+                    />
+                    {d.split(', ')[1]}
+                </Label>
+            )
+        ))
+        
 
 
-        for(let i = 0; i < 8; i++){
+        // for(let i = 0; i < 8; i++){
 
 
-            closingDays.push( <Label
+        //     closingDays.push( <Label
+        //         align="center"
+        //         textWeight="600"
+        //         m={{ b: "0.5rem", r: "2rem" }}
+        //     >
+        //         <Radiobox
+        //         onChange={() => setClosingDate(date.getDate()+i)}
+        //         checked={ closingDate+i}
+        //         name="date"
+        //         />
+        //         {date.getDate()+i}
+        //     </Label>
+        //     )
+        //   }
+                const closetime = (
+                <Div d="flex" className="mb-3">
+                <Label
                 align="center"
                 textWeight="600"
                 m={{ b: "0.5rem", r: "2rem" }}
             >
                 <Radiobox
-                onChange={() => setClosingDate(date.getDate()+i)}
-                checked={ closingDate+i}
-                name="date"
+                onChange={() => setClosingTime(12)}
+                checked={ closingTime === 12 }
+                name="count"
                 />
-                {date.getDate()+i}
+                12AM
             </Label>
-            )
-          }
-
+            <Label
+                align="center"
+                textWeight="600"
+                m={{ b: "0.5rem", r: "2rem" }}
+            >
+                <Radiobox
+                onChange={() => setClosingTime(15)}
+                checked={ closingTime === 15 }
+                name="count"
+                />
+                3PM
+            </Label>
+            <Label
+                align="center"
+                textWeight="600"
+                m={{ b: "0.5rem", r: "2rem" }}
+            >
+                <Radiobox
+                onChange={() => setClosingTime(18)}
+                checked={ closingTime === 18 }
+                name="count"
+                />
+                6PM
+            </Label>
+            </Div>
+            );
+            
           const [pictures, setPictures] = useState([]);
 
           const onDrop = picture => {
@@ -253,7 +364,7 @@ const theme = {
 
                     {categoryList}
                     
-                    {stateList}
+                    {/* {stateList} */}
 
                      <br />
                     <Button
@@ -284,48 +395,6 @@ const theme = {
                         {closingDays}
                     </Div>
 
-         
-                    <hr className="my-4" />
-
-                    <Div d="flex" className="mb-3">
-                        <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(12)}
-                        checked={ closingTime === 12 }
-                        name="count"
-                        />
-                        12AM
-                    </Label>
-                    <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(15)}
-                        checked={ closingTime === 15 }
-                        name="count"
-                        />
-                        3PM
-                    </Label>
-                    <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(18)}
-                        checked={ closingTime === 18 }
-                        name="count"
-                        />
-                        6PM
-                    </Label>
-                    </Div>
-
                     <hr className="my-4" />
 
                     <Div d="flex" >
@@ -339,7 +408,15 @@ const theme = {
                     &emsp;
                     <Button
                     className="btn btn-primary"
-                    onClick={()=>setSteps(2)}
+                    onClick={()=>{
+                        if(closingDate!==""){
+                            setSteps(2)
+                        }else{
+                            setError("Select a Closing Date")
+                            setErrorDark(true)
+                        }
+                        
+                    }}
                     >
             Next
         </Button>
