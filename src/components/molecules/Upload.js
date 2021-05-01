@@ -227,7 +227,7 @@ const theme = {
                     <input 
                         type="text" 
                         className="upload-input"  
-                        placeholder="Title (Max 50 Chars)" 
+                        placeholder="Title (10-50 Chars)" 
                         value={title} 
                         onChange={(e) => {
                             if(e.target.value.length<50)
@@ -241,7 +241,7 @@ const theme = {
                         size="20" 
                         type="text" 
                         className="upload-input"  
-                        placeholder="Description (Max 400 Chars)" 
+                        placeholder="Description (50-400 Chars)" 
                         value={caption} 
                         onChange={(e) => {
                             if(e.target.value.length<400)
