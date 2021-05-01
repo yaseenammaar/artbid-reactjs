@@ -9,7 +9,7 @@ import {
     Label,
     Textarea,
     Checkbox,
-    Dropdown, Anchor, Radiobox
+    Dropdown, Anchor, Radiobox, Notification
 } from "react-atomize";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
@@ -74,14 +74,16 @@ const theme = {
         const [featuredImageUrl, setFeaturedImageUrl] = useState(null);
         const [availableState, setAvailableState] = useState('All');
         const [byUser, setByUser] = useState('')
-        const [category, setCategory] = useState('')
+        const [category, setCategory] = useState('Select Category')
         const [closingDate, setClosingDate] = useState('')
         const [closingTime, setClosingTime] = useState(12)
-        const [state, setState] = useState('')
+        const [state, setState] = useState('Select State')
         const [status, setStatus] = useState(0)
         const [showSDropdown, setShowSDropdown] = useState(false);
         const [showCDropdown, setShowCDropdown] = useState(false);
         const [selectedState, setSelectedState] = useState("");
+        const [errorDark, setErrorDark] = useState(false);
+        const [error,setError] = useState("");
 
         const handleStateChange = e => {
             console.log(e.value)
@@ -90,18 +92,32 @@ const theme = {
           }
 
           const stateList = (
-            <select className="upload-select">
+            <select 
+                className="upload-select"
+                value={state} 
+                onChange={(e) => {
+                    setState(e.target.value)
+                    console.log("State", e.target.value)
+                    }
+                }>
                 <option>Select State</option>
-            {states.states.map((name, index) => (
-                <option className="upload-select">
-                    {name.name}
-                </option>
+                {states.states.map((name, index) => (
+                    <option className="upload-select">
+                        {name.name}
+                    </option>
             ))}
             </select>
         );
 
         const categoryList = (
-            <select className="upload-select">
+            <select 
+                className="upload-select"
+                value={category} 
+                onChange={(e) => {
+                    setCategory(e.target.value)
+                    console.log("Category", e.target.value)
+                    }
+                }>
             <option>Select Category</option>
             {categories.categories.map((name, index) => (
                 <option className="upload-select">
@@ -145,6 +161,32 @@ const theme = {
             console.log("Pics", pictures[0])
           };
 
+          function step1Validation(){
+              if(title.length>10){
+                  if(caption.length>30){
+                      if(state!=="Select State"){
+                          if(category!=="Select Category"){
+                            return true;
+                          }else{
+                              
+                                setError("Select Category")
+                                setErrorDark(true)
+                          }
+                      }else{
+                        setError("Select State")
+                        setErrorDark(true)
+                      }
+                  }else{
+                        setError("Description Must Contain More Than 30 Characters")
+                        setErrorDark(true)
+                  }
+              }else{
+                    setError("Title Must Contain More Than 10 Characters")
+                    setErrorDark(true)
+              }
+              return false;
+          }
+
 
 	  return (
 		<ThemeProvider theme={theme}>
@@ -156,7 +198,25 @@ const theme = {
                     size="16px"
                     cursor="pointer"
                 />
-            
+
+                    <Notification
+                            bg="danger100"
+                            textColor="danger800"
+                            isOpen={errorDark}
+                            onClose={() => setErrorDark(false)}
+                            prefix={
+                            <Icon
+                                name="CloseSolid"
+                                color="danger800"
+                                size="18px"
+                                m={{ r: "0.5rem" }}
+                            />
+                            }
+                        >
+                            {error}
+                        </Notification>
+
+
             {
             step === 0?
             (
@@ -164,16 +224,46 @@ const theme = {
                 <Div>
                     Step {step+1}
                     <br />
-                    <input type="text" className="upload-input"  placeholder="Title" />
-                    <textarea size="20" type="text" className="upload-input"  placeholder="Description" />
+                    <input 
+                        type="text" 
+                        className="upload-input"  
+                        placeholder="Title (Max 50 Chars)" 
+                        value={title} 
+                        onChange={(e) => {
+                            if(e.target.value.length<50)
+                            {
+                                setTitle(e.target.value)
+                                console.log(e.target.value)
+                            }
+                            }}/>
+
+                    <textarea 
+                        size="20" 
+                        type="text" 
+                        className="upload-input"  
+                        placeholder="Description (Max 400 Chars)" 
+                        value={caption} 
+                        onChange={(e) => {
+                            if(e.target.value.length<400)
+                            {
+                                setCaption(e.target.value)
+                                console.log(e.target.value)
+                            }
+                            }}/>
+
+                    {categoryList}
                     
                     {stateList}
 
-                    {categoryList}
                      <br />
                     <Button
                      className="btn btn-primary"
-                    onClick={()=>setSteps(1)}
+                    onClick={()=>
+                        {
+                            if(step1Validation()){
+                                setSteps(1)
+                            }
+                        }}
                 >
                     Next
                 </Button>
@@ -273,11 +363,7 @@ const theme = {
                     
 
 
-                {/* <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div> */}
-                    {/* <button type="text" className="upload-input" placeholder="Title" >Upload Image</button> */}
-                    
+              
 
                     <Div d="flex">
                
@@ -313,12 +399,7 @@ const theme = {
                     imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                     maxFileSize={5242880}
                     />
-                    
-{/* 
 
-                <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div> */}
 
                
 
