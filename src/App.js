@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import LoggedOutHeader from "./components/molecules/LoggedOutHeader";
-import LoggedInHeader from "./components/molecules/LoggedInHeader";
+import LoggedOutHeader from "./components/molecules/navbar/LoggedOutHeader";
+import LoggedInHeader from "./components/molecules/navbar/LoggedInHeader";
 
-import Footer from "./components/molecules/Footer";
-import Login from "./components/molecules/Login";
+import Footer from "./components/molecules/footer/Footer";
+import Login from "./components/pageComponents/login/Login";
 
-import Hero from "./components/molecules/Hero";
-import Profile from "./components/molecules/Profile";
+import Hero from "./components/pageComponents/home/Hero";
+import Profile from "./pages/Profile";
 import {connect, Provider as ReduxProvider} from "react-redux"
 import firebaseInstance from "./Firebase/index"
 
@@ -23,7 +23,7 @@ import {
 } from "react-router-dom";
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
-import CreditCard from "./components/molecules/CreditCard";
+import CreditCard from "./components/molecules/creditCard/CreditCard";
 import SearchResultPage from "./pages/SearchResultPage";
 import Art from "./pages/Art";
 

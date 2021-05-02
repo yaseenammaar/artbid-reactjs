@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import  '../components/styles/global.scss';
+import  '../styles/global.scss';
 import image from '../assets/images/hero_splash.jpg';
 
 function Art(props) {

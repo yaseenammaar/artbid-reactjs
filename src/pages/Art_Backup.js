@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import image from '../assets/images/hero_splash.jpg';
-import '../components/styles/global.scss'
-import OneCard from '../components/molecules/one-card';
+import '../styles/global.scss'
+import OneCard from '../components/molecules/artist/one-card';
 import {useHistory, useLocation} from "react-router-dom";
-import getSpecificItem from "../logics/apiCalls/getSpecificItem";
+import getSpecificItem from "../api/getSpecificItem";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);

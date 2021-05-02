@@ -3,11 +3,11 @@ import {
     useHistory,
     useLocation
 } from "react-router-dom";
-import getSearchResults from "../logics/apiCalls/getSearchResults";
-import SearchResultItem from "../components/molecules/searchResultMolecules/SearchResultItem";
-import styles from "../components/styles/searchResultPage.module.css";
+import getSearchResults from "../api/getSearchResults";
+import SearchResultItem from "../components/pageComponents/searchResult/SearchResultItem";
+import styles from "../styles/searchResultPage.module.css";
 import useSearchSuggestions from "../hooks/useSearchSuggestions";
-import SearchLoading from "../components/atoms/SearchLoading";
+import SearchLoading from "../components/molecules/search/SearchLoading";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
