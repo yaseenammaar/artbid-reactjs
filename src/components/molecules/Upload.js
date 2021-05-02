@@ -9,7 +9,7 @@ import {
     Label,
     Textarea,
     Checkbox,
-    Dropdown, Anchor, Radiobox
+    Dropdown, Anchor, Radiobox, Notification
 } from "react-atomize";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
@@ -40,6 +40,53 @@ const theme = {
 
     // console.log("categories",categories)
     console.log("state",states.states)
+
+
+    function GetDates(startDate, daysToAdd) {
+        var aryDates = [];
+    
+        for (var i = 0; i <= daysToAdd; i++) {
+            var currentDate = new Date();
+            currentDate.setDate(startDate.getDate() + i);
+            aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
+        }
+    
+        return aryDates;
+    }
+    
+    function MonthAsString(monthIndex) {
+        var d = new Date();
+        var month = new Array();
+        month[0] = "January";
+        month[1] = "February";
+        month[2] = "March";
+        month[3] = "April";
+        month[4] = "May";
+        month[5] = "June";
+        month[6] = "July";
+        month[7] = "August";
+        month[8] = "September";
+        month[9] = "October";
+        month[10] = "November";
+        month[11] = "December";
+    
+        return month[monthIndex];
+    }
+    
+    function DayAsString(dayIndex) {
+        var weekdays = new Array(7);
+        weekdays[0] = "Sunday";
+        weekdays[1] = "Monday";
+        weekdays[2] = "Tuesday";
+        weekdays[3] = "Wednesday";
+        weekdays[4] = "Thursday";
+        weekdays[5] = "Friday";
+        weekdays[6] = "Saturday";
+    
+        return weekdays[dayIndex];
+    }
+    
+    
 
 
     // runUploadItemsApi()
@@ -74,14 +121,16 @@ const theme = {
         const [featuredImageUrl, setFeaturedImageUrl] = useState(null);
         const [availableState, setAvailableState] = useState('All');
         const [byUser, setByUser] = useState('')
-        const [category, setCategory] = useState('')
+        const [category, setCategory] = useState('Select Category')
         const [closingDate, setClosingDate] = useState('')
         const [closingTime, setClosingTime] = useState(12)
-        const [state, setState] = useState('')
+        const [state, setState] = useState('State')
         const [status, setStatus] = useState(0)
         const [showSDropdown, setShowSDropdown] = useState(false);
         const [showCDropdown, setShowCDropdown] = useState(false);
         const [selectedState, setSelectedState] = useState("");
+        const [errorDark, setErrorDark] = useState(false);
+        const [error,setError] = useState("");
 
         const handleStateChange = e => {
             console.log(e.value)
@@ -90,18 +139,32 @@ const theme = {
           }
 
           const stateList = (
-            <select className="upload-select">
+            <select 
+                className="upload-select"
+                value={state} 
+                onChange={(e) => {
+                    setState(e.target.value)
+                    console.log("State", e.target.value)
+                    }
+                }>
                 <option>Select State</option>
-            {states.states.map((name, index) => (
-                <option className="upload-select">
-                    {name.name}
-                </option>
+                {states.states.map((name, index) => (
+                    <option className="upload-select">
+                        {name.name}
+                    </option>
             ))}
             </select>
         );
 
         const categoryList = (
-            <select className="upload-select">
+            <select 
+                className="upload-select"
+                value={category} 
+                onChange={(e) => {
+                    setCategory(e.target.value)
+                    console.log("Category", e.target.value)
+                    }
+                }>
             <option>Select Category</option>
             {categories.categories.map((name, index) => (
                 <option className="upload-select">
@@ -116,27 +179,91 @@ const theme = {
         const today = new Date();
         const date = new Date();
         date.setDate(date.getDate() + 1);
-        // setClosingDate(date)
+
+        const startDate = new Date();
+        const aryDates = GetDates(startDate, 7);
+        console.log(aryDates)
+
+        aryDates.map((d,i) =>(
+            closingDays.push(
+                <Label
+                    align="center"
+                    textWeight="600"
+                    m={{ b: "0.5rem", r: "2rem" }}
+                >
+                    <Radiobox
+                    onChange={() => {
+                        setClosingDate(d)
+                        console.log(d)
+                    }
+                }
+                    name="date"
+                    />
+                    {d.split(', ')[1]}
+                </Label>
+            )
+        ))
+        
 
 
-        for(let i = 0; i < 8; i++){
+        // for(let i = 0; i < 8; i++){
 
 
-            closingDays.push( <Label
+        //     closingDays.push( <Label
+        //         align="center"
+        //         textWeight="600"
+        //         m={{ b: "0.5rem", r: "2rem" }}
+        //     >
+        //         <Radiobox
+        //         onChange={() => setClosingDate(date.getDate()+i)}
+        //         checked={ closingDate+i}
+        //         name="date"
+        //         />
+        //         {date.getDate()+i}
+        //     </Label>
+        //     )
+        //   }
+                const closetime = (
+                <Div d="flex" className="mb-3">
+                <Label
                 align="center"
                 textWeight="600"
                 m={{ b: "0.5rem", r: "2rem" }}
             >
                 <Radiobox
-                onChange={() => setClosingDate(date.getDate()+i)}
-                checked={ closingDate+i}
-                name="date"
+                onChange={() => setClosingTime(12)}
+                checked={ closingTime === 12 }
+                name="count"
                 />
-                {date.getDate()+i}
+                12AM
             </Label>
-            )
-          }
-
+            <Label
+                align="center"
+                textWeight="600"
+                m={{ b: "0.5rem", r: "2rem" }}
+            >
+                <Radiobox
+                onChange={() => setClosingTime(15)}
+                checked={ closingTime === 15 }
+                name="count"
+                />
+                3PM
+            </Label>
+            <Label
+                align="center"
+                textWeight="600"
+                m={{ b: "0.5rem", r: "2rem" }}
+            >
+                <Radiobox
+                onChange={() => setClosingTime(18)}
+                checked={ closingTime === 18 }
+                name="count"
+                />
+                6PM
+            </Label>
+            </Div>
+            );
+            
           const [pictures, setPictures] = useState([]);
 
           const onDrop = picture => {
@@ -144,6 +271,32 @@ const theme = {
             console.log("Pics", pictures)
             console.log("Pics", pictures[0])
           };
+
+          function step1Validation(){
+              if(title.length>10){
+                  if(caption.length>30){
+                      if(state!=="Select State"){
+                          if(category!=="Select Category"){
+                            return true;
+                          }else{
+                              
+                                setError("Select Category")
+                                setErrorDark(true)
+                          }
+                      }else{
+                        setError("Select State")
+                        setErrorDark(true)
+                      }
+                  }else{
+                        setError("Description Must Contain More Than 30 Characters")
+                        setErrorDark(true)
+                  }
+              }else{
+                    setError("Title Must Contain More Than 10 Characters")
+                    setErrorDark(true)
+              }
+              return false;
+          }
 
 
 	  return (
@@ -156,7 +309,25 @@ const theme = {
                     size="16px"
                     cursor="pointer"
                 />
-            
+
+                    <Notification
+                            bg="danger100"
+                            textColor="danger800"
+                            isOpen={errorDark}
+                            onClose={() => setErrorDark(false)}
+                            prefix={
+                            <Icon
+                                name="CloseSolid"
+                                color="danger800"
+                                size="18px"
+                                m={{ r: "0.5rem" }}
+                            />
+                            }
+                        >
+                            {error}
+                        </Notification>
+
+
             {
             step === 0?
             (
@@ -164,16 +335,46 @@ const theme = {
                 <Div>
                     Step {step+1}
                     <br />
-                    <input type="text" className="upload-input"  placeholder="Title" />
-                    <textarea size="20" type="text" className="upload-input"  placeholder="Description" />
-                    
-                    {stateList}
+                    <input 
+                        type="text" 
+                        className="upload-input"  
+                        placeholder="Title (10-50 Chars)" 
+                        value={title} 
+                        onChange={(e) => {
+                            if(e.target.value.length<50)
+                            {
+                                setTitle(e.target.value)
+                                console.log(e.target.value)
+                            }
+                            }}/>
+
+                    <textarea 
+                        size="20" 
+                        type="text" 
+                        className="upload-input"  
+                        placeholder="Description (50-400 Chars)" 
+                        value={caption} 
+                        onChange={(e) => {
+                            if(e.target.value.length<400)
+                            {
+                                setCaption(e.target.value)
+                                console.log(e.target.value)
+                            }
+                            }}/>
 
                     {categoryList}
+                    
+                    {/* {stateList} */}
+
                      <br />
                     <Button
                      className="btn btn-primary"
-                    onClick={()=>setSteps(1)}
+                    onClick={()=>
+                        {
+                            if(step1Validation()){
+                                setSteps(1)
+                            }
+                        }}
                 >
                     Next
                 </Button>
@@ -194,48 +395,6 @@ const theme = {
                         {closingDays}
                     </Div>
 
-         
-                    <hr className="my-4" />
-
-                    <Div d="flex" className="mb-3">
-                        <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(12)}
-                        checked={ closingTime === 12 }
-                        name="count"
-                        />
-                        12AM
-                    </Label>
-                    <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(15)}
-                        checked={ closingTime === 15 }
-                        name="count"
-                        />
-                        3PM
-                    </Label>
-                    <Label
-                        align="center"
-                        textWeight="600"
-                        m={{ b: "0.5rem", r: "2rem" }}
-                    >
-                        <Radiobox
-                        onChange={() => setClosingTime(18)}
-                        checked={ closingTime === 18 }
-                        name="count"
-                        />
-                        6PM
-                    </Label>
-                    </Div>
-
                     <hr className="my-4" />
 
                     <Div d="flex" >
@@ -249,7 +408,15 @@ const theme = {
                     &emsp;
                     <Button
                     className="btn btn-primary"
-                    onClick={()=>setSteps(2)}
+                    onClick={()=>{
+                        if(closingDate!==""){
+                            setSteps(2)
+                        }else{
+                            setError("Select a Closing Date")
+                            setErrorDark(true)
+                        }
+                        
+                    }}
                     >
             Next
         </Button>
@@ -273,11 +440,7 @@ const theme = {
                     
 
 
-                {/* <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div> */}
-                    {/* <button type="text" className="upload-input" placeholder="Title" >Upload Image</button> */}
-                    
+              
 
                     <Div d="flex">
                
@@ -313,12 +476,7 @@ const theme = {
                     imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
                     maxFileSize={5242880}
                     />
-                    
-{/* 
 
-                <div className="d-flex">
-                        <img className="mx-auto upload-image" src={image}  />
-                    </div> */}
 
                
 
