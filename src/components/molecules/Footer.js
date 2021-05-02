@@ -15,6 +15,8 @@ import {
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
 
+import logo from '../../assets/images/ar_grey.png';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/global.scss';
@@ -42,14 +44,46 @@ export default function LoggedOutHeader() {
 
 
 
-                <footer className="container-fluid">
-                    <ul>
-                        <li> <a href="#">Docs</a></li>
-                        <li> <a href="#">ArtBid</a></li>
-                        <li> <a href="#">About</a></li>
-                    </ul>
+                <footer className="footer container-fluid">
+                   
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <img className="footer-logo" src={logo}/>
+                        </div>
+                        <div className="col-md-2 links">
+                            <h5>Products</h5>
+                            <li><a href="#" >Something </a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                        </div>
+                        <div className="col-md-2 links">
+                            <h5>Products</h5>
+                            <li><a href="#" >Something </a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                        </div>
+                        <div className="col-md-2 links">
+                            <h5>Products</h5>
+                            <li><a href="#" >Something </a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                            <li><a href="#" >Something</a></li>
+                        </div>
+                    </div>
 
-                    <p className="text-center m-0">Copyright 2021 ArtBid</p>
+                        <p className="copyright">© 2021 ArtBid</p>
+
+                </div>
+             
+
+
                 </footer>
 
 

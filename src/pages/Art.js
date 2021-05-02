@@ -36,7 +36,7 @@ function Art(props) {
 
                                         &emsp;
                                         
-                                        <div>
+                                        <div className="highest-by">
                                                 <p>HIGHEST BID</p>
                                                 <p>By <a href="#"> Omar </a></p>
                                         </div>
@@ -122,7 +122,7 @@ function Art(props) {
                                 </div>
 
                                 <div className="messageandbid">
-                                    <input placeholder="+ Your Amount" />
+                                     <input placeholder="+ Your Amount" />
                                     <div className="buttons">
                                         <button className="b-btn bid">Bid</button>
                                         <button className="b-btn message">Message</button>
