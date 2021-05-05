@@ -34,7 +34,7 @@ const theme = {
     }
 };
 function LoggedInHeader(props) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
@@ -214,9 +214,7 @@ function LoggedInHeader(props) {
                  >
                      <Upload/>
 
-
-
-                    </Modal>
+            </Modal>
 
             <Modal
                 isOpen={isRegisterOpen}

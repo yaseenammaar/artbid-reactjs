@@ -59,13 +59,13 @@ function Main(props) {
             :
             <ThemeProvider theme={theme}>
                 <HashRouter>
-                    {/* {
+                     {
                         props.auth.user == null || props.auth.user.isAnonymous ?
                             <LoggedOutHeader/>
                             :
                             <LoggedInHeader/>
 
-                    } */}
+                    }
                     {/* <CreditCard/> */}
                     <Route exact path="/" component={Hero}/>
                     <Route exact path="/stuff" component={Hero}/>
