@@ -92,7 +92,7 @@ function Upload(props) {
         })
     }
 
-    const onDrop = async (files, pics, type) => {
+    const onDrop = (files, pics, type) => {
         let dataType
         let value = null
 
