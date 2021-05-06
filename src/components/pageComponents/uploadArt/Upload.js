@@ -76,6 +76,7 @@ function Upload(props) {
     const [step, setSteps] = useState(0);
     const [errorDark, setErrorDark] = useState(false);
     const [error, setError] = useState("");
+    const [preview, setPreview] = useState(true);
     const [itemData, setItemData] = useState({
         title: "",
         description: "",
@@ -97,18 +98,28 @@ function Upload(props) {
     const onDrop = (files, pics, type) => {
         let dataType
         let value = null
+
+        console.log(files.length)
         if(type === 1) {
             dataType = "featuredImage"
             if(files.length > 0) {
                 value = files[0]
             }
+            handleItemDataChanged(dataType, value)
         }
         else {
-            dataType = "supportingImages"
-            value = itemData.supportingImages.concat(files)
+            if(files.length > 3){
+                setError("You can select only 4 Photos")
+                setErrorDark(true)
+            }else{
+              
+                dataType = "supportingImages"
+                value = itemData.supportingImages.concat(files)
+                handleItemDataChanged(dataType, value)
+            }
         }
 
-        handleItemDataChanged(dataType, value)
+        
     };
 
 
@@ -297,8 +308,7 @@ function Upload(props) {
             withIcon={true}
             onChange={(files, pics) => onDrop(files, pics, 2)}
             buttonText='Choose more images (Max 4)'
-            withPreview='true'
-
+            withPreview={preview}
             imgExtension={[".jpg", ".gif", ".png", ".jpeg"]}
             maxFileSize={5242880}
         />
@@ -307,7 +317,6 @@ function Upload(props) {
         <Div d="flex">
             <Button
                 onClick={() => setSteps(2)}
-
             >
 
                 Back
