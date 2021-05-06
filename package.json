@@ -7,6 +7,7 @@
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "browser-image-compression": "^1.0.14",
     "date-fns": "^2.16.1",
     "firebase": "^8.2.3",
     "formik": "^2.2.6",

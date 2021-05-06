@@ -21,23 +21,10 @@ const theme = {
 };
 
 const categories = require("../../../assets/json/categories.json");
-const states = require("../../../assets/json/statesDistrictIndia.json");
 
 
-function GetDates(startDate, daysToAdd) {
-    const aryDates = [];
-
-    for (let i = 0; i <= daysToAdd; i++) {
-        const currentDate = new Date();
-        currentDate.setDate(startDate.getDate() + i);
-        aryDates.push(DayAsString(currentDate.getDay()) + ", " + currentDate.getDate() + " " + MonthAsString(currentDate.getMonth()) + " " + currentDate.getFullYear());
-    }
-
-    return aryDates;
-}
 
 function MonthAsString(monthIndex) {
-    const d = new Date();
     const month = [];
     month[0] = "January";
     month[1] = "February";
@@ -111,24 +98,6 @@ function Upload(props) {
         handleItemDataChanged(dataType, value)
     };
 
-
-    const stateList = (
-        <select
-            className="upload-select"
-            name="state"
-            value={itemData.state}
-            onChange={(e) => {
-                handleItemDataChanged(e.target.name, e.target.value)
-            }}>
-            <option>Select State</option>
-            {states.states.map((name, index) => (
-                <option className="upload-select">
-                    {name.name}
-                </option>
-            ))}
-        </select>
-    );
-
     const categoryList = (
         <select
             className="upload-select"
@@ -147,15 +116,29 @@ function Upload(props) {
         </select>
     );
 
+    function GetDates(startDate, daysToAdd) {
+        const aryDates = [];
+
+        for (let i = 0; i <= daysToAdd; i++) {
+            const currentDate = new Date();
+            currentDate.setDate(startDate.getDate() + i);
+            aryDates.push(currentDate);
+        }
+
+        return aryDates;
+    }
+
+    function dateToString(date) {
+        return DayAsString(date.getDay()) + ", " + date.getDate() + " " + MonthAsString(date.getMonth()) + " " + date.getFullYear()
+    }
+
 
     const closingDays = []
-    const date = new Date();
-    date.setDate(date.getDate() + 1);
-
     const startDate = new Date();
     const aryDates = GetDates(startDate, 7);
 
-    aryDates.map((d, i) => (
+    aryDates.map((dateObject, i) => {
+        const dateString = dateToString(dateObject)
         closingDays.push(
             <Label
                 align="center"
@@ -164,14 +147,14 @@ function Upload(props) {
             >
                 <Radiobox
                     onChange={() => {
-                        handleItemDataChanged("closingDate", d)
+                        handleItemDataChanged("closingDate", dateObject)
                     }}
                     name="date"
                 />
-                {d.split(', ')[1]}
+                {dateString.split(', ')[1]}
             </Label>
         )
-    ))
+    })
 
     const stepOne = (<Div>
         Step {step + 1}
@@ -262,7 +245,9 @@ function Upload(props) {
         <ImageUploader
             {...props}
             withIcon={true}
-            onChange={(files, pics) => onDrop(files, pics, 1)}
+            onChange={(files, pics) => {
+                onDrop(files, pics, 1)
+            }}
             buttonText='Choose Featured image'
             singleImage="true"
             withPreview='true'
@@ -295,7 +280,9 @@ function Upload(props) {
         <ImageUploader
             {...props}
             withIcon={true}
-            onChange={(files, pics) => onDrop(files, pics, 2)}
+            onChange={(files, pics) => {
+                onDrop(files, pics, 2)
+            }}
             buttonText='Choose more images (Max 4)'
             withPreview='true'
 
@@ -347,7 +334,17 @@ function Upload(props) {
             <Button
                 className="btn btn-primary"
                 onClick={() => {
-                    uploadItemData(itemData)
+                    (async () => {
+                        try {
+                            const resData = await uploadItemData(itemData)
+                            console.log("upload data is :", resData)
+                        }
+                        catch (e) {
+                            console.error("error while uploading :",e)
+                        }
+
+                    })();
+
                 }}
             >
 
