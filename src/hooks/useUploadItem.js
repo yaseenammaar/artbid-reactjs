@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import Firebase from "../Firebase"
 import runUploadItemsApi from "../api/runUploadItemsApi";
 import imageCompression from 'browser-image-compression';
+import FileType from 'file-type'
 
 const useUploadItem = () => {
     const [uploadState, setUploadState] = useState({
@@ -62,13 +63,23 @@ const useUploadItem = () => {
     }
 
     const getCompressedImage = async(file, progressCallback) => {
-        const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true,
-            onProgress: progressCallback
+        const buffer = Buffer.from(await file.arrayBuffer())
+        const type = await FileType.fromBuffer(buffer)
+
+        if(type.mime === "image/jpeg" || type.mime === "image/png" || type.mime === "image/webp") {
+            const options = {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+                onProgress: progressCallback
+            }
+            return await imageCompression(file, options)
         }
-        return await imageCompression(file, options)
+        else {
+            return file
+        }
+
+
     }
 
 

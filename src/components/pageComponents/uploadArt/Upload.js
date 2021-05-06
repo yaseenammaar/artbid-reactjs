@@ -8,6 +8,7 @@ import "firebase/storage";
 import ImageUploader from "react-images-upload";
 import '../../../styles/global.scss'
 import useUploadItem from "../../../hooks/useUploadItem";
+import FileType from "file-type";
 
 
 const theme = {
@@ -43,7 +44,7 @@ function MonthAsString(monthIndex) {
 }
 
 function DayAsString(dayIndex) {
-    var weekdays = new Array(7);
+    const weekdays = new Array(7);
     weekdays[0] = "Sunday";
     weekdays[1] = "Monday";
     weekdays[2] = "Tuesday";
@@ -91,7 +92,7 @@ function Upload(props) {
         })
     }
 
-    const onDrop = (files, pics, type) => {
+    const onDrop = async (files, pics, type) => {
         let dataType
         let value = null
 
