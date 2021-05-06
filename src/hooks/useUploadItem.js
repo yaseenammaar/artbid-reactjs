@@ -4,20 +4,26 @@ import runUploadItemsApi from "../api/runUploadItemsApi";
 import imageCompression from 'browser-image-compression';
 
 const useUploadItem = () => {
-    const [uploadProgress, setUploadProgress] = useState(0)
+    const [uploadState, setUploadState] = useState({
+        uploadProgress: 0,
+        done: false,
+        isUploading: false,
+        error: null
+    })
     const [detailsProgress, setDetailsProgress] = useState(0)
     const [featuredImageProgress, setFeaturedImageProgress] = useState(0)
     const [supportingImageProgress, setSupportingImageProgress] = useState([])
 
     useEffect(() => {
-        let sum = detailsProgress + featuredImageProgress
-        for(let i = 0; i < supportingImageProgress; i++) {
-            sum += supportingImageProgress[i]
+        let sum = Math.floor(detailsProgress) + Math.floor(featuredImageProgress)
+        for(let i = 0; i < supportingImageProgress.length; i++) {
+            sum += Math.floor(supportingImageProgress[i])
         }
 
-        const totalProgress = sum / (supportingImageProgress.length + 2)
-        setUploadProgress(totalProgress)
+        const totalProgress = Math.floor(sum / (supportingImageProgress.length + 2))
+        setUploadState({...uploadState, uploadProgress: totalProgress})
         console.log("total upload progress is : ", totalProgress)
+
     }, [detailsProgress, featuredImageProgress, supportingImageProgress])
 
     const uploadFile = (progressCallBack, file, fileRef) => {
@@ -29,7 +35,6 @@ const useUploadItem = () => {
                     // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     progressCallBack(progress)
-                    console.log('Upload is ' + progress + '% done');
 
                     switch (snapshot.state) {
                         case Firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -69,14 +74,16 @@ const useUploadItem = () => {
 
     const uploadFeaturedImage = async (file, docId) => {
         const compressedFile = await getCompressedImage(file, (progress) => {
-            setFeaturedImageProgress((progress / 100) * 50)
+            const intProgress = Math.floor(progress)
+            setFeaturedImageProgress(Math.floor((intProgress / 100) * 50))
         })
         const extension = compressedFile.name.split('.').pop()
         const fileName = `FEATURED_IMAGE_${docId}.${extension}`
         const fileRef = Firebase.storage().ref(`/items/${docId}/${fileName}`)
 
         return await uploadFile((progress) => {
-            const progressIn50 = (progress / 100) * 50
+            const intProgress = Math.floor(progress)
+            const progressIn50 = Math.floor((intProgress / 100) * 50)
             setFeaturedImageProgress(50 + progressIn50)
         }, compressedFile, fileRef)
     }
@@ -85,8 +92,9 @@ const useUploadItem = () => {
         let urlArray = []
         for(let i = 0; i < files.length; i++) {
             const compressedFile = await getCompressedImage(files[i], (progress) => {
+                const intProgress = Math.floor(progress)
                 let currImageProgress = supportingImageProgress
-                currImageProgress[i] = (progress / 100) * 50
+                currImageProgress[i] = Math.floor((intProgress / 100) * 50)
                 setSupportingImageProgress(currImageProgress)
             })
             const extension = compressedFile.name.split('.').pop()
@@ -94,8 +102,9 @@ const useUploadItem = () => {
             const fileRef = Firebase.storage().ref(`/items/${docId}/${fileName}`)
 
             const url = await uploadFile((progress) => {
+                const intProgress = Math.floor(progress)
                 let currImageProgress = supportingImageProgress
-                const progressIn50 = (progress / 100) * 50
+                const progressIn50 = Math.floor((intProgress / 100) * 50)
                 currImageProgress[i] = progressIn50 + 50
                 setSupportingImageProgress(currImageProgress)
 
@@ -107,6 +116,8 @@ const useUploadItem = () => {
 
     const uploadItemData = async (itemData) => {
         try {
+            setUploadState({...uploadState, isUploading: true, done: false})
+
             const itemDocRef = Firebase.firestore().collection("items").doc()
             const docId = itemDocRef.id
             itemData.supportingImages.forEach((value, index) => {
@@ -126,18 +137,20 @@ const useUploadItem = () => {
 
             })
             setDetailsProgress(100)
+            setUploadState({...uploadState, isUploading: false, done: true})
             return res.data
 
         }
         catch (e) {
             console.error("upload stopped with an error:", e)
+            setUploadState({uploadProgress: 0, isUploading: false, done: false, error: e.message})
             throw new Error(e)
         }
 
     }
 
     return {
-        uploadProgress,
+        uploadState,
         uploadItemData
     }
 };

@@ -58,7 +58,16 @@ function DayAsString(dayIndex) {
 
 function Upload(props) {
 
-    const {uploadProgress, uploadItemData} = useUploadItem()
+    /**
+     * uploadState: {
+     *     uploadProgress -> progress of upload,
+     *     done - > true if upload work is done after starting through function uploadItemData, otherwise false,
+     *     error -> null if no error is there, else will give error message,
+     *     isUploading -> true when upload work is going on, otherwise false
+     * }
+     */
+
+    const {uploadState, uploadItemData} = useUploadItem()
 
     const [step, setSteps] = useState(0);
     const [errorDark, setErrorDark] = useState(false);
@@ -95,11 +104,10 @@ function Upload(props) {
             handleItemDataChanged(dataType, value)
         }
         else {
-            if(files.length > 3){
+            if(files.length > 4){
                 setError("You can select only 4 Photos")
                 setErrorDark(true)
             }else{
-              
                 dataType = "supportingImages"
                 value = itemData.supportingImages.concat(files)
                 handleItemDataChanged(dataType, value)
