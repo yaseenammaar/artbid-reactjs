@@ -26,6 +26,7 @@ import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
 import useUploadItem from "../../../hooks/useUploadItem";
+import Progress from 'react-progressbar';
 
 const theme = {
     ...DefaultTheme,
@@ -91,6 +92,7 @@ function LoggedInHeader(props) {
               }
           >
             Please Wait.. Uploading Item!
+            <Progress striped completed={uploadState.uploadProgress}/>
           </Notification>)
 
     const successNotification = (
