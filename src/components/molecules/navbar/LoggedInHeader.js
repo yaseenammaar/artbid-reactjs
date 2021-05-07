@@ -10,6 +10,7 @@ import {
     Icon,
     Text,
     Modal,
+    Notification
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
 
@@ -39,6 +40,10 @@ function LoggedInHeader(props) {
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const [showProcessing, setShowProcessing] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+
+
 
     function closeAbout() {
         setIsOpenAbout(false)
@@ -59,9 +64,46 @@ function LoggedInHeader(props) {
     const handleFocusChange = newFocus => {
         setFocus(newFocus || START_DATE)
     }
+    const processingNotification = (
+        <Notification
+            isOpen={showProcessing}
+            bg="warning100"
+              textColor="warning800"
+              prefix={
+                <Icon
+                  name="Alert"
+                  color="warning800"
+                  size="18px"
+                  m={{ r: "0.5rem" }}
+                />
+              }
+          >
+            Please Wait.. Uploading Item!
+          </Notification>)
+
+    const successNotification = (
+        <Notification
+            bg="success100"
+            textColor="success800"
+            isOpen={showSuccess}
+            onClose={() => setShowSuccess(false)}
+
+            prefix={
+                <Icon
+                name="Success"
+                color="success800"
+                size="18px"
+                m={{ r: "0.5rem" }}
+                />
+            }
+            >
+            Upload Successfull!
+            </Notification>)
 
     return (
         <ThemeProvider theme={theme}>
+            {processingNotification}
+            {successNotification}
             <Row
             m={{t:"1.5rem"}}
 //            pos="fixed"
@@ -212,7 +254,20 @@ function LoggedInHeader(props) {
                 rounded="md" 
                 shadow="1"
                  >
-                     <Upload/>
+                     <Upload
+                        hideUploadModal={() => {
+                            setIsOpen(false)
+                        }}
+                        showProcessingNotification={() => {
+                            setShowProcessing(true)
+                        }}
+                        showSuccessNotification={() => {
+                            setShowSuccess(true)
+                        }}
+                        closeProcessing={() =>{
+                            setShowProcessing(false)
+                        }}
+                        />
 
             </Modal>
 

@@ -86,6 +86,11 @@ function Upload(props) {
         supportingImages: [],
     })
 
+    const {hideUploadModal, 
+        showProcessingNotification, 
+        showSuccessNotification,
+        closeProcessing} = props
+
     const handleItemDataChanged = (dataType, value) => {
         setItemData(prevState => {
             return { ...prevState,[dataType]: value}
@@ -354,8 +359,12 @@ function Upload(props) {
                 onClick={() => {
                     (async () => {
                         try {
+                            showProcessingNotification()
+                            hideUploadModal()
                             const resData = await uploadItemData(itemData)
                             console.log("upload data is :", resData)
+                            closeProcessing()
+                            showSuccessNotification()
                         }
                         catch (e) {
                             console.error("error while uploading :",e)
@@ -411,6 +420,8 @@ function Upload(props) {
             </Label>
         </Div>
     );
+
+    
 
     const errorNotification = (<Notification
         bg="danger100"
@@ -468,6 +479,7 @@ function Upload(props) {
                 cursor="pointer"
             />
             {errorNotification}
+            
             {step === 0 ? stepOne : null}
             {step === 1 ? stepTwo : null}
             {step === 2 ? stepThree : null}
