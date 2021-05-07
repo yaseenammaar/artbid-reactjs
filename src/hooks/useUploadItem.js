@@ -23,7 +23,6 @@ const useUploadItem = () => {
 
         const totalProgress = Math.floor(sum / (supportingImageProgress.length + 2))
         setUploadState({...uploadState, uploadProgress: totalProgress})
-        console.log("total upload progress is : ", totalProgress)
 
     }, [detailsProgress, featuredImageProgress, supportingImageProgress])
 

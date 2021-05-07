@@ -25,6 +25,7 @@ import {connect} from "react-redux";
 import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
+import useUploadItem from "../../../hooks/useUploadItem";
 
 const theme = {
     ...DefaultTheme,
@@ -35,6 +36,17 @@ const theme = {
     }
 };
 function LoggedInHeader(props) {
+
+    /**
+     * uploadState: {
+     *     uploadProgress -> progress of upload,
+     *     done - > true if upload work is done after starting through function uploadItemData, otherwise false,
+     *     error -> null if no error is there, else will give error message,
+     *     isUploading -> true when upload work is going on, otherwise false
+     * }
+     */
+    const {uploadState, uploadItemData} = useUploadItem()
+
     const [isOpen, setIsOpen] = useState(true);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
@@ -255,18 +267,29 @@ function LoggedInHeader(props) {
                 shadow="1"
                  >
                      <Upload
-                        hideUploadModal={() => {
-                            setIsOpen(false)
-                        }}
-                        showProcessingNotification={() => {
-                            setShowProcessing(true)
-                        }}
-                        showSuccessNotification={() => {
-                            setShowSuccess(true)
-                        }}
-                        closeProcessing={() =>{
-                            setShowProcessing(false)
-                        }}
+
+                         onSaveButtonClicked={(itemData) => {
+                             (async () => {
+                                 try {
+                                     //TODO: show progress in progress bar using uploadState.uploadProgress
+
+                                     setShowProcessing(true)
+                                     setIsOpen(false)
+                                     const resData = await uploadItemData(itemData)
+                                     console.log("upload data is :", resData)
+                                     setShowProcessing(false)
+                                     setShowSuccess(true)
+                                 }
+                                 catch (e) {
+                                     console.error("error while uploading :",e)
+
+                                     // TODO: close processing and success notification and show error notification
+                                     setShowProcessing(false)
+                                     setShowSuccess(false)
+                                 }
+
+                             })();
+                         }}
                         />
 
             </Modal>

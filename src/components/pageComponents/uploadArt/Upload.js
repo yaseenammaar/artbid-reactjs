@@ -8,7 +8,6 @@ import "firebase/storage";
 import ImageUploader from "react-images-upload";
 import '../../../styles/global.scss'
 import useUploadItem from "../../../hooks/useUploadItem";
-import FileType from "file-type";
 
 
 const theme = {
@@ -59,17 +58,6 @@ function DayAsString(dayIndex) {
 
 function Upload(props) {
 
-    /**
-     * uploadState: {
-     *     uploadProgress -> progress of upload,
-     *     done - > true if upload work is done after starting through function uploadItemData, otherwise false,
-     *     error -> null if no error is there, else will give error message,
-     *     isUploading -> true when upload work is going on, otherwise false
-     * }
-     */
-
-    const {uploadState, uploadItemData} = useUploadItem()
-
     const [step, setSteps] = useState(0);
     const [errorDark, setErrorDark] = useState(false);
     const [error, setError] = useState("");
@@ -86,10 +74,9 @@ function Upload(props) {
         supportingImages: [],
     })
 
-    const {hideUploadModal, 
-        showProcessingNotification, 
-        showSuccessNotification,
-        closeProcessing} = props
+    const {
+        onSaveButtonClicked
+    } = props
 
     const handleItemDataChanged = (dataType, value) => {
         setItemData(prevState => {
@@ -357,21 +344,7 @@ function Upload(props) {
             <Button
                 className="btn btn-primary"
                 onClick={() => {
-                    (async () => {
-                        try {
-                            showProcessingNotification()
-                            hideUploadModal()
-                            const resData = await uploadItemData(itemData)
-                            console.log("upload data is :", resData)
-                            closeProcessing()
-                            showSuccessNotification()
-                        }
-                        catch (e) {
-                            console.error("error while uploading :",e)
-                        }
-
-                    })();
-
+                    onSaveButtonClicked(itemData)
                 }}
             >
 
