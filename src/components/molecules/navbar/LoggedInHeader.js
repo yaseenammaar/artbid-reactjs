@@ -26,7 +26,7 @@ import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
 import useUploadItem from "../../../hooks/useUploadItem";
-import Progress from 'react-progressbar';
+import {Line} from "rc-progress"
 
 const theme = {
     ...DefaultTheme,
@@ -48,7 +48,7 @@ function LoggedInHeader(props) {
      */
     const {uploadState, uploadItemData} = useUploadItem()
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
@@ -92,7 +92,7 @@ function LoggedInHeader(props) {
               }
           >
             Please Wait.. Uploading Item!
-            <Progress striped completed={uploadState.uploadProgress}/>
+            <Line percent={uploadState.uploadProgress} strokeWidth="3" strokeColor="#7FFF00" trailWidth={3} trailColor={"#DCDCDC"}/>
           </Notification>)
 
     const successNotification = (
