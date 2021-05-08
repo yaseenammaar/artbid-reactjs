@@ -8,6 +8,8 @@ export const PROTECTED_APIS = {
     SAVE_ITEM_FOR_USER: 'saveItemForUser',
     GET_SPECIFIC_ITEM: 'getSpecificItem',
     GET_SEARCH_SUGGESTIONS: 'getSearchSuggestions',
+    MESSAGE_ON_ITEM: 'messageOnItem',
+    BID_ON_ITEM: 'bid',
 }
 
 export const UNPROTECTED_APIS = {

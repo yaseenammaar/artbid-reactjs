@@ -135,7 +135,7 @@ const useUploadItem = () => {
             })
             const featuredImageUrl = await uploadFeaturedImage(itemData.featuredImage, docId)
             const supportingImagesUrlArray = await uploadSupportingImages(itemData.supportingImages, docId)
-            const res = await runUploadItemsApi({
+            const data = await runUploadItemsApi({
                 title: itemData.title,
                 description: itemData.description,
                 category: itemData.category,
@@ -148,7 +148,7 @@ const useUploadItem = () => {
             })
             setDetailsProgress(100)
             setUploadState({...uploadState, isUploading: false, done: true})
-            return res.data
+            return data
 
         }
         catch (e) {
