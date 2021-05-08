@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Artist from "./pages/Artist/Artist";
 
 import {connect, Provider as ReduxProvider} from "react-redux"
+import { connect } from "react-redux"
 import firebaseInstance from "./Firebase/index"
 
 
@@ -20,12 +21,10 @@ import {
 
 import {
     Route,
-    NavLink,
     HashRouter
 } from "react-router-dom";
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
-import CreditCard from "./components/molecules/creditCard/CreditCard";
 import SearchResultPage from "./pages/SearchResultPage";
 import Art from "./pages/Art/Art";
 
@@ -38,8 +37,7 @@ const theme = {
     }
 };
 
-const bgImage = "https://source.unsplash.com/collection/1065396/1600x900";
-const bgImageValue = `url(${bgImage})`;
+
 
 function Main(props) {
 
@@ -61,13 +59,13 @@ function Main(props) {
             :
             <ThemeProvider theme={theme}>
                 <HashRouter>
-                    {/* {
+                     {
                         props.auth.user == null || props.auth.user.isAnonymous ?
                             <LoggedOutHeader/>
                             :
                             <LoggedInHeader/>
 
-                    } */}
+                    }
                     {/* <CreditCard/> */}
                     <Route exact path="/" component={Hero}/>
                     <Route exact path="/stuff" component={Hero}/>

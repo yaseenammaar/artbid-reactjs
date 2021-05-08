@@ -10,6 +10,7 @@ import {
     Icon,
     Text,
     Modal,
+    Notification
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
 
@@ -24,6 +25,8 @@ import {connect} from "react-redux";
 import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
+import useUploadItem from "../../../hooks/useUploadItem";
+import {Line} from "rc-progress"
 
 const theme = {
     ...DefaultTheme,
@@ -34,11 +37,26 @@ const theme = {
     }
 };
 function LoggedInHeader(props) {
+
+    /**
+     * uploadState: {
+     *     uploadProgress -> progress of upload,
+     *     done - > true if upload work is done after starting through function uploadItemData, otherwise false,
+     *     error -> null if no error is there, else will give error message,
+     *     isUploading -> true when upload work is going on, otherwise false
+     * }
+     */
+    const {uploadState, uploadItemData} = useUploadItem()
+
     const [isOpen, setIsOpen] = useState(false);
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const [showProcessing, setShowProcessing] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
+
+
 
     function closeAbout() {
         setIsOpenAbout(false)
@@ -59,9 +77,47 @@ function LoggedInHeader(props) {
     const handleFocusChange = newFocus => {
         setFocus(newFocus || START_DATE)
     }
+    const processingNotification = (
+        <Notification
+            isOpen={showProcessing}
+            bg="warning100"
+              textColor="warning800"
+              prefix={
+                <Icon
+                  name="Alert"
+                  color="warning800"
+                  size="18px"
+                  m={{ r: "0.5rem" }}
+                />
+              }
+          >
+            Please Wait.. Uploading Item!
+            <Line percent={uploadState.uploadProgress} strokeWidth="3" strokeColor="#7FFF00" trailWidth={3} trailColor={"#DCDCDC"}/>
+          </Notification>)
+
+    const successNotification = (
+        <Notification
+            bg="success100"
+            textColor="success800"
+            isOpen={showSuccess}
+            onClose={() => setShowSuccess(false)}
+
+            prefix={
+                <Icon
+                name="Success"
+                color="success800"
+                size="18px"
+                m={{ r: "0.5rem" }}
+                />
+            }
+            >
+            Upload Successfull!
+            </Notification>)
 
     return (
         <ThemeProvider theme={theme}>
+            {processingNotification}
+            {successNotification}
             <Row
             m={{t:"1.5rem"}}
 //            pos="fixed"
@@ -212,11 +268,33 @@ function LoggedInHeader(props) {
                 rounded="md" 
                 shadow="1"
                  >
-                     <Upload/>
+                     <Upload
 
+                         onSaveButtonClicked={(itemData) => {
+                             (async () => {
+                                 try {
+                                     //TODO: show progress in progress bar using uploadState.uploadProgress
 
+                                     setShowProcessing(true)
+                                     setIsOpen(false)
+                                     const resData = await uploadItemData(itemData)
+                                     console.log("upload data is :", resData)
+                                     setShowProcessing(false)
+                                     setShowSuccess(true)
+                                 }
+                                 catch (e) {
+                                     console.error("error while uploading :",e)
 
-                    </Modal>
+                                     // TODO: close processing and success notification and show error notification
+                                     setShowProcessing(false)
+                                     setShowSuccess(false)
+                                 }
+
+                             })();
+                         }}
+                        />
+
+            </Modal>
 
             <Modal
                 isOpen={isRegisterOpen}
