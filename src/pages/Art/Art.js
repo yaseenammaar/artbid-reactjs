@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import  '../styles/global.scss';
-import image from '../assets/images/hero_splash.jpg';
+import '../../styles/global.scss';
+import image from '../../assets/images/hero_splash.jpg';
+
 
 function Art(props) {
     const [state, setState] = useState('');
@@ -51,9 +52,10 @@ function Art(props) {
                             <div className="bid-data-cont">
                                 <a href="#" className="artist-name"> Artist </a>
                                 <h2 className="item-name"> Item Name </h2>
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <p className="item-bio">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
 
                                 <div className="bid-history">
+
 
                                     <div className="one-bid">
                                         <img className="bidder-dp" src={image}  />
@@ -122,11 +124,21 @@ function Art(props) {
                                 </div>
 
                                 <div className="messageandbid">
-                                     <input placeholder="+ Your Amount" />
-                                    <div className="buttons">
-                                        <button className="b-btn bid">Bid</button>
-                                        <button className="b-btn message">Message</button>
-                                    </div>
+                                    
+                                        <input placeholder="+ Your Amount" />
+                                        <div className="buttons">
+                                            {/* <button className="b-btn active">Bid</button>
+                                            <button className="b-btn ">Message</button> */}
+
+                                        <label class="switch">
+                                          <input type="checkbox" id="togBtn" />
+                                        <div class="slider round">
+                                            <span class="on">Bid</span>
+                                            <span class="off">Message</span>
+                                         </div>
+                                        </label>
+                                        </div>
+
                                 </div>
 
                             </div>

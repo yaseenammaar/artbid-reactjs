@@ -136,7 +136,7 @@ function Hero() {
                         d={"flex"}
                         justify={"center"}
                         w={"500px"}
-                        className="search"
+                        // className="search"
                     >
 
                         <SearchLoading

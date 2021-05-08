@@ -1,0 +1,168 @@
+#artist-page{
+    padding: 60px 0;
+
+    .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-bottom: 1px solid #dedede;
+        padding-bottom: 60px;
+
+        .profile-pic{
+            img{
+                width: 200px; height: 200px;
+                border-radius: 50%;
+                border: 5px solid white;  
+                box-shadow: 0px 8px 40px 20px rgba(112, 144, 176, 0.1);
+                -webkit-box-shadow: 0px 8px 40px 20px rgba(112, 144, 176, 0.3);
+
+            }
+        }
+
+        .profile-data{
+            // padding-left:40px;
+
+            .profile-bio{
+                width: 500px;
+                // margin-right: auto;
+            }
+
+            .followers{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 40px;
+                p{
+                    font-weight: bold;
+                    span{
+                        font-weight: lighter;
+                    }
+                }
+            }
+        }
+
+        .follow-unfollow{
+            
+            button{
+                display: block;
+                border: none;
+                width: 120px;
+                height: 40px;
+                margin: 10px 0;
+                border-radius: 6px;
+            }
+            .follow-btn{
+                background: $primary;
+                color: white;
+            }
+            .unfollow-btn{
+                border: 1px solid #868686;
+                background: none;
+            }
+        }
+    }
+}
+
+
+@media(max-width:999px){
+    #artist-page{
+        .head{
+            display: block !important;
+            .profile-pic{
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .profile-data{
+                text-align: center;
+                .profile-name{
+                    margin-bottom: 20px;
+                }
+                .profile-bio{
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                .followers{
+                    width: 600px !important;
+                    margin: 20px auto;
+                }
+                
+                }
+                .follow-unfollow{
+                    display: flex !important;
+                    justify-content: center;
+                    button{
+                        display: inline !important;
+                        margin: 0 20px !important;
+                    }
+            }
+        }
+    }
+  
+}
+
+
+@media(max-width:426px){
+    #artist-page{
+        .head{
+            display: block !important;
+            .profile-pic{
+                text-align: center;
+                margin-bottom: 20px;
+                img{
+                    width: 200px !important; height: 200px !important;
+                }
+            }
+            .profile-data{
+                text-align: center;
+                .profile-name{
+                    margin-bottom: 20px;
+                }
+                .profile-bio{
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 100% !important;
+                }
+                .followers{
+                    width: 100% !important;
+                    margin: 20px auto;
+                }
+                
+                }
+                .follow-unfollow{
+                    display: flex !important;
+                    justify-content: center;
+                    width: 100% !important;
+                    button{
+                        display: inline !important;
+                        margin: 0 10px !important;
+                    }
+            }
+        }
+    }
+    
+}
+
+@media(max-width: 376px){
+    #artist-page{
+        .profile-bio,.followers p{
+            font-size: 14px !important;
+        }
+    }
+}
+
+
+@media(max-width: 321px){
+    #artist-page{
+        .profile-pic{
+            img{
+                width: 100px !important;
+                height: 100px !important;
+            }
+        }
+        .profile-name{
+            font-size: 26px !important;
+        }
+        .profile-bio,.followers p, .follow-unfollow button{
+            font-size: 12px !important;
+        }
+    }
+}
