@@ -75,6 +75,7 @@ const useUploadItem = () => {
             return await imageCompression(file, options)
         }
         else {
+            progressCallback(50)
             return file
         }
 
