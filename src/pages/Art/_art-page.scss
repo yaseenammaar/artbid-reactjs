@@ -50,9 +50,23 @@
         .bid-data-cont{
             padding: 10px 30px;
 
+            .artist-name{
+                margin-bottom: 40px ;
+            }
+
+            .item-name{
+                margin-bottom: 15px;
+            }
+            .item-bio{
+                margin-bottom: 20px;
+            }
+
             .bid-history{
                 height: 340px;
-                border: 1px solid #dedede;
+                position: relative;
+
+
+                // border: 1px solid #dedede;
                 border-radius: 10px;
                 // padding: 10px 20px ;
                 padding-right: 20px ;
@@ -60,18 +74,19 @@
                 overflow-y: scroll;
                 &::-webkit-scrollbar {
                     visibility: hidden;
-                    width: 5px;
+                    width: 3px;
                 }
 
                 &::-webkit-scrollbar-track {
-                    background: #dedede;
+                    background: #f0efef;
                 }
 
                 &::-webkit-scrollbar-thumb {
-                    background: $primary;
+                    background: #dedede;
                     border-radius: 20px;
                 }
             
+                
 
                 .one-bid{
                     display: flex;
@@ -79,7 +94,7 @@
                     margin-bottom: 10px;
                     // justify-content: center;
                     padding: 5px;
-                    border-bottom: 1px solid #dedede;
+                    // border-bottom: 1px solid #dedede;
             
                     // border-radius: 6px;
 
@@ -121,31 +136,130 @@
 
 
             .messageandbid{
-                display: flex;
+                // display: flex;
                 width: 100%;
                 margin-top: 20px;
+                position: relative;
+                height: 50px;
+
                 input{
-                    height: 70px;
-                    border: 1px solid $primary;
-                    flex: 2;
+                    width: 100%;
+                    height: 100%;
+                    border: 1px solid #dedede;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
                 }
                 .buttons{
+
+                    position: absolute;
+                    right: -8%;
+                    top: 65%;
+                    transform: translate(-50%, -50%);
+
+                .switch {
+                position: relative;
+                display: inline-block;
+                width: 110px;
+                height: 34px;
+
+                span{
+                    color: grey;
+                    font-weight: bolder;
+                    color: white;
+                }
+                }
+
+                .switch input {display:none;}
+
+                .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #797979;
+                
+                -webkit-transition: .4s;
+                transition: .4s;
+                }
+
+                .slider:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+                }
+
+                input:checked + .slider {
+                background-color: $primary;
+                }
+
+                input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+                }
+
+                input:checked + .slider:before {
+                -webkit-transform: translateX(75px);
+                -ms-transform: translateX(75px);
+                transform: translateX(75px);
+                }
+
+                /*------ ADDED CSS ---------*/
+                .on
+                {
+                display: none;
+                }
+
+                .on, .off
+                {
+                color: white;
+                position: absolute;
+                transform: translate(-50%,-50%);
+                top: 50%;
+                left: 50%;
+                font-size: 10px;
+                font-family: Verdana, sans-serif;
+                }
+
+                input:checked+ .slider .on
+                {display: block;}
+
+                input:checked + .slider .off
+                {display: none;}
+
+                /*--------- END --------*/
+
+                /* Rounded sliders */
+                .slider.round {
+                border-radius: 34px;
+                }
+
+                .slider.round:before {
+                border-radius: 50%;}
+
+
                     button{
-                        display: block;
-                        width: 100px;
+                        // display: block;
+                        width: 50%;
                         height: 30px;
                         background: none;
                         border: none;
-                        border-radius: 8px;
-                        color: white;
-                        margin: 5px;
+                        // border-radius: 8px;
+                        background: #dedede;
+                        border-top-left-radius: 6;
+                        border-top-right-radius: 6;
+                        // margin: 5px;
                     }
-                    .bid{
-                        background: $secondary;
-                    }
-                    .message{
+                    .active{
                         background: $primary;
                     }
+                    
                 }
 
             }

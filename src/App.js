@@ -7,6 +7,9 @@ import Login from "./components/pageComponents/login/Login";
 
 import Hero from "./components/pageComponents/home/Hero";
 import Profile from "./pages/Profile";
+import Artist from "./pages/Artist/Artist";
+
+import {connect, Provider as ReduxProvider} from "react-redux"
 import { connect } from "react-redux"
 import firebaseInstance from "./Firebase/index"
 
@@ -23,7 +26,7 @@ import {
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
 import SearchResultPage from "./pages/SearchResultPage";
-import Art from "./pages/Art";
+import Art from "./pages/Art/Art";
 
 const theme = {
     ...DefaultTheme,
@@ -71,6 +74,7 @@ function Main(props) {
                     <Route exact path="/login" component={Login}/>
                     <Route exact path={"/search_result"} component={SearchResultPage}/>
                     <Route exact path={"/art"} component={Art}/>
+                    <Route exact path={"/artist"} component={Artist}/>
 
 
                     <Footer/>
