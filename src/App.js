@@ -8,8 +8,6 @@ import Login from "./components/pageComponents/login/Login";
 import Hero from "./components/pageComponents/home/Hero";
 import Profile from "./pages/Profile";
 import Artist from "./pages/Artist/Artist";
-
-import {connect, Provider as ReduxProvider} from "react-redux"
 import { connect } from "react-redux"
 import firebaseInstance from "./Firebase/index"
 

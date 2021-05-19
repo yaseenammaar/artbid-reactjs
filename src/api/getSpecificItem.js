@@ -6,7 +6,8 @@ const getSpecificItem = async (itemId) => {
         const requestData = {
             itemId
         }
-        return apiRequest('post', APIS.PROTECTED_APIS.GET_SPECIFIC_ITEM, requestData, 'application/json', true)
+        const res = await apiRequest('post', APIS.PROTECTED_APIS.GET_SPECIFIC_ITEM, requestData, 'application/json', true)
+        return res.data
     } catch (e) {
         console.log(e.message)
 

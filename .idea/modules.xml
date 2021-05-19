@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../artbid-api/.idea/artbid-api.iml" filepath="$PROJECT_DIR$/../artbid-api/.idea/artbid-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/artbid-reactjs.iml" filepath="$PROJECT_DIR$/.idea/artbid-reactjs.iml" />
     </modules>
   </component>
