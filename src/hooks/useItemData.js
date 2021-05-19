@@ -1,96 +1,72 @@
 import {useEffect, useState} from "react";
-import Firebase from "../Firebase"
 import useItemBidCountListener from "./useItemBidCountListener";
 import getSpecificItem from "../api/getSpecificItem";
 
 const useItemData = (itemId) => {
 
-    const [loadedCountListener, setLoadedCountListener] = useState(false)
+    const [itemDataError, setItemDataError] = useState(null)
     const [loadedItem, setLoadedItem] = useState(false)
 
     const {bidData} = useItemBidCountListener(itemId)
-    const [itemData, setItemData] = useState({
-        data: null,
+    const [itemState, setItemState] = useState({
+        itemData: null,
+        bidData: bidData,
         error: null,
         loading: true
     })
 
+    // to update bidData
+    useEffect(() => {
+        setItemState({
+            bidData: bidData,
+            ...itemState
+        })
+    }, [bidData])
+
+    //to update error
+    useEffect(() => {
+        if(bidData.error != null || itemDataError != null) {
+            setItemState({
+                error: itemDataError != null? itemDataError : bidData.error,
+                ...itemState
+            })
+        }
+    }, [])
+
+    // to update loading state
     useEffect(() => {
 
-        if(loadedCountListener && loadedItem) {
-            setItemData({
+        if(loadedItem && bidData.initialCallCompleted) {
+            setItemState({
                 loading : false,
-                ...itemData
+                ...itemState
             })
         }
 
-    }, [loadedCountListener, loadedItem])
+    }, [loadedItem, bidData.initialCallCompleted])
 
+    // to get itemData
     useEffect(() => {
-            const itemDocRef = Firebase.firestore().collection("items").doc(itemId)
-            const unsubscribe = itemDocRef.onSnapshot((snapshot) => {
-
-                if(!loadedCountListener) {
-                    setLoadedCountListener(true)
-                }
-
-                if (!snapshot.exists) {
-                    setItemData({
-                        data: null,
-                        error: "item not found",
-                        ...itemData,
-                    })
-
-                    return
-                }
-
-                setItemData({
-                    data: snapshot.data(),
-                    error: null,
-                    ...itemData,
-                })
-
-
-            }, (error) => {
-
-                setItemData({
-                    data: null,
-                    error: error.message,
-                    ...itemData,
-                })
-
-            }, null);
-
 
         (async () => {
             const data = await getSpecificItem(itemId)
             if(data.isError) {
-                setItemData({
-                    data: null,
-                    error: data.error,
-                    ...itemData,
-                })
+                setItemDataError(data.error)
             }
             else {
-                setItemData({
-                    data: data.itemRes,
-                    ...itemData
+                setItemState({
+                    itemData: data.itemRes,
+                    ...itemState
                 })
             }
 
             setLoadedItem(true)
         })();
 
-
-        return () => {
-            unsubscribe()
-        }
-
     }, [])
 
     return {
-        bidData,
-        itemData
+        itemState
     }
 };
 

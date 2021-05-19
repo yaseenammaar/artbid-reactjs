@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/global.scss';
 import image from '../../assets/images/hero_splash.jpg';
+import useItemData from "../../hooks/useItemData";
 
 
 function Art(props) {
-    const [state, setState] = useState('');
-
-    useEffect(() => {
-        return () => {
-
-        }
-    }, []);
+    /**
+     * itemState: {
+            itemData,
+            bidData,
+            error,
+            loading
+     * }
+     */
+    const {
+        itemState
+    } = useItemData("")
 
     return (
         <>
