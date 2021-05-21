@@ -17,6 +17,11 @@ function Art(props) {
         itemState
     } = useItemData("SkW0dzclygVubNk7lDKF")
 
+
+    if(itemState.loading) {
+        return <div>loading....</div>
+    }
+
     return (
         <>
             <section id="art-page">
@@ -28,13 +33,13 @@ function Art(props) {
                             {/* ############## Image Container ############ */}
                             <div className="image-cont">
 
-                                <img className="art-image" src={image} />
+                                <img className="art-image" src={itemState.itemData.featuredImage} />
 
                                 <div className="bid-data">
 
                                     <div className="priceandbidders">
-                                        <p className="base-price">Base Price: 49$</p>
-                                        <p className="total-bidders">Total Bidders: 91</p>
+                                        <p className="base-price">Base Price: Rs {itemState.itemData.basePrice}</p>
+                                        <p className="total-bidders">Total Bidders: {itemState.bidData.bidCount}</p>
                                     </div>
 
                                     <div className="highest-bid">
@@ -47,7 +52,7 @@ function Art(props) {
                                                 <p>By <a href="#"> Omar </a></p>
                                         </div>
                                             &emsp;
-                                        <h3 className="current-bid"> $1,00,000</h3>
+                                        <h3 className="current-bid"> Rs {itemState.bidData.addedPriceCount + itemState.itemData.basePrice}</h3>
                                     </div>
                                 </div>
 
@@ -56,8 +61,8 @@ function Art(props) {
 
                             <div className="bid-data-cont">
                                 <a href="#" className="artist-name"> Artist </a>
-                                <h2 className="item-name"> Item Name </h2>
-                                <p className="item-bio">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <h2 className="item-name"> {itemState.itemData.title} </h2>
+                                <p className="item-bio">{itemState.itemData.description}</p>
 
                                 <div className="bid-history">
 
@@ -135,11 +140,11 @@ function Art(props) {
                                             {/* <button className="b-btn active">Bid</button>
                                             <button className="b-btn ">Message</button> */}
 
-                                        <label class="switch">
+                                        <label className="switch">
                                           <input type="checkbox" id="togBtn" />
-                                        <div class="slider round">
-                                            <span class="on">Bid</span>
-                                            <span class="off">Message</span>
+                                        <div className="slider round">
+                                            <span className="on">Bid</span>
+                                            <span className="off">Message</span>
                                          </div>
                                         </label>
                                         </div>

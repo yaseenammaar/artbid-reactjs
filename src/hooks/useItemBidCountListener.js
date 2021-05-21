@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Firebase from "../Firebase"
 
 const useItemBidCountListener = (itemId) => {
@@ -9,18 +9,27 @@ const useItemBidCountListener = (itemId) => {
         initialCallCompleted: false
     })
 
+    const changeCountData = (data) => {
+        setBidCountData(prevState => {
+            return {
+                ...prevState,
+                ...data,
+            }
+        })
+    }
+
     useEffect(() => {
         const bidShardRef = Firebase.firestore().collection("items").doc(itemId).collection("bid_shards")
         const unsubscribe = bidShardRef.onSnapshot((snapshots) => {
-
+            console.log("count snapshot called...", snapshots.empty)
             if (snapshots.empty) {
-                setBidCountData({
+                changeCountData({
                     bidCount: 0,
                     addedPriceCount: 0,
                     initialCallCompleted: true,
-                    ...bidCountData
                 })
 
+                console.log("at last, bid data is :", bidCountData)
                 return
             }
 
@@ -32,19 +41,19 @@ const useItemBidCountListener = (itemId) => {
                 priceCount += docData["addedPriceCount"]
             });
 
-            setBidCountData({
-                ...bidCountData,
+            changeCountData({
                 initialCallCompleted: true,
                 bidCount: countSum,
-                addedPriceCount: priceCount
+                addedPriceCount: priceCount,
             })
+
+            console.log("at last, bid data is :", bidCountData)
 
 
         }, (error) => {
-
-            setBidCountData({
+            console.error("error occurres during bid count fetch", error)
+            changeCountData({
                 error: error.message,
-                ...bidCountData
             })
 
         });
@@ -56,7 +65,7 @@ const useItemBidCountListener = (itemId) => {
     }, [])
 
     return {
-        bidData: bidCountData
+        bidCountData
     }
 };
 
