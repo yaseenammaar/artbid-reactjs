@@ -47,7 +47,7 @@ const useItemBidCountListener = (itemId) => {
                 ...bidCountData
             })
 
-        }, null);
+        });
 
         return () => {
             unsubscribe()

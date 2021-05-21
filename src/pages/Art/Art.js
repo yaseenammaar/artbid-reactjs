@@ -15,7 +15,7 @@ function Art(props) {
      */
     const {
         itemState
-    } = useItemData("")
+    } = useItemData("SkW0dzclygVubNk7lDKF")
 
     return (
         <>
