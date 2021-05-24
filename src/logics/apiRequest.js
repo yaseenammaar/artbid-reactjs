@@ -6,10 +6,10 @@ const apiRequest = async (method, api, data, contentType, isAuth) => {
     let apiConfig;
     let apiUrl;
     if(process.env.NODE_ENV === 'production') {
-        apiUrl = 'https://us-central1-artbid-database.cloudfunctions.net/webApi/';
+        apiUrl = 'https://us-central1-artbid-database.cloudfunctions.net/apiBetaV1/';
     }
     else {
-        apiUrl = 'https://us-central1-artbid-db-dev.cloudfunctions.net/webApi/';
+        apiUrl = 'https://us-central1-artbid-db-dev.cloudfunctions.net/apiBetaV1/';
     }
 
     if(isAuth) {

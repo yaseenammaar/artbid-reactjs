@@ -1,528 +1,550 @@
-#art-page{
-    padding: 50px 0;
-    .art-row{
+#art-page {
+  padding: 50px 0;
+
+  .art-row {
+    display: flex;
+
+    // ############# Image Cont ##################
+    .image-cont {
+      .art-image {
+        width: 500px;
+        height: 500px;
+        border-radius: 20px;
+        box-shadow: $shadow;
+        border: 5px solid white;
+      }
+
+      .bid-data {
+        margin-top: 20px;
         display: flex;
+        justify-content: space-between;
 
-        // ############# Image Cont ##################
-        .image-cont{
-            .art-image{
-                width: 500px;
-                height: 500px;
-                border-radius: 20px;
-                box-shadow: $shadow;
-                border: 5px solid white;
-            }
-
-            .bid-data{
-                margin-top: 20px;
-                display: flex;
-                justify-content: space-between;
-
-                .priceandbidders{
-                    p{
-                        margin: 0 !important;
-                        color: #747474;
-                    }
-                }
-
-                .highest-bid{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    
-                    img{
-                        border-radius: 50%;
-                        width: 50px; height: 50px;
-                    }
-                    p,h3{
-                        margin: 0 !important;
-                        color: #747474;
-                    }
-                    h3{
-                        color: $secondary;
-                    }
-                }
-            }
+        .priceandbidders {
+          p {
+            margin: 0 !important;
+            color: #747474;
+          }
         }
-        // ############# Image Cont End ##################
 
-        // ############# Bid Data Cont ##################
-        .bid-data-cont{
-            padding: 10px 30px;
+        .highest-bid {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
 
-            .artist-name{
-                margin-bottom: 40px ;
-            }
+          img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+          }
 
-            .item-name{
-                margin-bottom: 15px;
-            }
-            .item-bio{
-                margin-bottom: 20px;
-            }
+          p, h3 {
+            margin: 0 !important;
+            color: #747474;
+          }
 
-            .bid-history{
-                height: 340px;
-                position: relative;
-
-
-                // border: 1px solid #dedede;
-                border-radius: 10px;
-                // padding: 10px 20px ;
-                padding-right: 20px ;
-                overflow-x: hidden;
-                overflow-y: scroll;
-                &::-webkit-scrollbar {
-                    visibility: hidden;
-                    width: 3px;
-                }
-
-                &::-webkit-scrollbar-track {
-                    background: #f0efef;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background: #dedede;
-                    border-radius: 20px;
-                }
-            
-                
-
-                .one-bid{
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 10px;
-                    // justify-content: center;
-                    padding: 5px;
-                    // border-bottom: 1px solid #dedede;
-            
-                    // border-radius: 6px;
-
-                    .bidder-dp{
-                        border-radius: 50%;
-                        height: 40px; width: 40px;
-                    }
-
-                    .nameandbid{
-                        
-                        h6{
-                            font-weight: bold;
-                            margin: 0;
-                            color: rgb(6, 221, 6);
-                        }
-
-                        .bid{
-                            color: rgb(6, 221, 6);
-                        }
-
-                        .message{
-                            color: $secondary;
-                        }
-
-                        p{
-                            color: $primary;
-                            font-weight: 600;
-                            margin: 0;
-
-                            span{
-                                font-size: 12px;
-                                font-weight: lighter;
-                                color: #747474 !important;
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            .messageandbid{
-                // display: flex;
-                width: 100%;
-                margin-top: 20px;
-                position: relative;
-                height: 50px;
-
-                input{
-                    width: 100%;
-                    height: 100%;
-                    border: 1px solid #dedede;
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                }
-                .buttons{
-
-                    position: absolute;
-                    right: -8%;
-                    top: 65%;
-                    transform: translate(-50%, -50%);
-
-                .switch {
-                position: relative;
-                display: inline-block;
-                width: 110px;
-                height: 34px;
-
-                span{
-                    color: grey;
-                    font-weight: bolder;
-                    color: white;
-                }
-                }
-
-                .switch input {display:none;}
-
-                .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #797979;
-                
-                -webkit-transition: .4s;
-                transition: .4s;
-                }
-
-                .slider:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
-                }
-
-                input:checked + .slider {
-                background-color: $primary;
-                }
-
-                input:focus + .slider {
-                box-shadow: 0 0 1px #2196F3;
-                }
-
-                input:checked + .slider:before {
-                -webkit-transform: translateX(75px);
-                -ms-transform: translateX(75px);
-                transform: translateX(75px);
-                }
-
-                /*------ ADDED CSS ---------*/
-                .on
-                {
-                display: none;
-                }
-
-                .on, .off
-                {
-                color: white;
-                position: absolute;
-                transform: translate(-50%,-50%);
-                top: 50%;
-                left: 50%;
-                font-size: 10px;
-                font-family: Verdana, sans-serif;
-                }
-
-                input:checked+ .slider .on
-                {display: block;}
-
-                input:checked + .slider .off
-                {display: none;}
-
-                /*--------- END --------*/
-
-                /* Rounded sliders */
-                .slider.round {
-                border-radius: 34px;
-                }
-
-                .slider.round:before {
-                border-radius: 50%;}
-
-
-                    button{
-                        // display: block;
-                        width: 50%;
-                        height: 30px;
-                        background: none;
-                        border: none;
-                        // border-radius: 8px;
-                        background: #dedede;
-                        border-top-left-radius: 6;
-                        border-top-right-radius: 6;
-                        // margin: 5px;
-                    }
-                    .active{
-                        background: $primary;
-                    }
-                    
-                }
-
-            }
-
+          h3 {
+            color: $secondary;
+          }
         }
+      }
     }
+
+    // ############# Image Cont End ##################
+
+    // ############# Bid Data Cont ##################
+    .bid-data-cont {
+      padding: 10px 30px;
+
+      .artist-name {
+        margin-bottom: 40px;
+      }
+
+      .item-name {
+        margin-bottom: 15px;
+      }
+
+      .item-bio {
+        margin-bottom: 20px;
+      }
+
+      .bid-history {
+        height: 340px;
+        position: relative;
+
+
+        // border: 1px solid #dedede;
+        border-radius: 10px;
+        // padding: 10px 20px ;
+        padding-right: 20px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          visibility: hidden;
+          width: 3px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f0efef;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #dedede;
+          border-radius: 20px;
+        }
+
+
+        .one-bid {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          // justify-content: center;
+          padding: 5px;
+          // border-bottom: 1px solid #dedede;
+
+          // border-radius: 6px;
+
+          .bidder-dp {
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+          }
+
+          .nameandbid {
+
+            h6 {
+              font-weight: bold;
+              margin: 0;
+              color: rgb(6, 221, 6);
+            }
+
+            .bid {
+              color: rgb(6, 221, 6);
+            }
+
+            .message {
+              color: $secondary;
+            }
+
+            p {
+              color: $primary;
+              font-weight: 600;
+              margin: 0;
+
+              span {
+                font-size: 12px;
+                font-weight: lighter;
+                color: #747474 !important;
+              }
+            }
+          }
+        }
+      }
+
+
+      .messageandbid {
+        // display: flex;
+        width: 100%;
+        margin-top: 20px;
+        position: relative;
+        height: 50px;
+
+        input {
+          width: 100%;
+          height: 100%;
+          border: 1px solid #dedede;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        .buttons {
+
+          position: absolute;
+          right: -8%;
+          top: 65%;
+          transform: translate(-50%, -50%);
+
+          .switch {
+            position: relative;
+            display: inline-block;
+            width: 110px;
+            height: 34px;
+
+            span {
+              color: grey;
+              font-weight: bolder;
+              color: white;
+            }
+          }
+
+          .switch input {
+            display: none;
+          }
+
+          .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #797979;
+
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+
+          .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+          }
+
+          input:checked + .slider {
+            background-color: $primary;
+          }
+
+          input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+          }
+
+          input:checked + .slider:before {
+            -webkit-transform: translateX(75px);
+            -ms-transform: translateX(75px);
+            transform: translateX(75px);
+          }
+
+          /*------ ADDED CSS ---------*/
+          .on {
+            display: none;
+          }
+
+          .on, .off {
+            color: white;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            font-size: 10px;
+            font-family: Verdana, sans-serif;
+          }
+
+          input:checked + .slider .on {
+            display: block;
+          }
+
+          input:checked + .slider .off {
+            display: none;
+          }
+
+          /*--------- END --------*/
+
+          /* Rounded sliders */
+          .slider.round {
+            border-radius: 34px;
+          }
+
+          .slider.round:before {
+            border-radius: 50%;
+          }
+
+
+          button {
+            // display: block;
+            width: 50%;
+            height: 30px;
+            background: none;
+            border: none;
+            // border-radius: 8px;
+            background: #dedede;
+            border-top-left-radius: 6;
+            border-top-right-radius: 6;
+            // margin: 5px;
+          }
+
+          .active {
+            background: $primary;
+          }
+
+        }
+
+      }
+
+    }
+  }
 }
 
 
+@media(max-width: 992px) {
+  #art-page {
+    .art-row {
+      display: block !important;
 
-
-@media(max-width: 992px){
-    #art-page{
-        .art-row{
-            display: block !important;
-
-            .image-cont{
-                .art-image{
-                    width: 100% !important;
-                    height: 450px !important;
-                }
-            }
-
-            .bid-data-cont{
-                border-top: 1px solid #dedede;
-                margin-top: 40px;
-                padding: 10px 0px !important;
-                padding-top: 30px !important;
-            }
-
+      .image-cont {
+        .art-image {
+          width: 100% !important;
+          height: 450px !important;
         }
+      }
+
+      .bid-data-cont {
+        border-top: 1px solid #dedede;
+        margin-top: 40px;
+        padding: 10px 0px !important;
+        padding-top: 30px !important;
+      }
+
     }
+  }
 }
 
 
+@media(max-width: 426px) {
+  #art-page {
+    .art-row {
+      display: block !important;
 
-@media(max-width: 426px){
-    #art-page{
-        .art-row{
-            display: block !important;
+      .image-cont {
+        .art-image {
+          width: 100% !important;
+          height: 400px !important;
+        }
+      }
 
-            .image-cont{
-                .art-image{
-                    width: 100% !important;
-                    height: 400px !important;
-                }
-            }
+      .bid-data-cont {
+        border-top: 1px solid #dedede;
+        margin-top: 40px;
+        padding: 10px 0px !important;
+        padding-top: 30px !important;
+      }
 
-            .bid-data-cont{
-                border-top: 1px solid #dedede;
-                margin-top: 40px;
-                padding: 10px 0px !important;
-                padding-top: 30px !important;
-            }
+    }
 
+    .highest-bid {
+      img {
+        width: 30px !important;
+        height: 30px !important;
+        margin-left: 10px;
+      }
+    }
+
+    .highest-by, .base-price, .total-bidders {
+      font-size: 10px !important;
+      font-weight: bold;
+      letter-spacing: .2em;
+    }
+
+    .current-bid {
+      font-size: 18px !important;
+      font-weight: bold;
+      border-left: 1px solid #dedede;
+      padding-left: 10px;
+    }
+
+    .bid-data-cont {
+      .item-name {
+        font-size: 30px !important;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px !important;
+        font-weight: 400;
+        letter-spacing: .1em;
+        margin-bottom: 30px;
+      }
+    }
+
+    .bid-history {
+      .one-bid {
+        border: none !important;
+
+        img {
+          width: 30px !important;
+          height: 30px !important;
         }
 
-            .highest-bid{
-                    img{
-                        width: 30px !important; height: 30px !important;
-                        margin-left: 10px;
-                    }
-            }
-     
-            .highest-by,.base-price,.total-bidders{
-                font-size: 10px !important;
-                font-weight: bold;
-                letter-spacing: .2em;
-            }
+        .nameandbid {
+          p {
+            font-size: 12px !important;
+          }
 
-            .current-bid{
-                font-size: 18px !important;
-                font-weight: bold;
-                border-left: 1px solid #dedede;
-                padding-left: 10px;
-            }
-
-            .bid-data-cont{
-                .item-name{
-                    font-size: 30px !important;
-                    font-weight: 600;
-                }
-
-                p{
-                    font-size: 14px !important;
-                    font-weight: 400; letter-spacing: .1em;
-                    margin-bottom: 30px;
-                }
-            }
-
-            .bid-history{
-                .one-bid{
-                    border: none !important;
-                    img{
-                        width: 30px !important;
-                        height: 30px !important;
-                    }
-                    .nameandbid{
-                        p{
-                            font-size: 12px !important;
-                        }
-                        h6{
-                            font-size: 14px !important;
-                        }
-                    }
-                }
-            }
-        
+          h6 {
+            font-size: 14px !important;
+          }
+        }
+      }
     }
-    // Hero End
+
+  }
+  // Hero End
 }
 
 
+@media(max-width: 376px) {
+  #art-page {
+    .art-row {
 
-@media(max-width: 376px){
-    #art-page{
-        .art-row{
-            
 
-            .image-cont{
-                .art-image{
-                    width: 100% !important;
-                    height: 300px !important;
-                }
-            }
+      .image-cont {
+        .art-image {
+          width: 100% !important;
+          height: 300px !important;
+        }
+      }
 
-            .bid-data-cont{
-                border-top: 1px solid #dedede;
-                margin-top: 40px;
-                padding: 10px 0px !important;
-                padding-top: 30px !important;
-            }
+      .bid-data-cont {
+        border-top: 1px solid #dedede;
+        margin-top: 40px;
+        padding: 10px 0px !important;
+        padding-top: 30px !important;
+      }
 
+    }
+
+    .highest-bid {
+      img {
+        width: 30px !important;
+        height: 30px !important;
+        margin-left: 5px;
+      }
+    }
+
+    .highest-by, .base-price, .total-bidders {
+      font-size: 9px !important;
+      font-weight: bold;
+      letter-spacing: .1em;
+    }
+
+    .current-bid {
+      font-size: 16px !important;
+      font-weight: bold;
+      border-left: 1px solid #dedede;
+      padding-left: 5px;
+    }
+
+    .bid-data-cont {
+      .item-name {
+        font-size: 26px !important;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px !important;
+        font-weight: 400;
+        letter-spacing: .1em;
+        margin-bottom: 30px;
+      }
+    }
+
+    .bid-history {
+      .one-bid {
+        img {
+          width: 30px !important;
+          height: 30px !important;
         }
 
-            .highest-bid{
-                    img{
-                        width: 30px !important; height: 30px !important;
-                        margin-left: 5px;
-                    }
-            }
-     
-            .highest-by,.base-price,.total-bidders{
-                font-size: 9px !important;
-                font-weight: bold;
-                letter-spacing: .1em;
-            }
+        .nameandbid {
+          p {
+            font-size: 12px !important;
+          }
 
-            .current-bid{
-                font-size: 16px !important;
-                font-weight: bold;
-                border-left: 1px solid #dedede;
-                padding-left: 5px;
-            }
-
-            .bid-data-cont{
-                .item-name{
-                    font-size: 26px !important;
-                    font-weight: 600;
-                }
-
-                p{
-                    font-size: 14px !important;
-                    font-weight: 400; letter-spacing: .1em;
-                    margin-bottom: 30px;
-                }
-            }
-
-            .bid-history{
-                .one-bid{
-                    img{
-                        width: 30px !important;
-                        height: 30px !important;
-                    }
-                    .nameandbid{
-                        p{
-                            font-size: 12px !important;
-                        }
-                        h6{
-                            font-size: 14px !important;
-                        }
-                    }
-                }
-            }
-        
+          h6 {
+            font-size: 14px !important;
+          }
+        }
+      }
     }
-    // Hero End
+
+  }
+  // Hero End
 }
 
 
+@media(max-width: 321px) {
+  #art-page {
+    .bid-data {
+      display: block !important;
 
-@media(max-width:321px){
-    #art-page{
-        .bid-data{
-            display: block !important;
+      .priceandbidders {
+        display: flex !important;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
 
-            .priceandbidders{
-                display: flex !important;
-                justify-content: space-between;
-                margin-bottom: 20px ;
-            }
+      .highest-bid {
+        // justify-content: space-around !important;
+        margin-left: -5px;
 
-            .highest-bid{
-                // justify-content: space-around !important;
-                margin-left: -5px;
-                .current-bid{
-                    flex: 2;
-                    text-align: right;
-                }
-            }
-
+        .current-bid {
+          flex: 2;
+          text-align: right;
         }
-
-        .bid-data-cont{
-            .artist-name{
-                font-size: 12px !important;
-            }
-            .item-name{
-                font-size: 22px !important;
-                font-weight: 600;
-            }
-
-            p{
-                font-size: 12px !important;
-                font-weight: 400; letter-spacing: .1em;
-                margin-bottom: 30px;
-                text-align: justify; text-justify: inter-word;
-            }
-        }
-
-        .bid-history{
-            .one-bid{
-                img{
-                    width: 25px !important;
-                    height: 25px !important;
-                }
-                .nameandbid{
-                    p{
-                        font-size: 10px !important;
-                    }
-                    h6{
-                        font-size: 12px !important;
-                    }
-                }
-            }
-        }
-
-        .messageandbid{
-            display: block !important;
-            input{
-                height: 50px !important;
-                width: 100%;
-            }
-            .buttons{
-                display: flex;
-                justify-content: flex-end;
-            }
-        }
-
-
+      }
 
     }
 
+    .bid-data-cont {
+      .artist-name {
+        font-size: 12px !important;
+      }
+
+      .item-name {
+        font-size: 22px !important;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 12px !important;
+        font-weight: 400;
+        letter-spacing: .1em;
+        margin-bottom: 30px;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+    }
+
+    .bid-history {
+      .one-bid {
+        img {
+          width: 25px !important;
+          height: 25px !important;
+        }
+
+        .nameandbid {
+          p {
+            font-size: 10px !important;
+          }
+
+          h6 {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+
+    .messageandbid {
+      display: block !important;
+
+      input {
+        height: 50px !important;
+        width: 100%;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+
+  }
 
 
 }

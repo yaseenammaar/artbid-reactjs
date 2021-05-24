@@ -140,13 +140,13 @@ function Art(props) {
                                             {/* <button className="b-btn active">Bid</button>
                                             <button className="b-btn ">Message</button> */}
 
-                                        <label className="switch">
-                                          <input type="checkbox" id="togBtn" />
-                                        <div className="slider round">
-                                            <span className="on">Bid</span>
-                                            <span className="off">Message</span>
-                                         </div>
-                                        </label>
+                                            <label className="switch">
+                                              <input type="checkbox" id="togBtn" />
+                                            <div className="slider round">
+                                                <span className="on">Bid</span>
+                                                <span className="off">Message</span>
+                                             </div>
+                                            </label>
                                         </div>
 
                                 </div>
