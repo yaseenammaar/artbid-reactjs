@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import {setUser} from "../../../redux/actions/authActions";
 import useSearchSuggestions from "../../../hooks/useSearchSuggestions";
-import {useHistory} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 
 
 import OneCard from '../../molecules/artist/one-card';
@@ -196,10 +196,19 @@ function Hero() {
 
 
                     <div className="m-grid">
-                        <div className="one-card">
-                        <OneCard url="https://i.pinimg.com/originals/1c/88/83/1c8883a1768f2f77caf0371d49a68dc2.gif" name="NASA Rocket" category="Astronomy" artist="Nightcrawler" bp="5,000"/>
-
+                        <Link
+                            to={{
+                                pathname: "/art",
+                                search: "?sort=itemId=5aRh2u4oeYxgyhR2lgyE",
+                                hash: "#",
+                                state: { fromDashboard: true }
+                            }}
+                            >
+                            <div className="one-card">
+                            <OneCard url="https://i.pinimg.com/originals/1c/88/83/1c8883a1768f2f77caf0371d49a68dc2.gif" name="NASA Rocket" category="Astronomy" artist="Nightcrawler" bp="5,000"/>
+                            
                         </div>
+                        </Link>
                         <div className="one-card">
                         <OneCard url="https://i.pinimg.com/originals/76/ad/64/76ad64dc948e54d09e46f93320be77af.gif" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
                         </div>

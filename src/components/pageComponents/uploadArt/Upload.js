@@ -169,7 +169,7 @@ function Upload(props) {
     })
 
     const stepOne = (<Div>
-        Step {step + 1}
+        {/* Step {step + 1} */}
         <br/>
         <input
             type="text"
@@ -213,7 +213,7 @@ function Upload(props) {
         </Button>
     </Div>)
     const stepTwo = (<Div className="mb-3">
-        Step {step + 1}
+        {/* Step {step + 1} */}
         <Label
             fontFamily="primary"
             textColor="gray800">
@@ -253,7 +253,7 @@ function Upload(props) {
     </Div>)
     const stepThree = (<Div>
 
-        Step {step + 1}
+        {/* Step {step + 1} */}
         <ImageUploader
             {...props}
             withIcon={true}
@@ -287,7 +287,7 @@ function Upload(props) {
         </Div>
     </Div>)
     const stepFour = (<Div>
-        Step {step + 1}
+        {/* Step {step + 1} */}
 
         <ImageUploader
             {...props}
@@ -321,7 +321,7 @@ function Upload(props) {
     </Div>)
 
     const stepFive = (<Div>
-        Step {step + 1}
+        {/* Step {step + 1} */}
         <input
             type="number"
             className="upload-input"

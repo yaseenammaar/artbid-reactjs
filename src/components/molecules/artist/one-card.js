@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Div } from 'react-atomize';
 import image from '../../../assets/images/hero_splash.jpg';
 import '../../../styles/global.scss'
 
@@ -13,6 +14,7 @@ function OneCard(props) {
 
     return (
         <>
+       
             <div className="one-card card">
                 <div className="img-container">
                   <a href="#">  <img src={props.url} /> </a>
@@ -40,6 +42,7 @@ function OneCard(props) {
                 </div>                
         
             </div>
+            
         </>
     )
 }

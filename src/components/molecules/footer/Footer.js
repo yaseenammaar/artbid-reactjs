@@ -52,29 +52,22 @@ export default function LoggedOutHeader() {
                             <img className="footer-logo" src={logo}/>
                         </div>
                         <div className="col-md-2 links">
-                            <h5>Products</h5>
-                            <li><a href="#" >Something </a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
+                            <h5>Connect With us</h5>
+                            
+                            <li><a href="#" >Instagram</a></li>
+                            <li><a href="#" >Facebook</a></li>
+                            <li><a href="#" >Twitter</a></li>
                         </div>
                         <div className="col-md-2 links">
-                            <h5>Products</h5>
-                            <li><a href="#" >Something </a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
+                            <h5>Get to Know Us</h5>
+                            <li><a href="#" >About Us </a></li>
+                            <li><a href="#" >Careers</a></li>
+                            <li><a href="#" >Press Releases</a></li>
                         </div>
                         <div className="col-md-2 links">
-                            <h5>Products</h5>
-                            <li><a href="#" >Something </a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
-                            <li><a href="#" >Something</a></li>
+                            <h5>Learn</h5>
+                            <li><a href="#" >To Sell </a></li>
+                            <li><a href="#" >To Bid</a></li>
                         </div>
                     </div>
 
