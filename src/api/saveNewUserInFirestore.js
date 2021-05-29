@@ -1,13 +1,13 @@
 import apiRequest from "../logics/apiRequest";
-import APIS from "../constants/Apis";
 
 const saveNewUserInDb = async (bio, city) => {
     try {
+        const api = "/user"
         const requestData = {
             bio: bio,
             city: city,
         }
-        return await apiRequest('post', APIS.PROTECTED_APIS.SAVE_NEW_USER_IN_DB, requestData, 'application/json', true);
+        return await apiRequest('post', api, requestData);
     } catch (e) {
         console.log(e)
         new Promise.reject(e)

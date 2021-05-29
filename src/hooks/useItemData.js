@@ -58,7 +58,7 @@ const useItemData = (itemId) => {
             else {
                 setItemState({
                     ...itemState,
-                    itemData: data.itemRes.docData,
+                    itemData: data.item,
                 })
             }
 

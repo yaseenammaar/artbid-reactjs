@@ -45,7 +45,7 @@ function Register(props){
         if(isDataValid()) {
             const bio = "";
             const city = "Delhi";
-            const res = await saveNewUserInDb(bio, city);
+            const res = await saveNewUserInDb(bio);
             console.log(res.data.error)
         }
     }

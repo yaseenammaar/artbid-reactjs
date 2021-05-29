@@ -1,15 +1,9 @@
 import apiRequest from "../logics/apiRequest";
-import APIS from "../constants/Apis";
 
-const getSearchResults = async (searchText, method, startingDoc = null, limit = 10) => {
+const getSearchResults = async (searchText, method, lastDocId = null, limit = 10) => {
     try {
-        const requestData = {
-            searchText,
-            method,
-            startingDoc,
-            limit
-        }
-        return apiRequest('post', APIS.PROTECTED_APIS.GET_SEARCH_RESULTS, requestData, 'application/json', true)
+        const api = `/search/results/${searchText}?method=${method}&limit=${limit}&lastDocId=${lastDocId}`
+        return apiRequest('get', api)
     } catch (e) {
         console.log(e.message)
 

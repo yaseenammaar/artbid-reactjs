@@ -25,7 +25,7 @@ function SearchResultPage(props) {
             const res = await getSearchResults(gotSearchText, method)
             console.log(res)
             if(!res.data.isError) {
-                setResults(res.data.items)
+                setResults(res.data.results)
             }
             else {
                 console.log("error found")
@@ -97,14 +97,14 @@ function SearchResultPage(props) {
                     results.map((result, i) => (
                         <SearchResultItem
                             key={i}
-                            imageUrl={result.docData.featured_image}
-                            title={result.docData.title}
-                            description={result.docData.description}
-                            category={result.docData.category}
+                            imageUrl={result.featuredImage}
+                            title={result.title}
+                            description={result.description}
+                            category={result.category}
                             onItemClicked={() => {
                                 history.push({
                                     pathname: '/art',
-                                    search: `?itemId=${result.id}`,
+                                    search: `?itemId=${result.itemId}`,
                                 })
                             }}
                         />
