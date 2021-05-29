@@ -13,6 +13,8 @@ import {
     Notification
 } from "react-atomize";
 import {NavLink} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom"
+
 
 import styles from '../../../styles/style';
 
@@ -169,19 +171,20 @@ function LoggedInHeader(props) {
                     </Button>
                 </Col>
                 <Col size={{xs: 2, lg: 1}}>
-                    
-                        <Button
-                            h="2.5rem"
-                            p={{x: "1rem"}}
-                            textSize="body"
-                            textColor="gray900"
-                            bg="white"
-                            fontFamily="primary"
-                            m={{r: "0.5rem"}}
-                            onClick={() => setIsOpenProfile(true)}
-                        >
-                            Profile
-                        </Button>
+                        <Link to={{pathname: "/Artist"}}>
+                            <Button
+                                h="2.5rem"
+                                p={{x: "1rem"}}
+                                textSize="body"
+                                textColor="gray900"
+                                bg="white"
+                                fontFamily="primary"
+                                m={{r: "0.5rem"}}
+                                // onClick={() => //setIsOpenProfile(true)}
+                            >
+                                Profile
+                            </Button>
+                        </Link>
                 </Col>
                 <Col size={{xs: 2, lg: 1}}>
                     <Button
