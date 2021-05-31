@@ -5,7 +5,7 @@ import LoggedInHeader from "./components/molecules/navbar/LoggedInHeader";
 import Footer from "./components/molecules/footer/Footer";
 import Login from "./components/pageComponents/login/Login";
 
-import Hero from "./components/pageComponents/home/Hero";
+import Hero from "./components/pageComponents/Home/Hero";
 import Profile from "./pages/Profile";
 import Artist from "./pages/Artist/Artist";
 import { connect } from "react-redux"
@@ -23,8 +23,9 @@ import {
 } from "react-router-dom";
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
-import SearchResultPage from "./pages/SearchResultPage";
+import SearchResultPage from "./pages/SearchResult/SearchResultPage";
 import Art from "./pages/Art/Art";
+import Home from "./pages/Home/Home";
 
 const theme = {
     ...DefaultTheme,
@@ -65,9 +66,9 @@ function Main(props) {
 
                     }
                     {/* <CreditCard/> */}
-                    <Route exact path="/" component={Hero}/>
-                    <Route exact path="/stuff" component={Hero}/>
-                    <Route exact path="/contact" component={Hero}/>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/stuff" component={Home}/>
+                    <Route exact path="/contact" component={Home}/>
                     <Route exact path="/profile" component={Profile}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path={"/search_result"} component={SearchResultPage}/>

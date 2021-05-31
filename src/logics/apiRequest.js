@@ -11,21 +11,43 @@ const apiRequest = async (method, api, data = {},contentType = "application/json
         apiUrl = 'https://us-central1-artbid-db-dev.cloudfunctions.net/api/v1';
     }
 
-    const user = await Firebase.auth().currentUser
-    const token = await user.getIdToken()
-    console.log(token)
-    const url = apiUrl + api
-    apiConfig = {
-        method,
-        url,
-        headers: {
-            'Content-Type': contentType,
-            'authorization':'Bearer '+token,
-        },
-        data: data
+    let apiResData
+    try {
+        const user = await Firebase.auth().currentUser
+        const token = await user.getIdToken()
+        console.log(token)
+        const url = apiUrl + api
+        apiConfig = {
+            method,
+            url,
+            headers: {
+                'Content-Type': contentType,
+                'authorization':'Bearer '+token,
+            },
+            data: data,
+            responseType: 'json',
+        }
+
+        const apiRes = await axios(apiConfig);
+        apiResData = apiRes.data
+    } catch (e) {
+        if(e.response) {
+            console.error("error while fetching api :", apiUrl, e.response)
+            apiResData = e.response.data
+        }
+        else {
+            console.log(e)
+            apiResData = {
+                error: e.message,
+                isError: true,
+                statusCode: null,
+            }
+        }
+
     }
 
-    return axios(apiConfig);
+    return apiResData
+
 }
 
 export default apiRequest

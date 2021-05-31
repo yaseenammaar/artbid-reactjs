@@ -3,11 +3,11 @@ import {
     useHistory,
     useLocation
 } from "react-router-dom";
-import getSearchResults from "../api/getSearchResults";
-import SearchResultItem from "../components/pageComponents/searchResult/SearchResultItem";
-import styles from "../styles/searchResultPage.module.css";
-import useSearchSuggestions from "../hooks/useSearchSuggestions";
-import SearchLoading from "../components/molecules/search/SearchLoading";
+import getSearchResults from "../../api/getSearchResults";
+import SearchResultItem from "../../components/pageComponents/searchResult/SearchResultItem";
+import styles from "./searchResultPage.module.css";
+import useSearchSuggestions from "../../hooks/useSearchSuggestions";
+import SearchLoading from "../../components/molecules/search/SearchLoading";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -22,14 +22,12 @@ function SearchResultPage(props) {
 
     useEffect(() => {
         (async () => {
-            const res = await getSearchResults(gotSearchText, method)
-            console.log(res)
-            if(!res.data.isError) {
-                setResults(res.data.results)
+            const resData = await getSearchResults(gotSearchText, method)
+            if(!resData.isError) {
+                setResults(resData.results)
             }
             else {
-                console.log("error found")
-                console.log(res)
+                console.log("error found in search results")
             }
         })()
     }, [gotSearchText])

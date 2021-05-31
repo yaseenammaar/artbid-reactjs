@@ -136,6 +136,7 @@ const useUploadItem = () => {
             })
             const featuredImageUrl = await uploadFeaturedImage(itemData.featuredImage, docId)
             const supportingImagesUrlArray = await uploadSupportingImages(itemData.supportingImages, docId)
+
             const data = await runUploadItemsApi({
                 title: itemData.title,
                 description: itemData.description,
@@ -144,7 +145,7 @@ const useUploadItem = () => {
                 supportingImages: supportingImagesUrlArray,
                 basePrice: itemData.basePrice,
                 newDocId: docId,
-                closingTimestamp: Firebase.firestore.Timestamp.fromDate(itemData.closingDate)
+                closingTimestamp: itemData.closingDate,
 
             })
             setDetailsProgress(100)
