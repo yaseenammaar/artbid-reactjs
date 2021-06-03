@@ -1,6 +1,12 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is Artbid Official website project.
+
+NOTE: To know how to use apis, [refer using apis doc](./documentation/using_apis.md)
+
+NOTE: For api list or index, [refer api index doc](./documentation/apis/index.md)
+
+NOTE: For file structuring docs, [refer file structuring doc](./documentation/file_structure_guide.md)
 
 ## Available Scripts
 
