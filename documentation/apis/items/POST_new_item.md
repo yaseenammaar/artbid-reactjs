@@ -12,7 +12,7 @@ import apiRequest from "./apiRequest";
 
 async function uploadNewItem(itemData) {
     const apiUrl = `/item`
-    return await apiRequest("get", apiUrl, itemData)
+    return await apiRequest("post", apiUrl, itemData)
 }
 
 const resBody = await uploadNewItem({
