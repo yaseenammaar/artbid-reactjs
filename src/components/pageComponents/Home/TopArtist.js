@@ -7,7 +7,7 @@ function TopArtist(props) {
             <section id="top-artist" className="card-collection">
 
                 <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0"> TOP ARTISTS </h2>
+                    <h2 className="m-0"> SELLERS </h2>
                     <a className="m-0" href="#">See All</a>
                 </div>
 
@@ -28,7 +28,7 @@ function TopArtist(props) {
                         </div>
 
                         <div className="col-md-2 col-6">
-                            <OneArtist name="Baymax" url="https://fastly.syfy.com/sites/syfy/files/wire/legacy/bh6-baymax-huggable-award-final-copy1.jpg"/>
+                            <OneArtist name="Baymax" url="https://insidethemagic-119e2.kxcdn.com/wp-content/uploads/2020/12/Screen-Shot-2020-12-04-at-7.01.03-PM-800x400.png"/>
                         </div>
 
                         <div className="col-md-2 col-6">

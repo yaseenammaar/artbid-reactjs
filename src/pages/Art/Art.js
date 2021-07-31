@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/global.scss';
 import image from '../../assets/images/hero_splash.jpg';
 import useItemData from "../../hooks/useItemData";
+import { Icon, Button } from "react-atomize";
+
 
 
 function Art(props) {
@@ -15,7 +17,7 @@ function Art(props) {
      */
     const {
         itemState
-    } = useItemData("MV2cCmIEitoKYSkAUedO")
+    } = useItemData("D6D0wBSPhRTpESbzCtDu")
 
 
     if(itemState.loading) {
@@ -43,16 +45,18 @@ function Art(props) {
                                     </div>
 
                                     <div className="highest-bid">
-                                        <img src={image} />
+                                        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"} />
 
                                         &emsp;
                                         
                                         <div className="highest-by">
                                                 <p>HIGHEST BID</p>
-                                                <p>By <a href="#"> Omar </a></p>
+                                                <p>By <a href="#"> Roy </a></p>
                                         </div>
                                             &emsp;
-                                        <h3 className="current-bid"> Rs {itemState.bidData.addedPriceCount + itemState.itemData.basePrice}</h3>
+                                            <h3 className="current-bid"> Rs 1,00,000</h3>
+
+                                        {/* <h3 className="current-bid"> Rs {itemState.bidData.addedPriceCount + itemState.itemData.basePrice}</h3> */}
                                     </div>
                                 </div>
 
@@ -68,67 +72,42 @@ function Art(props) {
 
 
                                     <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEFazuw1KpmDA4PvyxRN6LRask2lReyQrV2U-Re6Duo8dR8P5HPAzlgyun3nWskrCP12Q&usqp=CAU"}  />
                                         &emsp;
                                         <div className="nameandbid">
                                             <p>Omar <span className="type">Bid</span></p>
+                                            <h6>Bidded INR 10,000</h6>
+                                        </div>    
+                                    </div>
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTlAQsGyVA16xGSo56P6Mk1-VaX6H6q3d4TA&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>Ammaar <span className="type">Bid</span></p>
+                                            <h6>Bidded INR 20,000</h6>
+                                        </div>    
+                                    </div>
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxLkbtTa0kfmKizxJgqECQLdlt_xq1R2jEQQ&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>Shubham <span className="type">Bid</span></p>
+                                            <h6>Bidded INR 80,000</h6>
+                                        </div>    
+                                    </div>
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>Roy <span className="type">Bid</span></p>
                                             <h6>Bidded INR 1,00,000</h6>
                                         </div>    
                                     </div>
 
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Bid</span></p>
-                                            <h6>Bidded INR 1,00,000</h6>
-                                        </div>    
-                                    </div>
-
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Bid</span></p>
-                                            <h6>Bidded INR 1,00,000</h6>
-                                        </div>    
-                                    </div>
-
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Bid</span></p>
-                                            <h6>Bidded INR 1,00,000</h6>
-                                        </div>    
-                                    </div>
-
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Bid</span></p>
-                                            <h6>Bidded INR 1,00,000</h6>
-                                        </div>    
-                                    </div>
-
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Bid</span></p>
-                                            <h6 className="bid">Bidded INR 1,00,000</h6>
-                                        </div>    
-                                    </div>
-
-                                    <div className="one-bid">
-                                        <img className="bidder-dp" src={image}  />
-                                        &emsp;
-                                        <div className="nameandbid">
-                                            <p>Omar <span className="type">Message</span></p>
-                                            <h6 className="message">I am the best</h6>
-                                        </div>    
-                                    </div>
+                                    
                                   
 
                                 </div>
@@ -136,18 +115,31 @@ function Art(props) {
                                 <div className="messageandbid">
                                     
                                         <input placeholder="+ Your Amount" />
-                                        <div className="buttons">
-                                            {/* <button className="b-btn active">Bid</button>
-                                            <button className="b-btn ">Message</button> */}
+                                        <Button
+                                            h="2.5rem"
+                                            w="2.5rem"
+                                            bg="warning700"
+                                            hoverBg="warning600"
+                                            rounded="circle"
+                                            m={{ r: "1rem" }}
+                                            shadow="2"
+                                            hoverShadow="4"
+                                        >
+                                            <Icon name="Search" size="20px" color="white" />
+                                        </Button>
+                                         <div className="buttons">
+                                         
+                                             {/* <button className="b-btn active">Bid</button> */}
+                                            {/*<button className="b-btn ">Message</button> */}
 
-                                            <label className="switch">
+                                             {/* <label className="switch">
                                               <input type="checkbox" id="togBtn" />
                                             <div className="slider round">
                                                 <span className="on">Bid</span>
                                                 <span className="off">Message</span>
                                              </div>
-                                            </label>
-                                        </div>
+                                            </label>  */}
+                                        </div> 
 
                                 </div>
 

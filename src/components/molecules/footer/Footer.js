@@ -61,8 +61,8 @@ export default function LoggedOutHeader() {
                         <div className="col-md-2 links">
                             <h5>Get to Know Us</h5>
                             <li><a href="#" >About Us </a></li>
-                            <li><a href="#" >Careers</a></li>
-                            <li><a href="#" >Press Releases</a></li>
+                            {/* <li><a href="#" >Careers</a></li>
+                            <li><a href="#" >Press Releases</a></li> */}
                         </div>
                         <div className="col-md-2 links">
                             <h5>Learn</h5>

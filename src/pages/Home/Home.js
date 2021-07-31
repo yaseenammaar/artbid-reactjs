@@ -7,6 +7,7 @@ import {DefaultTheme, ThemeProvider} from "react-atomize";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/global.scss';
+import Recents from "../../components/pageComponents/Home/Recents";
 
 function Home(props) {
     return(
@@ -18,7 +19,7 @@ function Home(props) {
 
             <TopArtist />
 
-            <Exclusive />
+            <Recents />
 
             <Paintings />
 

@@ -144,7 +144,7 @@
 
       .messageandbid {
         // display: flex;
-        width: 100%;
+        width: 50%;
         margin-top: 20px;
         position: relative;
         height: 50px;
@@ -530,11 +530,10 @@
     }
 
     .messageandbid {
-      display: block !important;
 
       input {
         height: 50px !important;
-        width: 100%;
+        width: 50%;
       }
 
       .buttons {
