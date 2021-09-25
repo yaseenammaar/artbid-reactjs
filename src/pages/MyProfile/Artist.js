@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/global.scss';
+import {
+    ThemeProvider,
+    Div,
+    Row,
+    Col,
+    DefaultTheme,
+    Image,
+    Button,
+    Icon,
+    Text,
+    Modal,
+    Notification,
+    Textarea,
+    Input
+} from "react-atomize";
 import image from '../../assets/images/hero_splash.jpg';
 import OneCard from '../../components/molecules/artist/one-card';
 
 
 
-function Artist(props) {
+function MyProfile(props) {
     const [state, setState] = useState('');
+    const [isOpenEdit, setIsOpenEdit] = useState(false);
+
+
+    function closeEdit() {
+        setIsOpenEdit(false)
+    }
 
     useEffect(() => {
         return () => {
@@ -16,6 +37,32 @@ function Artist(props) {
 
     return (
         <>
+
+        <Modal 
+                isOpen={isOpenEdit} 
+                onClose={closeEdit} 
+                align="center" 
+                rounded="md" 
+                shadow="1"
+                 >
+                     <Div>
+                        <Icon
+                            name="Cross"
+                            pos="absolute"
+                            top="1rem"
+                            right="1rem"
+                            size="16px"
+                            onClick={closeEdit}
+                            cursor="pointer"
+                        />
+                        
+                            <button className="follow-btn">Profile Pic Change</button>
+                        
+                         <Input placeholder="Username"/>
+                         <Textarea placeholder="Bio"/>
+                         <button>Update</button>
+                    </Div>
+                </Modal>
             <section id="artist-page">
                 <div className="container">
                     <div className="head">
@@ -23,19 +70,19 @@ function Artist(props) {
                             <img src={image} />
                         </div>
                         <div className="profile-data">
-                            <h2 className="profile-name">Artist Name</h2>
+                            <h2 className="profile-name">Yaseen Ammaar</h2>
                             <p className="profile-bio">Website designer based in India, providing businesses bespoke designs.
 You know the work, I know how to do it.</p>
                             <div className="followers">
-                                <p>206 <span> posts</span></p>
+                                <p>206 <span> Products</span></p>
                                 <p>4,760 <span> followers</span></p>
                                 <p>1,855 <span> following</span></p>
                             </div>
                         </div>
                         <div className="follow-unfollow">
-                            <button className="follow-btn">Follow</button>
-                            <button className="unfollow-btn">Unfollow</button>
-                            <button className="message-btn">Message</button>
+                            {/*<button className="follow-btn">Follow</button>
+                            <button className="unfollow-btn">Unfollow</button>*/}
+                            <button onClick={() => setIsOpenEdit(true)} className="message-btn">Edit Profile</button>
                         </div>
                     </div>
                 </div>
@@ -57,7 +104,7 @@ You know the work, I know how to do it.</p>
                             </div>
                             <div className="col-md-3 col-6">
                                 <OneCard url="https://i.pinimg.com/originals/1a/37/bc/1a37bcf72db69c5ee822868209e18b76.gif"  name="Gold Medal" category="Medal & Trophy" artist="Usain Bolt" bp="34,800"/>
-                            </div>
+                      d      </div>
                             <div className="col-md-3 col-6">
                                 <OneCard url="https://i.pinimg.com/originals/1c/88/83/1c8883a1768f2f77caf0371d49a68dc2.gif" name="NASA Rocket" category="Astronomy" artist="Nightcrawler" bp="5,000"/>
                             </div>
@@ -69,4 +116,4 @@ You know the work, I know how to do it.</p>
     )
 }
 
-export default Artist;
+export default MyProfile;

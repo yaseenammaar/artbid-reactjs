@@ -17,7 +17,7 @@ function Art(props) {
      */
     const {
         itemState
-    } = useItemData("D6D0wBSPhRTpESbzCtDu")
+    } = useItemData("3nHukkxHoGuJ1PeJFWDk")
 
 
     if(itemState.loading) {
@@ -35,13 +35,13 @@ function Art(props) {
                             {/* ############## Image Container ############ */}
                             <div className="image-cont">
 
-                                <img className="art-image" src={itemState.itemData.featuredImage} />
+                                <img className="art-image" src={"https://firebasestorage.googleapis.com/v0/b/artbid-db-dev.appspot.com/o/items%2F3nHukkxHoGuJ1PeJFWDk%2FFEATURED_IMAGE_3nHukkxHoGuJ1PeJFWDk.png?alt=media&token=0ed2e64d-9078-43ac-9d85-46cfa9b4a683"} />
 
                                 <div className="bid-data">
 
                                     <div className="priceandbidders">
-                                        <p className="base-price">Base Price: Rs {itemState.itemData.basePrice}</p>
-                                        <p className="total-bidders">Total Bidders: {itemState.bidData.bidCount}</p>
+                                        <p className="base-price">Base Price: Rs {/*itemState.itemData.basePrice*/4564}</p>
+                                        <p className="total-bidders">Total Bidders: {/*itemState.bidData.bidCount*/3}</p>
                                     </div>
 
                                     <div className="highest-bid">
@@ -65,8 +65,11 @@ function Art(props) {
 
                             <div className="bid-data-cont">
                                 <a href="#" className="artist-name"> Artist </a>
-                                <h2 className="item-name"> {itemState.itemData.title} </h2>
-                                <p className="item-bio">{itemState.itemData.description}</p>
+                                <h2 className="item-name"> Beautiful Shit Just like Shit{//itemState.itemData.title
+                                } </h2>
+                                <p className="item-bio">Smells Better than cannabies{
+                                //itemState.itemData.description
+                            }</p>
 
                                 <div className="bid-history">
 
@@ -127,6 +130,7 @@ function Art(props) {
                                         >
                                             <Icon name="Search" size="20px" color="white" />
                                         </Button>
+                                        
                                          <div className="buttons">
                                          
                                              {/* <button className="b-btn active">Bid</button> */}

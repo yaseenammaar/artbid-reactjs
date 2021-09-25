@@ -1,11 +1,12 @@
 .one-artist{
     margin-bottom: 20px;
+    cursor: pointer;
     img{
         width: 140px;
         height: 140px;
         object-fit: cover;
-
         border: 5px solid white;
+        
 
     }
     h4{

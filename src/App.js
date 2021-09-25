@@ -8,6 +8,7 @@ import Login from "./components/pageComponents/login/Login";
 import Hero from "./components/pageComponents/Home/Hero";
 import Profile from "./pages/Profile";
 import Artist from "./pages/Artist/Artist";
+import MyProfile from "./pages/MyProfile/Artist";
 import { connect } from "react-redux"
 import firebaseInstance from "./Firebase/index"
 
@@ -74,6 +75,7 @@ function Main(props) {
                     <Route exact path={"/search_result"} component={SearchResultPage}/>
                     <Route exact path={"/art"} component={Art}/>
                     <Route exact path={"/artist"} component={Artist}/>
+                    <Route exact path={"/myprofile"} component={MyProfile}/>
 
 
                     <Footer/>
