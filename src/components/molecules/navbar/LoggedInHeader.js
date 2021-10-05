@@ -171,7 +171,7 @@ function LoggedInHeader(props) {
                     </Button>
                 </Col>
                 <Col size={{xs: 2, lg: 1}}>
-                        <Link to={{pathname: "/Artist"}}>
+                        <Link to={{pathname: "/myprofile"}}>
                             <Button
                                 h="2.5rem"
                                 p={{x: "1rem"}}

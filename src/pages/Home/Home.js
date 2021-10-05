@@ -21,7 +21,7 @@ function Home(props) {
 
             <Recents />
 
-            <Paintings />
+            {/* <Paintings />*/}
 
         </ThemeProvider>
     )
