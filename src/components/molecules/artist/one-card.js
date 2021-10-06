@@ -23,7 +23,7 @@ function OneCard(props) {
                 <div className="content-container ">
                     <span className="category"> {props.category} </span>
                     <h5 className="item-name" maxlength="5"> {props.name} </h5>
-                    <p className="artist-name m-0" > by <b> {props.artist} </b> </p>
+                    {props.artist?<p className="artist-name m-0" > by <b> {props.artist} </b> </p>:null}
                 </div>
 
                 {/* <div className="h-line"> </div> */}

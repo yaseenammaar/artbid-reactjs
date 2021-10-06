@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/global.scss';
+import { Alert } from "react";
+
 import image from '../../assets/images/hero_splash.jpg';
 import useItemData from "../../hooks/useItemData";
 import { Icon, Button } from "react-atomize";
@@ -7,6 +9,8 @@ import { Icon, Button } from "react-atomize";
 
 
 function Art(props) {
+
+    const [status, setStatus] = useState(3);
     /**
      * itemState: {
             itemData,
@@ -15,6 +19,8 @@ function Art(props) {
             loading
      * }
      */
+
+
     const {
         itemState
     } = useItemData("3nHukkxHoGuJ1PeJFWDk")
@@ -42,6 +48,10 @@ function Art(props) {
                                     <div className="priceandbidders">
                                         <p className="base-price">Base Price: Rs {/*itemState.itemData.basePrice*/4564}</p>
                                         <p className="total-bidders">Total Bidders: {/*itemState.bidData.bidCount*/3}</p>
+                                        {status===1?<p className="total-bidders">Ending In: 5 Hours</p>:null}
+
+                                        {status===3?<p className="total-bidders">You Won the bid "Message Seller"</p>:null}
+                                        
                                     </div>
 
                                     <div className="highest-bid">
@@ -114,38 +124,75 @@ function Art(props) {
                                   
 
                                 </div>
-
-                                <div className="messageandbid">
-                                    
-                                        <input placeholder="+ Your Amount" />
-                                        <Button
+                                <Button
                                             h="2.5rem"
-                                            w="2.5rem"
+                                            w="15rem"
                                             bg="warning700"
                                             hoverBg="warning600"
                                             rounded="circle"
                                             m={{ r: "1rem" }}
                                             shadow="2"
                                             hoverShadow="4"
+                                            onPress = {() => {
+                                                    console.log("test")
+                                                    setStatus(3)
+                                                }}
                                         >
-                                            <Icon name="Search" size="20px" color="white" />
+                                            You Won the Bid? Tap here
                                         </Button>
-                                        
-                                         <div className="buttons">
-                                         
-                                             {/* <button className="b-btn active">Bid</button> */}
-                                            {/*<button className="b-btn ">Message</button> */}
 
-                                             {/* <label className="switch">
-                                              <input type="checkbox" id="togBtn" />
-                                            <div className="slider round">
-                                                <span className="on">Bid</span>
-                                                <span className="off">Message</span>
-                                             </div>
-                                            </label>  */}
-                                        </div> 
+                                        <Button
+                                            h="2.5rem"
+                                            w="15rem"
+                                            bg="danger700"
+                                            hoverBg="danger600"
+                                            rounded="circle"
+                                            m={{ r: "1rem" }}
+                                            shadow="2"
+                                            hoverShadow="4"
+                                            onPress = {() => {
+                                                    console.log("test")
+                                                    setStatus(2)
+                                                }
+                                            }
+                                        >
+                                            You Lost the Bid? Tap here
+                                        </Button>
+                                        {status===1?<div className="messageandbid">
+                                    
+                                            <input placeholder="+ Your Amount" />
+                                            <Button
+                                                h="2.5rem"
+                                                w="2.5rem"
+                                                bg="warning700"
+                                                hoverBg="warning600"
+                                                rounded="circle"
+                                                m={{ r: "1rem" }}
+                                                shadow="2"
+                                                hoverShadow="4"
+                                            >
+                                                <Icon name="Search" size="20px" color="white" />
+                                            </Button>
+                                           
 
-                                </div>
+                                            
+                                            
+                                             <div className="buttons">
+                                             
+                                                 {/* <button className="b-btn active">Bid</button> */}
+                                                {/*<button className="b-btn ">Message</button> */}
+
+                                                 {/* <label className="switch">
+                                                  <input type="checkbox" id="togBtn" />
+                                                <div className="slider round">
+                                                    <span className="on">Bid</span>
+                                                    <span className="off">Message</span>
+                                                 </div>
+                                                </label>  */}
+                                            </div> 
+
+                                        </div>:null}
+                                
 
                             </div>
 
