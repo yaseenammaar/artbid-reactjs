@@ -24,8 +24,7 @@ if (resBody.isError) {
     // success
     
     // save the itemId of last result to fetch next set of results
-    const results = resBody.results
-    const allResultsFetched = resBody.user
+    const user = resBody.user
 }
 ```
 
@@ -63,4 +62,31 @@ No request body is needed.
       //...
     }
 }
+```
+
+For uid other than current user, response will be:
+```
+  user: {
+    displayName,
+    bio,
+    uid,
+    profilePic,
+  }
+
+```
+
+For uid same as current user, response will be:
+
+```
+  user: {
+    displayName,
+    bio,
+    uid,
+    email,
+    phoneNumber,
+    creationTimestamp,
+    lastSignInTimestamp,
+    profilePic,
+  }
+
 ```
