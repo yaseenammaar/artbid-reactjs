@@ -17,6 +17,7 @@ import {
 } from "react-atomize";
 import image from '../../assets/images/hero_splash.jpg';
 import OneCard from '../../components/molecules/artist/one-card';
+import apiRequest from "../../logics/apiRequest";
 
 
 
@@ -82,7 +83,15 @@ You know the work, I know how to do it.</p>
                         <div className="follow-unfollow">
                             {/*<button className="follow-btn">Follow</button>
                             <button className="unfollow-btn">Unfollow</button>*/}
-                            <button onClick={() => setIsOpenEdit(true)} className="message-btn">Edit Profile</button>
+                            <button onClick={() => {
+                                //setIsOpenEdit(true)
+                                (async () => {
+                                    const apiUrl = '/user/fake_uid'
+                                    const res = await apiRequest("get", apiUrl)
+                                    console.log(res)
+                                })()
+
+                            }} className="message-btn">Edit Profile</button>
                         </div>
                     </div>
                 </div>

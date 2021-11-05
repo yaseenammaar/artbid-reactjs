@@ -1,13 +1,11 @@
 import { Input, Button, Icon, Div } from "react-atomize";
-import styles from './searchBarStyles.module.css'
+import styles from './searchBarStyles.module.scss'
 import React, {useEffect, useState} from "react";
 import onClickOutside from "react-onclickoutside";
 import BarLoader from "react-spinners/BarLoader"
 import { css } from "@emotion/core";
 
-function SearchLoading(props){
-
-    const [isLoading, setIsLoading] = useState(false)
+function MainSearchBar(props){
 
     const {
         showSuggestions = true,
@@ -51,7 +49,7 @@ function SearchLoading(props){
 
     }, [suggestions])
 
-    SearchLoading.handleClickOutside = () => props?.closeDropdown();
+    MainSearchBar.handleClickOutside = () => props?.closeDropdown();
 
     const overrideLoaderCss = css`
       display: block;
@@ -102,7 +100,7 @@ function SearchLoading(props){
 }
 
 const clickOutsideConfig = {
-    handleClickOutside: () => SearchLoading.handleClickOutside
+    handleClickOutside: () => MainSearchBar.handleClickOutside
 };
 
-export default onClickOutside(SearchLoading, clickOutsideConfig);
+export default onClickOutside(MainSearchBar, clickOutsideConfig);

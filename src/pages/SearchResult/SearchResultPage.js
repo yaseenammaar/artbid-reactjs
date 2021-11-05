@@ -7,7 +7,7 @@ import getSearchResults from "../../api/getSearchResults";
 import SearchResultItem from "../../components/pageComponents/searchResult/SearchResultItem";
 import styles from "./searchResultPage.module.css";
 import useSearchSuggestions from "../../hooks/useSearchSuggestions";
-import SearchLoading from "../../components/molecules/search/SearchLoading";
+import SearchLoading from "../../components/molecules/search/MainSearchBar";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);

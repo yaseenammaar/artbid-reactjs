@@ -14,13 +14,9 @@ function Home(props) {
         <ThemeProvider theme={theme}>
 
             <Hero />
-
             <Trending />
-
             <TopArtist />
-
             <Recents />
-
             {/* <Paintings />*/}
 
         </ThemeProvider>

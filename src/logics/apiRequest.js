@@ -5,10 +5,10 @@ const apiRequest = async (method, api, data = {},contentType = "application/json
     let apiConfig;
     let apiUrl;
     if(process.env.NODE_ENV === 'production') {
-        apiUrl = 'https://us-central1-artbid-database.cloudfunctions.net/api/v1';
+        apiUrl = 'https://asia-south1-artbid-database.cloudfunctions.net/api/v1';
     }
     else {
-        apiUrl = 'https://us-central1-artbid-db-dev.cloudfunctions.net/api/v1';
+        apiUrl = 'https://asia-south1-artbid-db-dev.cloudfunctions.net/api/v1';
     }
 
     let apiResData
@@ -25,18 +25,19 @@ const apiRequest = async (method, api, data = {},contentType = "application/json
                 'authorization':'Bearer '+token,
             },
             data: data,
-            responseType: 'json',
+
         }
 
         const apiRes = await axios(apiConfig);
+        console.log('successful api request ', apiRes)
         apiResData = apiRes.data
     } catch (e) {
         if(e.response) {
-            console.error("error while fetching api :", apiUrl, e.response)
+            console.error("error while fetching api :", apiUrl, e.response, e)
             apiResData = e.response.data
         }
         else {
-            console.log(e)
+            console.log('other error', e, e.error, e.message)
             apiResData = {
                 error: e.message,
                 isError: true,
