@@ -86,7 +86,7 @@ You know the work, I know how to do it.</p>
                             <button onClick={() => {
                                 //setIsOpenEdit(true)
                                 (async () => {
-                                    const apiUrl = '/user/fake_uid'
+                                    const apiUrl = '/user/currentUser'
                                     const res = await apiRequest("get", apiUrl)
                                     console.log(res)
                                 })()
