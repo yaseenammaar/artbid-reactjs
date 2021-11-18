@@ -27,7 +27,6 @@ function PhoneAuth(props) {
             provider: firebaseInstance.auth.PhoneAuthProvider.PROVIDER_ID,
             defaultCountry: 'IN',
         }],
-        autoUpgradeAnonymousUsers: true,
         callbacks: {
             signInSuccessWithAuthResult: function(authResult, redirectUrl) {
                 const user = authResult.user;
