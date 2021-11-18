@@ -20,3 +20,15 @@ export const resetAuthData = data => (
         payload: data,
     }
 );
+
+export const makeTakeProfileDataTrue = () => (
+    {
+        type: authConstants.SET_TAKE_PROFILE_DATA_TRUE
+    }
+)
+
+export const makeTakeProfileDataFalse = () => (
+    {
+        type: authConstants.SET_TAKE_PROFILE_DATA_FALSE
+    }
+)

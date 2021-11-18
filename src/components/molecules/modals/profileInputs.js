@@ -25,6 +25,10 @@ const theme = {
 };
 function ProfileInputs(props) {
 
+    const {
+        isProfileInputOpen = false,
+        closeModal
+    } = props
     const handleItemDataChanged = (dataType, value) => {
       
     }
@@ -33,8 +37,10 @@ function ProfileInputs(props) {
         
         <ThemeProvider theme={theme}>
             <Modal 
-                isOpen={true} 
-                
+                isOpen={isProfileInputOpen}
+                onClose={() => {
+                    closeModal()
+                }}
                 align="center" 
                 rounded="md" 
                 shadow="1"
