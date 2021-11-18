@@ -29,7 +29,6 @@ import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
 import useUploadItem from "../../../hooks/useUploadItem";
 import {Line} from "rc-progress"
-
 const theme = {
     ...DefaultTheme,
     grid: {
@@ -57,8 +56,6 @@ function LoggedInHeader(props) {
     const [isRegisterOpen, setIsRegisterOpen] = useState(false);
     const [showProcessing, setShowProcessing] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
-
-
 
     function closeAbout() {
         setIsOpenAbout(false)
@@ -259,12 +256,8 @@ function LoggedInHeader(props) {
                 shadow="1"
                  >
                      <PersonCard/>
-                     
-                         
-                    
                 </Modal>
-
-            <Modal 
+            <Modal
                 isOpen={isOpen} 
                 onClose={close} 
                 align="center" 

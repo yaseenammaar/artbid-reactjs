@@ -20,6 +20,7 @@ import PhoneAuth from "../../pageComponents/login/PhoneAuth";
 import styles from "../../../styles/style";
 import Login from '../../pageComponents/login/Login';
 import Register from "../../pageComponents/login/Register";
+import ProfileInputs from "../modals/profileInputs";
 
 const theme = {
     ...DefaultTheme,
@@ -31,6 +32,8 @@ const theme = {
 };
 export default function LoggedOutHeader() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isProfileDataModal, setProfileDataModal] = useState(false);
+
 
     const loginSchema = Yup.object().shape({
         phoneNumber: Yup.string().required("Phone Number required."),
@@ -56,6 +59,7 @@ export default function LoggedOutHeader() {
                     />
                     </NavLink>
                 </Col>
+                <ProfileInputs/>
 
                 <Col size={{xs: 3, lg: 6}}>
 
