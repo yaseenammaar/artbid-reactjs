@@ -1,0 +1,40 @@
+{
+    "categories": [
+        {
+            "id":"1",
+            "category":"Art"
+        },
+        {
+            "id":"2",
+            "category":"Digital Goods"
+        },
+        {
+            "id":"3",
+            "category":"Weapons"
+        },
+        {
+            "id":"4",
+            "category":"News"
+        },
+        {
+            "id":"5",
+            "category":"Medal and Trophy"
+        },
+        {
+            "id":"6",
+            "category":"Gadgets"
+        },
+        {
+            "id":"7",
+            "category":"Appointments"
+        },
+        {
+            "id":"8",
+            "category":"Coins"
+        },
+        {
+            "id":"9",
+            "category":"Social Media Account"
+        }
+    ]
+}
