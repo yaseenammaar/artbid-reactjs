@@ -9,11 +9,7 @@ import {
     Modal
 } from "react-atomize";
 import 'react-nice-dates/build/style.css'
-import OneArtist from "../../molecules/artist/one-artist";
-
-import personImg from '../../../assets/images/personImg.jpg';
-import styles from '../../../styles/style'
-import {connect} from "react-redux";
+import OneArtist from "../../artist/one-artist";
 
 const theme = {
     ...DefaultTheme,
@@ -25,10 +21,6 @@ const theme = {
 };
 function ProfileInputs(props) {
 
-    const {
-        isProfileInputOpen = false,
-        closeModal
-    } = props
     const handleItemDataChanged = (dataType, value) => {
       
     }
@@ -36,15 +28,7 @@ function ProfileInputs(props) {
     return (
         
         <ThemeProvider theme={theme}>
-            <Modal 
-                isOpen={isProfileInputOpen}
-                onClose={() => {
-                    closeModal()
-                }}
-                align="center" 
-                rounded="md" 
-                shadow="1"
-                 >
+
                      <Div>
 
                         <Icon
@@ -114,16 +98,10 @@ function ProfileInputs(props) {
                                 </Button>
                             </center>
                     </Div>
-                </Modal>
 
 
         </ThemeProvider>
     );
-
-    //Photos
-    //Date and Time
-    //Cost
-    //TnC
     
 }
 

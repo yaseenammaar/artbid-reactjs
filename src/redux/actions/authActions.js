@@ -23,12 +23,14 @@ export const resetAuthData = data => (
 
 export const makeTakeProfileDataTrue = () => (
     {
-        type: authConstants.SET_TAKE_PROFILE_DATA_TRUE
+        type: authConstants.SET_TAKE_PROFILE_DATA_TRUE,
+        payload: {}
     }
 )
 
 export const makeTakeProfileDataFalse = () => (
     {
-        type: authConstants.SET_TAKE_PROFILE_DATA_FALSE
+        type: authConstants.SET_TAKE_PROFILE_DATA_FALSE,
+        payload: {}
     }
 )

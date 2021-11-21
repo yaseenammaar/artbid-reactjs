@@ -13,14 +13,14 @@ import {
     Modal,
     Input
 } from "react-atomize";
-import {NavLink} from "react-router-dom";
+import {NavLink, useRouteMatch} from "react-router-dom";
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import PhoneAuth from "../../pageComponents/login/PhoneAuth";
+import PhoneAuth from "../modals/modalComponents/PhoneAuth";
 import styles from "../../../styles/style";
 import Login from '../../pageComponents/login/Login';
 import Register from "../../pageComponents/login/Register";
-import ProfileInputs from "../modals/profileInputs";
+import ProfileInputs from "../modals/modalComponents/ProfileInputs";
 
 const theme = {
     ...DefaultTheme,
@@ -31,18 +31,7 @@ const theme = {
     }
 };
 export default function LoggedOutHeader() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isProfileDataModal, setProfileDataModal] = useState(false);
-
-
-    const loginSchema = Yup.object().shape({
-        phoneNumber: Yup.string().required("Phone Number required."),
-        otp: Yup.number().required("otp required").positive().integer()
-    })
-
-    function close() {
-        setIsOpen(false)
-    }
+    const { url } = useRouteMatch()
 
     return (
         <ThemeProvider theme={theme}>
@@ -64,7 +53,7 @@ export default function LoggedOutHeader() {
 
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
-                    <NavLink to="/about"
+                    <NavLink to={`${url}/about_us`}
                              style={{textDecoration: 'none'}}>
                         <Button
                             h="2.5rem"
@@ -81,7 +70,7 @@ export default function LoggedOutHeader() {
                 </Col>
 
                 <Col size={{xs: 1, lg: 1}}>
-                    <Button
+                    <NavLink to={`${url}/contact_us`}><Button
                         h="2.5rem"
                         p={{x: "1rem"}}
                         textSize="body"
@@ -91,62 +80,26 @@ export default function LoggedOutHeader() {
                         m={{r: "0.5rem"}}
                     >
                         Contact
-                    </Button>
+                    </Button></NavLink>
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
-                    <Button
+                    <NavLink to={`${url}/login`}>
+                        <Button
                         bg="white"
                         textColor="gray900"
                         p={{r: "3rem", l: "3rem"}}
                         shadow="1"
                         hoverShadow="2"
                         fontFamily="primary"
-                        onClick={() => setIsOpen(true)}
                     >
                         Login
-                    </Button>
+                    </Button></NavLink>
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
 
                 </Col>
             </Row>
 
-            <Formik
-                initialValues={{phoneNumber: '', otp: ''}}
-                validationSchema={loginSchema}
-                onSubmit={(values, {setSubmitting}) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
-                }}
-            >
-
-                {({
-                      values,
-                      errors,
-                      touched,
-                      handleChange,
-                      handleBlur,
-                      handleSubmit,
-                      isSubmitting,
-
-                  }) => (
-                    <Modal
-                        w="25rem"
-                        isOpen={isOpen} 
-                        onClose={close} 
-                        align="center" 
-                        rounded="md" 
-                        shadow="1" 
-                    >
-                         {/*<Login/> */}
-                         {/*<Register/> */}
-
-                        <PhoneAuth /> 
-                    </Modal>
-                )}
-            </Formik>
         </ThemeProvider>
     );
 }

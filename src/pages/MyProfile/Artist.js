@@ -85,11 +85,7 @@ You know the work, I know how to do it.</p>
                             <button className="unfollow-btn">Unfollow</button>*/}
                             <button onClick={() => {
                                 //setIsOpenEdit(true)
-                                (async () => {
-                                    const apiUrl = '/user/currentUser'
-                                    const res = await apiRequest("get", apiUrl)
-                                    console.log(res)
-                                })()
+
 
                             }} className="message-btn">Edit Profile</button>
                         </div>

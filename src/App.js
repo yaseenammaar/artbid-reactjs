@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
 import LoggedOutHeader from "./components/molecules/navbar/LoggedOutHeader";
 import LoggedInHeader from "./components/molecules/navbar/LoggedInHeader";
-
 import Footer from "./components/molecules/footer/Footer";
 import Login from "./components/pageComponents/login/Login";
-
-import Hero from "./components/pageComponents/Home/Hero";
+import RouteWithModals from "./components/atoms/RouteWithModals";
 import Profile from "./pages/Profile";
 import Artist from "./pages/Artist/Artist";
 import MyProfile from "./pages/MyProfile/Artist";
@@ -20,7 +18,8 @@ import {
 
 import {
     Route,
-    HashRouter
+    HashRouter,
+    Switch, BrowserRouter
 } from "react-router-dom";
 import {setUser} from "./redux/actions/authActions";
 import {bindActionCreators} from "redux";
@@ -66,17 +65,14 @@ function Main(props) {
                             <LoggedInHeader/>
 
                     }
-                    {/* <CreditCard/> */}
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/stuff" component={Home}/>
-                    <Route exact path="/contact" component={Home}/>
-                    <Route exact path="/profile" component={Profile}/>
-                    <Route exact path="/login" component={Login}/>
-                    <Route exact path={"/search_result"} component={SearchResultPage}/>
-                    <Route exact path={"/art"} component={Art}/>
-                    <Route exact path={"/artist"} component={Artist}/>
-                    <Route exact path={"/myprofile"} component={MyProfile}/>
-
+                    <Switch>
+                        <RouteWithModals path="/profile" component={Profile}/>
+                        <RouteWithModals path={"/search_result"} component={SearchResultPage}/>
+                        <RouteWithModals path={"/art"} component={Art}/>
+                        <RouteWithModals path={"/artist"} component={Artist}/>
+                        <RouteWithModals path={"/myprofile"} component={MyProfile}/>
+                        <RouteWithModals path="/" component={Home}/>
+                    </Switch>
 
                     <Footer/>
                 </HashRouter>

@@ -12,8 +12,8 @@ import {
     Modal,
     Notification
 } from "react-atomize";
-import {NavLink} from "react-router-dom";
-import {Link, useHistory} from "react-router-dom"
+import {NavLink, useRouteMatch} from "react-router-dom";
+import {Link} from "react-router-dom"
 
 
 import styles from '../../../styles/style';
@@ -22,14 +22,14 @@ import { START_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
 import {bindActionCreators} from "redux";
-import {makeTakeProfileDataFalse, setUser} from "../../../redux/actions/authActions";
+import {setUser} from "../../../redux/actions/authActions";
 import {connect} from "react-redux";
 import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
 import useUploadItem from "../../../hooks/useUploadItem";
 import {Line} from "rc-progress"
-import ProfileInputs from "../modals/profileInputs";
+
 const theme = {
     ...DefaultTheme,
     grid: {
@@ -39,7 +39,7 @@ const theme = {
     }
 };
 function LoggedInHeader(props) {
-
+    const { url } = useRouteMatch()
     /**
      * uploadState: {
      *     uploadProgress -> progress of upload,
@@ -51,30 +51,9 @@ function LoggedInHeader(props) {
     const {uploadState, uploadItemData} = useUploadItem()
 
     const [isOpen, setIsOpen] = useState(false);
-    const [isOpenProfile, setIsOpenProfile] = useState(false);
-    const [isOpenContact, setIsOpenContact] = useState(false);
-    const [isOpenAbout, setIsOpenAbout] = useState(false);
-    const [isProfileInputOpen, setIsProfileInputOpen] = useState(false);
     const [showProcessing, setShowProcessing] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
 
-    useEffect(() => {
-        if(props.auth.takeProfileData) {
-            props.makeTakeProfileDataFalse()
-            if(!isProfileInputOpen) setIsProfileInputOpen(true)
-        }
-    }, [props.auth.takeProfileData])
-
-    function closeAbout() {
-        setIsOpenAbout(false)
-    }
-    function closeContact() {
-        setIsOpenContact(false)
-    }
-
-    function closeProfile() {
-        setIsOpenProfile(false)
-    }
     function close() {
         setIsOpen(false)
     }
@@ -147,7 +126,7 @@ function LoggedInHeader(props) {
 
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
-                        <Button
+                        <NavLink to={`${url}/about_us`}><Button
                             h="2.5rem"
                             p={{x: "1rem"}}
                             textSize="body"
@@ -155,14 +134,13 @@ function LoggedInHeader(props) {
                             bg="white"
                             fontFamily="primary"
                             m={{r: "0.5rem"}}
-                            onClick={() => setIsOpenAbout(true)}
                         >
                             About
-                        </Button>
+                        </Button></NavLink>
                 </Col>
 
                 <Col size={{xs: 2, lg: 1}}>
-                    <Button
+                    <NavLink to={`${url}/contact_us`}><Button
                         h="2.5rem"
                         p={{x: "1rem"}}
                         textSize="body"
@@ -170,10 +148,9 @@ function LoggedInHeader(props) {
                         bg="white"
                         fontFamily="primary"
                         m={{r: "0.5rem"}}
-                        onClick={() => setIsOpenContact(true)}
                     >
                         Contact
-                    </Button>
+                    </Button></NavLink>
                 </Col>
                 <Col size={{xs: 2, lg: 1}}>
                         <Link to={{pathname: "/myprofile"}}>
@@ -185,7 +162,6 @@ function LoggedInHeader(props) {
                                 bg="white"
                                 fontFamily="primary"
                                 m={{r: "0.5rem"}}
-                                // onClick={() => //setIsOpenProfile(true)}
                             >
                                 Profile
                             </Button>
@@ -209,62 +185,6 @@ function LoggedInHeader(props) {
                 </Col>
             </Row>
 
-            <Modal 
-                isOpen={isOpenAbout} 
-                onClose={closeAbout} 
-                align="center" 
-                rounded="md" 
-                shadow="1"
-                 >
-                     <Div>
-
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            onClick={closeAbout}
-                            cursor="pointer"
-                        />
-                         <Text>About</Text>
-                    </Div>
-                </Modal>
-
-
-            <Modal 
-                isOpen={isOpenContact} 
-                onClose={closeContact} 
-                align="center" 
-                rounded="md" 
-                shadow="1"
-                 >
-                     <Div>
-
-                        <Icon
-                            name="Cross"
-                            pos="absolute"
-                            top="1rem"
-                            right="1rem"
-                            size="16px"
-                            onClick={closeContact}
-                            cursor="pointer"
-                        />
-                         <Text>Contact</Text>
-                    </Div>
-                </Modal>
-
-
-            <Modal 
-                style={styles.person__card}
-                isOpen={isOpenProfile} 
-                onClose={closeProfile} 
-                align="center" 
-                rounded="md" 
-                shadow="1"
-                 >
-                     <PersonCard/>
-                </Modal>
             <Modal
                 isOpen={isOpen} 
                 onClose={close} 
@@ -300,9 +220,6 @@ function LoggedInHeader(props) {
 
             </Modal>
 
-            <ProfileInputs isProfileInputOpen={isProfileInputOpen} closeModal={() => setIsProfileInputOpen(false)}/>
-
-
         </ThemeProvider>
     );
 
@@ -320,7 +237,7 @@ const mapStateToProps = (state) => {
     /**
      * Use it as:
      * const user = props.auth.user
-     * const error = props.auth.isNewUser
+     * const isNewUser = props.auth.isNewUser
      */
 
     return { auth }
@@ -332,7 +249,6 @@ const mapDispatchToProps = dispatch => (
         /**
          * props.setUser()
          * */
-        makeTakeProfileDataFalse,
         setUser,
     }, dispatch)
 );
