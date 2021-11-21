@@ -59,7 +59,6 @@ export default function LoggedOutHeader() {
                     />
                     </NavLink>
                 </Col>
-                {/* <ProfileInputs/> */}
 
                 <Col size={{xs: 3, lg: 6}}>
 

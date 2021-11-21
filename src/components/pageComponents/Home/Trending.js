@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 import OneCard from "../../molecules/artist/one-card";
 
 function Trending(props) {
+
+    
     return (
         <>
             <section id="trending" className="card-collection">

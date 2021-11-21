@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     ThemeProvider,
     Div,
@@ -22,13 +22,16 @@ import { START_DATE } from 'react-nice-dates'
 import 'react-nice-dates/build/style.css'
 
 import {bindActionCreators} from "redux";
-import {setUser} from "../../../redux/actions/authActions";
+import {makeTakeProfileDataFalse, setUser} from "../../../redux/actions/authActions";
 import {connect} from "react-redux";
 import PersonCard from '../person/PersonCard';
 import Register from "../../pageComponents/login/Register";
 import Upload from "../../pageComponents/uploadArt/Upload";
 import useUploadItem from "../../../hooks/useUploadItem";
+import Firebase from '../../../Firebase'
+
 import {Line} from "rc-progress"
+import ProfileInputs from "../modals/profileInputs";
 const theme = {
     ...DefaultTheme,
     grid: {
@@ -53,9 +56,17 @@ function LoggedInHeader(props) {
     const [isOpenProfile, setIsOpenProfile] = useState(false);
     const [isOpenContact, setIsOpenContact] = useState(false);
     const [isOpenAbout, setIsOpenAbout] = useState(false);
-    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+    const [isProfileInputOpen, setIsProfileInputOpen] = useState(true);
     const [showProcessing, setShowProcessing] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
+
+    useEffect(() => {
+        if(props.auth.takeProfileData) {
+            props.makeTakeProfileDataFalse()
+            if(!isProfileInputOpen) setIsProfileInputOpen(true)
+            console.log('Open True')
+        }
+    }, [props.auth.takeProfileData])
 
     function closeAbout() {
         setIsOpenAbout(false)
@@ -183,6 +194,23 @@ function LoggedInHeader(props) {
                             </Button>
                         </Link>
                 </Col>
+                <Col size={{xs: 1, lg: 1}}>
+                    <Link to={{pathname: "/myprofile"}}>
+                        <Button
+                            onClick={() => {
+                                Firebase.auth().signOut().then(() => {
+                                    // Sign-out successful.
+                                    // props.setUser(null)
+
+                                }).catch((error) => {
+                                    // An error happened.
+                                });
+                            }}
+                         >Logout</Button>
+                    </Link>
+
+                </Col>
+
                 <Col size={{xs: 2, lg: 1}}>
                     <Button
                         bg="white"
@@ -246,7 +274,10 @@ function LoggedInHeader(props) {
                     </Div>
                 </Modal>
 
-
+                <ProfileInputs 
+                isProfileInputOpen={isProfileInputOpen} 
+                closeModal={() => setIsProfileInputOpen(false)}
+            />
             <Modal 
                 style={styles.person__card}
                 isOpen={isOpenProfile} 
@@ -292,19 +323,9 @@ function LoggedInHeader(props) {
 
             </Modal>
 
-            <Modal
-                isOpen={isRegisterOpen}
-                onClose={() => setIsRegisterOpen(false)}
-                align="center"
-                rounded="md"
-                shadow="1"
-            >
+         
 
-                <Register />
 
-            </Modal>
-
-            
         </ThemeProvider>
     );
 
@@ -334,6 +355,7 @@ const mapDispatchToProps = dispatch => (
         /**
          * props.setUser()
          * */
+        makeTakeProfileDataFalse,
         setUser,
     }, dispatch)
 );
