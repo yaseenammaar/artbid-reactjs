@@ -7,10 +7,11 @@
     // ############# Image Cont ##################
     .image-cont {
       .art-image {
-        width: 500px;
-        height: 500px;
+        width: 600px;
+        height: 400px;
+        object-fit: cover;
         border-radius: 20px;
-        box-shadow: $shadow;
+        box-shadow: 0 0 1px #2196F3;
         border: 5px solid white;
       }
 
