@@ -9,11 +9,9 @@ import {
     Modal
 } from "react-atomize";
 import 'react-nice-dates/build/style.css'
-import OneArtist from "../../molecules/artist/one-artist";
+import OneArtist from "../../artist/one-artist";
+import axios from 'axios';
 
-import personImg from '../../../assets/images/personImg.jpg';
-import styles from '../../../styles/style'
-import {connect} from "react-redux";
 
 const theme = {
     ...DefaultTheme,
@@ -25,26 +23,26 @@ const theme = {
 };
 function ProfileInputs(props) {
 
-    const {
-        isProfileInputOpen = false,
-        closeModal
-    } = props
-    const handleItemDataChanged = (dataType, value) => {
-      
+    const [emailVerified, setEmailVerified] = useState(false);
+
+    const [userData, setUserData] = useState({
+        name: "",
+        username: "",
+        bio: "Select Category",
+        email: "",
+        profilePic: "https://doitbeforeme.com/wp-content/uploads/2019/09/penguin-listening-to-music-black-white-pencil-sketch-learn-to-draw-with-a-pencil-3-e1570707372114.jpg"
+    })
+
+    const handleUserDataChanged = (dataType, value) => {
+        setUserData(prevState => {
+            return { ...prevState,[dataType]: value}
+        })
     }
 
     return (
         
         <ThemeProvider theme={theme}>
-            <Modal 
-                isOpen={isProfileInputOpen}
-                onClose={() => {
-                    closeModal()
-                }}
-                align="center" 
-                rounded="md" 
-                shadow="1"
-                 >
+
                      <Div>
 
                         <Icon
@@ -56,40 +54,47 @@ function ProfileInputs(props) {
                             
                             cursor="pointer"
                         />
-                        <center>
-                        <OneArtist url="https://doitbeforeme.com/wp-content/uploads/2019/09/penguin-listening-to-music-black-white-pencil-sketch-learn-to-draw-with-a-pencil-3-e1570707372114.jpg"/>
+                        <center   onClick={() => {
+                                console.log("Input Triggered")
+                                
+                            }}>
+                        <OneArtist 
+                           
+                            url={userData.profilePic}/>
+
                         </center>
+                        <div>Please enter these details to proceed</div>
                           <input
                             type="text"
                             className="upload-input"
-                            name="Name"
+                            name="name"
                             placeholder="Name"
                             
                             onChange={(e) => {
                                 if (e.target.value.length < 50) {
-                                    handleItemDataChanged(e.target.name, e.target.value)
+                                    handleUserDataChanged(e.target.name, e.target.value)
                                 }
                             }}/>
                             <input
                             type="text"
                             className="upload-input"
-                            name="Username"
+                            name="username"
                             placeholder="Username"
                             
                             onChange={(e) => {
                                 if (e.target.value.length < 50) {
-                                    handleItemDataChanged(e.target.name, e.target.value)
+                                    handleUserDataChanged(e.target.name, e.target.value)
                                 }
                             }}/>
                             <input
                             type="text"
                             className="upload-input"
-                            name="Email"
+                            name="email"
                             placeholder="Email"
                             
                             onChange={(e) => {
                                 if (e.target.value.length < 50) {
-                                    handleItemDataChanged(e.target.name, e.target.value)
+                                    handleUserDataChanged(e.target.name, e.target.value)
                                 }
                             }}/>
                             <input
@@ -100,30 +105,41 @@ function ProfileInputs(props) {
                             
                             onChange={(e) => {
                                 if (e.target.value.length < 50) {
-                                    handleItemDataChanged(e.target.name, e.target.value)
+                                    handleUserDataChanged(e.target.name, e.target.value)
                                 }
                             }}/>
                             <center>
                                 <Button
+                                    disabled={emailVerified}
                                     className="btn btn-primary"
                                     onClick={() => {
-                                    
+                                        console.log(userData)
+                                        setEmailVerified(true)
                                     }}
                                 >
-                                    Save
+                                    Verify Email
+                                </Button>&nbsp;&nbsp;&nbsp;
+                                <Button
+                                    disabled={!emailVerified}
+                                    className="btn btn-primary"
+                                    
+                                    onClick={() => {
+                                        console.log(userData)
+                                    }}
+                                >
+                                    Proceed
                                 </Button>
                             </center>
+
+                            {/* This Input will trigger when clicked on profile pic*/}
+                            <input hidden type="file"/>
+                             
+
                     </Div>
-                </Modal>
 
 
         </ThemeProvider>
     );
-
-    //Photos
-    //Date and Time
-    //Cost
-    //TnC
     
 }
 

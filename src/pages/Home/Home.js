@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {setUser} from "../../redux/actions/authActions";
@@ -8,11 +8,17 @@ import {DefaultTheme, ThemeProvider} from "react-atomize";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/global.scss';
 import Recents from "../../components/pageComponents/Home/Recents";
+import AllModalRoutes from "../../components/molecules/modals/AllModalRoutes";
+import PhoneAuthModal from "../../components/molecules/modals/modalComponents/PhoneAuth";
+import {Link, Route, useRouteMatch} from "react-router-dom";
 
 function Home(props) {
+    useEffect(() => {
+        console.log("useEffect: Home called", props.auth.takeProfileData)
+    }, [props.auth.takeProfileData])
+
     return(
         <ThemeProvider theme={theme}>
-
             <Hero />
             <Trending />
             <TopArtist />
@@ -39,7 +45,6 @@ const mapStateToProps = (state) => {
     /**
      * Use it as:
      * const user = props.auth.user
-     * const error = props.auth.error
      */
 
     return {auth}

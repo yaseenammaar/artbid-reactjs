@@ -1,11 +1,15 @@
 import React, {useState} from "react";
-import firebaseInstance from "../../../Firebase";
+import firebaseInstance from "../../../../Firebase";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {bindActionCreators} from "redux";
-import {setIsNewUser, setUser, makeTakeProfileDataTrue} from "../../../redux/actions/authActions";
+import {setIsNewUser, setUser, makeTakeProfileDataTrue} from "../../../../redux/actions/authActions";
 import {connect} from "react-redux";
+import {Modal} from "react-atomize";
+import {useHistory, useRouteMatch} from "react-router-dom";
 
 function PhoneAuth(props) {
+    const history = useHistory()
+    const { url } = useRouteMatch()
 
     const handleError = async (error) => {
         if (error.code !== 'firebaseui/anonymous-upgrade-merge-conflict') {
@@ -39,7 +43,8 @@ function PhoneAuth(props) {
                 // automatically or whether we leave that to developer to handle.
                 props.makeTakeProfileDataTrue()
                 props.setIsNewUser(isNewUser);
-                props.setUser(user);
+
+                history.push(`${url.substring(0, url.length - 6)}/complete_profile`)
                 return false;   // Don't redirect
             },
             signInFailure: function(error) {
