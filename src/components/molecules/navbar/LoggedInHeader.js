@@ -12,7 +12,7 @@ import {
     Modal,
     Notification
 } from "react-atomize";
-import {NavLink, useRouteMatch} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import {Link} from "react-router-dom"
 
 
@@ -41,7 +41,8 @@ const theme = {
     }
 };
 function LoggedInHeader(props) {
-    const { url } = useRouteMatch()
+    const { pathname } = useLocation()
+    console.log("url in loggedInHeader", pathname)
     /**
      * uploadState: {
      *     uploadProgress -> progress of upload,
@@ -128,7 +129,7 @@ function LoggedInHeader(props) {
 
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
-                        <NavLink to={`${url}/about_us`}><Button
+                        <Link to={`${pathname}/about_us`}><Button
                             h="2.5rem"
                             p={{x: "1rem"}}
                             textSize="body"
@@ -138,11 +139,11 @@ function LoggedInHeader(props) {
                             m={{r: "0.5rem"}}
                         >
                             About
-                        </Button></NavLink>
+                        </Button></Link>
                 </Col>
 
                 <Col size={{xs: 2, lg: 1}}>
-                    <NavLink to={`${url}/contact_us`}><Button
+                    <Link to={`${pathname}/contact_us`}><Button
                         h="2.5rem"
                         p={{x: "1rem"}}
                         textSize="body"
@@ -152,7 +153,7 @@ function LoggedInHeader(props) {
                         m={{r: "0.5rem"}}
                     >
                         Contact
-                    </Button></NavLink>
+                    </Button></Link>
                 </Col>
                 <Col size={{xs: 2, lg: 1}}>
                         <Link to={{pathname: "/myprofile"}}>
@@ -170,7 +171,6 @@ function LoggedInHeader(props) {
                         </Link>
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
-                    <Link to={{pathname: "/myprofile"}}>
                         <Button
                             onClick={() => {
                                 Firebase.auth().signOut().then(() => {
@@ -182,7 +182,6 @@ function LoggedInHeader(props) {
                                 });
                             }}
                          >Logout</Button>
-                    </Link>
 
                 </Col>
 

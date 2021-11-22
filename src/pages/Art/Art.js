@@ -20,12 +20,12 @@ function Art(props) {
 
     const [product, setProduct] =
         useState({
-            loading : true,
+            loading : false,
             data : null,
             error: false
         })
 
-    useEffect(() => {
+    /*useEffect(() => {
         (async () => {
 
             if(itemId != null) {
@@ -54,14 +54,13 @@ function Art(props) {
 
             }
             else {
-                history.goBack()
             }
         })();
 
         return () => {
 
         }
-    }, []);
+    }, []);*/
 
     function Product() {
         return (
@@ -70,11 +69,11 @@ function Art(props) {
                     <div className="row h-100">
 
                         <div className="col-md-6 image-button">
-                            <img src={product.data.docData.featured_image} className="w-100"/>
+                            <img src={"https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg"} className="w-100"/>
                             <div className="d-flex align-items-between justify-content-between mt-2">
                                 <div>
                                     <p className="m-0 current-value"> CURRENT Bid</p>
-                                    <h2> ₹ {product.data.docData.base_price}</h2>
+                                    <h2> ₹ 2000</h2>
                                 </div>
                                 <button className="btn btn-primary shadow-lg">BID</button>
                             </div>
@@ -83,8 +82,8 @@ function Art(props) {
                         <div className="col-md-6 d-flex align-items-center justify-content-center data">
                             <div>
                                 <a href="" className="m-0"><p className="m-0"> Artist </p> </a>
-                                <h2> {product.data.docData.title} </h2>
-                                <p> {product.data.docData.description} </p>
+                                <h2> Yaseen Ammaar </h2>
+                                <p> No Description. </p>
                             </div>
                         </div>
 
@@ -107,16 +106,16 @@ function Art(props) {
 
                     <div className="row mt-5">
                         <div className="col-md-3 col-6">
-                            <OneCard/>
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
                         </div>
                         <div className="col-md-3 col-6">
-                            <OneCard/>
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
                         </div>
                         <div className="col-md-3 col-6">
-                            <OneCard/>
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
                         </div>
                         <div className="col-md-3 col-6">
-                            <OneCard/>
+                            <OneCard url="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1--1024x512.jpg" name="Apple macbook and ipad" category="Gadgets" artist="John" bp="14,777"/>
                         </div>
                     </div>
 
