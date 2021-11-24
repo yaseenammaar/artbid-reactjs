@@ -43,7 +43,7 @@ function Art(props) {
                             {/* ############## Image Container ############ */}
                             <div className="image-cont">
 
-                                <img className="art-image" src={"https://architectureofthegames.net/wp-content/uploads/2019/07/16_Medal-case.2.jpg"} />
+                                <img className="art-image" src={"https://cdn.dribbble.com/users/4110528/screenshots/7154048/media/e7348162e5bf3a6e64a056e5b973282e.gif"} />
 
                                 <div className="bid-data">
 
@@ -150,6 +150,114 @@ function Art(props) {
                                         </div>    
                                     </div>
 
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
+                                    <div className="one-bid">
+                                        <img className="bidder-dp" src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg8Q5lww2ra6mEz4A_eioTgtItHVSa_ib9iw&usqp=CAU"}  />
+                                        &emsp;
+                                        <div className="nameandbid">
+                                            <p>
+                                                <Link
+                                                    to={{
+                                                        pathname: "/artist",
+                                                        hash: "#",
+                                                        state: { fromDashboard: false }
+                                                    }}
+                                                >Roy</Link>
+                                            </p>
+                                            <h6>Bidded ₹ 1,00,000</h6>
+                                        </div>    
+                                    </div>
+
+
                                     
                                   
 
@@ -188,40 +296,25 @@ function Art(props) {
                                         >
                                             You Lost the Bid? Tap here
                                         </Button> */}
-                                        {status===1?<div className="messageandbid">
+                                        <div className="messageandbid" >
                                     
-                                            {/* <input placeholder="+ Your Amount" /> */}
-                                            {/* <Button
-                                                h="2.5rem"
-                                                w="2.5rem"
-                                                bg="warning700"
-                                                hoverBg="warning600"
-                                                rounded="circle"
+                                            <input placeholder="+ Your Amount" />
+                                            <Button
+                                                h="2.2rem"
+                                                w="10.5rem"
+                                                bg="info700"
+                                                hoverBg="info600"
+                                                
                                                 m={{ r: "1rem" }}
                                                 shadow="2"
                                                 hoverShadow="4"
                                             >
-                                                <Icon name="Search" size="20px" color="white" />
+                                                Bid
                                             </Button>
-                                            */}
+                                           
 
-                                            
-                                            
-                                             <div className="buttons">
-                                             
-                                                 {/* <button className="b-btn active">Bid</button> */}
-                                                {/*<button className="b-btn ">Message</button> */}
 
-                                                 {/* <label className="switch">
-                                                  <input type="checkbox" id="togBtn" />
-                                                <div className="slider round">
-                                                    <span className="on">Bid</span>
-                                                    <span className="off">Message</span>
-                                                 </div>
-                                                </label>  */}
-                                            </div> 
-
-                                        </div>:null}
+                                        </div>
                                 
 
                             </div>
