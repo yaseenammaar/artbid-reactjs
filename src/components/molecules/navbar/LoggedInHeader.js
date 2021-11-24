@@ -125,9 +125,37 @@ function LoggedInHeader(props) {
                     </NavLink>
                 </Col>
 
-                <Col size={{xs: 3, lg: 5}}>
+                <Col size={{xs: 3, lg: 4}}>
 
                 </Col>
+                <Col size={{xs: 1, lg: 1}}>
+                        <Link to={`${pathname}/about_us`}><Button
+                            h="2.5rem"
+                            p={{x: "1rem"}}
+                            textSize="body"
+                            textColor="gray900"
+                            bg="white"
+                            fontFamily="primary"
+                            m={{r: "0.5rem"}}
+                        >
+                            Notifications
+                        </Button></Link>
+                </Col>
+
+                <Col size={{xs: 2, lg: 1}}>
+                    <Link to={`${pathname}/contact_us`}><Button
+                        h="2.5rem"
+                        p={{x: "1rem"}}
+                        textSize="body"
+                        textColor="gray900"
+                        bg="white"
+                        fontFamily="primary"
+                        m={{r: "0.5rem"}}
+                    >
+                        Message
+                    </Button></Link>
+                </Col>
+{/* 
                 <Col size={{xs: 1, lg: 1}}>
                         <Link to={`${pathname}/about_us`}><Button
                             h="2.5rem"
@@ -154,7 +182,7 @@ function LoggedInHeader(props) {
                     >
                         Contact
                     </Button></Link>
-                </Col>
+                </Col> */}
                 <Col size={{xs: 2, lg: 1}}>
                         <Link to={{pathname: "/myprofile"}}>
                             <Button
@@ -172,6 +200,13 @@ function LoggedInHeader(props) {
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
                         <Button
+                             h="2.5rem"
+                             p={{x: "1rem"}}
+                             textSize="body"
+                             textColor="gray900"
+                             bg="white"
+                             fontFamily="primary"
+                             m={{r: "0.5rem"}}
                             onClick={() => {
                                 Firebase.auth().signOut().then(() => {
                                     // Sign-out successful.

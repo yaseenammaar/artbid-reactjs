@@ -95,7 +95,7 @@ You know the work, I know how to do it.</p>
 
 
                 <div className="d-flex justify-content-between align-items-center collection-title container">
-                    <h2 className="m-0"> ITEMS </h2>
+                    <h2 className="m-0"> ACIVE ITEMS </h2>
                     <a className="m-0" href="#">See All</a>
                 </div>
 
@@ -110,8 +110,21 @@ You know the work, I know how to do it.</p>
                             <div className="col-md-3 col-6">
                                 <OneCard url="https://i.pinimg.com/originals/1a/37/bc/1a37bcf72db69c5ee822868209e18b76.gif"  name="Gold Medal" category="Medal & Trophy" bp="34,800"/>
                             </div>
+                            
+                            
+                    </div>
+                </div>
+
+                <div className="d-flex justify-content-between align-items-center collection-title container">
+                    <h2 className="m-0"> SOLD ITEMS </h2>
+                    <a className="m-0" href="#">See All</a>
+                </div>
+
+                <div className="container">
+                    <div className="row mt-5">
+                   
                             <div className="col-md-3 col-6">
-                                <OneCard url="https://i.pinimg.com/originals/1c/88/83/1c8883a1768f2f77caf0371d49a68dc2.gif" name="NASA Rocket" category="Astronomy" bp="5,000"/>
+                                <OneCard url="https://i.pinimg.com/originals/1c/88/83/1c8883a1768f2f77caf0371d49a68dc2.gif" name="NASA Rocket" category="Astronomy" bp="5,000" buyer={1}/>
                             </div>
                             
                     </div>
