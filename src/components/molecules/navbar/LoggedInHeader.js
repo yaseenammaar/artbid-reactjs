@@ -10,7 +10,9 @@ import {
     Icon,
     Text,
     Modal,
-    Notification
+    Notification,
+    Dropdown,
+    Anchor
 } from "react-atomize";
 import {NavLink, useLocation} from "react-router-dom";
 import {Link} from "react-router-dom"
@@ -66,6 +68,8 @@ function LoggedInHeader(props) {
     const handleFocusChange = newFocus => {
         setFocus(newFocus || START_DATE)
     }
+
+
     const processingNotification = (
         <Notification
             isOpen={showProcessing}
@@ -112,7 +116,7 @@ function LoggedInHeader(props) {
 //            pos="fixed"
 
             >
-                <Col size={{xs: 0, lg: 1}}>
+                <Col size={{xs: 1, lg: 1}}>
 
                 </Col>
                 <Col size={{xs: 1, lg: 1}}
@@ -125,67 +129,12 @@ function LoggedInHeader(props) {
                     </NavLink>
                 </Col>
 
-                <Col size={{xs: 3, lg: 4}}>
+                <Col size={{xs: 1, lg: 6}}>
 
                 </Col>
-                <Col size={{xs: 1, lg: 1}}>
+            
+                <Col size={{xs: 2, lg: 1}}>
                         <Link to={`${pathname}/about_us`}><Button
-                            h="2.5rem"
-                            p={{x: "1rem"}}
-                            textSize="body"
-                            textColor="gray900"
-                            bg="white"
-                            fontFamily="primary"
-                            m={{r: "0.5rem"}}
-                        >
-                            Notifications
-                        </Button></Link>
-                </Col>
-
-                <Col size={{xs: 2, lg: 1}}>
-                    <Link to={`${pathname}/contact_us`}><Button
-                        h="2.5rem"
-                        p={{x: "1rem"}}
-                        textSize="body"
-                        textColor="gray900"
-                        bg="white"
-                        fontFamily="primary"
-                        m={{r: "0.5rem"}}
-                    >
-                        Message
-                    </Button></Link>
-                </Col>
-{/* 
-                <Col size={{xs: 1, lg: 1}}>
-                        <Link to={`${pathname}/about_us`}><Button
-                            h="2.5rem"
-                            p={{x: "1rem"}}
-                            textSize="body"
-                            textColor="gray900"
-                            bg="white"
-                            fontFamily="primary"
-                            m={{r: "0.5rem"}}
-                        >
-                            About
-                        </Button></Link>
-                </Col>
-
-                <Col size={{xs: 2, lg: 1}}>
-                    <Link to={`${pathname}/contact_us`}><Button
-                        h="2.5rem"
-                        p={{x: "1rem"}}
-                        textSize="body"
-                        textColor="gray900"
-                        bg="white"
-                        fontFamily="primary"
-                        m={{r: "0.5rem"}}
-                    >
-                        Contact
-                    </Button></Link>
-                </Col> */}
-                <Col size={{xs: 2, lg: 1}}>
-                        <Link to={{pathname: "/myprofile"}}>
-                            <Button
                                 h="2.5rem"
                                 p={{x: "1rem"}}
                                 textSize="body"
@@ -193,49 +142,70 @@ function LoggedInHeader(props) {
                                 bg="white"
                                 fontFamily="primary"
                                 m={{r: "0.5rem"}}
-                            >
-                                Profile
-                            </Button>
-                        </Link>
-                </Col>
-                <Col size={{xs: 1, lg: 1}}>
-                        <Button
-                             h="2.5rem"
-                             p={{x: "1rem"}}
-                             textSize="body"
-                             textColor="gray900"
-                             bg="white"
-                             fontFamily="primary"
-                             m={{r: "0.5rem"}}
-                            onClick={() => {
-                                Firebase.auth().signOut().then(() => {
-                                    // Sign-out successful.
-                                    // props.setUser(null)
-
-                                }).catch((error) => {
-                                    // An error happened.
-                                });
-                            }}
-                         >Logout</Button>
-
+                        >
+                            Notification 
+                        </Button></Link>
                 </Col>
 
                 <Col size={{xs: 2, lg: 1}}>
-                    <Button
+                    <Link to={`${pathname}/contact_us`}><Button
+                                h="2.5rem"
+                                p={{x: "1rem"}}
+                                textSize="body"
+                                textColor="gray900"
+                                bg="white"
+                                fontFamily="primary"
+                                m={{r: "0.5rem"}}
+                        >
+                            Messages
+                           
+                        </Button></Link>
+                </Col>
+                <Col size={{xs: 2, lg: 1}}>
+                <Button
                         bg="white"
                         textColor="gray900"
-                        p={{r: "3rem", l: "3rem"}}
                         shadow="1"
                         hoverShadow="2"
                         fontFamily="primary"
                         onClick={() => setIsOpen(true)}
                     >
-                        Upload
-                    </Button>
+                        Upload<Icon name="Up" size="20px" />
+                    </Button>    
+                    </Col>
+                   <Col size={{xs: 2, lg: 1}}>
+                   <Link to={`${pathname}/more`}>
+                        
+                       
+                                <Button
+                                h="2.5rem"
+                                p={{x: "0.1rem"}}
+                                textSize="body"
+                                textColor="gray900"
+                                bg="white"
+                                fontFamily="primary"
+                                
+                                
+                            >
+                            <Div
+                                    bgImg="https://doitbeforeme.com/wp-content/uploads/2019/09/penguin-listening-to-music-black-white-pencil-sketch-learn-to-draw-with-a-pencil-3-e1570707372114.jpg"
+                                    bgSize="cover"
+                                    bgPos="center"
+                                    h="3rem"
+                                    w="3rem"
+                                    shadow="3"
+                                    rounded="circle"
+                                    />
+                                <Icon name="DownArrow" size="20px" />
+                            </Button>
+                                
+                           
+                        </Link>
                 </Col>
                 <Col size={{xs: 1, lg: 1}}>
 
                 </Col>
+                
             </Row>
 
             <Modal

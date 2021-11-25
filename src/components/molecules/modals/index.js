@@ -3,6 +3,7 @@ import WithModalWrapper from "./WithModalWrapper";
 import Contact from "./modalComponents/Contact";
 import PhoneAuth from "./modalComponents/PhoneAuth";
 import AboutUs from "./modalComponents/AboutUs";
+import More from "./modalComponents/More";
 
 export default [
     {
@@ -20,5 +21,9 @@ export default [
     {
         name: "about_us",
         component: (props) => (<WithModalWrapper {...props}><AboutUs /></WithModalWrapper>)
+    },
+    {
+        name: "more",
+        component: (props) => (<WithModalWrapper {...props}><More /></WithModalWrapper>)
     }
 ]
