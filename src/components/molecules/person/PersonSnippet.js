@@ -24,15 +24,20 @@ class PersonSnippet extends React.Component {
     };
 
     return (
-
-                <div style={styles.person__snippet}>
-                  <img style={styles.snippet__image} src={personImg} />
-                  <div style={styles.snippet__data}>
-                    <h4 style={styles.snippetName}>Taylor Swift</h4>
-                    <p style={styles.snippetDesignation}>Singer</p>
-                  </div>
-                  <Icon name="Edit" size="20px" />
-                </div>
+      <Div
+      bg="white"
+      hoverBg="info300"
+      w="100%"
+      rounded="circle"
+      p={{ r: "1.5rem", l: "1rem" }}
+      shadow="3"
+      hoverShadow="4"
+      m="1rem"
+      transition
+    >
+                Hi
+                  
+                  </Div>
 
      
               

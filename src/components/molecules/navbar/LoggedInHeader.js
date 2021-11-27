@@ -134,7 +134,7 @@ function LoggedInHeader(props) {
                 </Col>
             
                 <Col size={{xs: 2, lg: 1}}>
-                        <Link to={`${pathname}/about_us`}><Button
+                        <Link to={`${pathname}/notifications`}><Button
                                 h="2.5rem"
                                 p={{x: "1rem"}}
                                 textSize="body"
@@ -143,12 +143,12 @@ function LoggedInHeader(props) {
                                 fontFamily="primary"
                                 m={{r: "0.5rem"}}
                         >
-                            Notification 
+                            Notifications 
                         </Button></Link>
                 </Col>
 
                 <Col size={{xs: 2, lg: 1}}>
-                    <Link to={`${pathname}/contact_us`}><Button
+                    <Link to={`${pathname}/messages`}><Button
                                 h="2.5rem"
                                 p={{x: "1rem"}}
                                 textSize="body"
