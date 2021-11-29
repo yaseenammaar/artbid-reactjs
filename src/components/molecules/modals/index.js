@@ -5,28 +5,28 @@ import PhoneAuth from "./modalComponents/PhoneAuth";
 import AboutUs from "./modalComponents/AboutUs";
 import More from "./modalComponents/More";
 import Notifications from "./modalComponents/Notifications";
-import Messages from "./modalComponents/Messages";
+import Messages from "./modalComponents/messages/Messages";
 
 export default [
     {
         name: "login",
-        component: (props) => (<WithModalWrapper {...props} ><PhoneAuth /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props} ><PhoneAuth /></WithModalWrapper>)
     },
     {
         name: "complete_profile",
-        component: (props) => (<WithModalWrapper {...props}><ProfileInputs /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props}><ProfileInputs /></WithModalWrapper>)
     },
     {
         name: "contact_us",
-        component: (props) => (<WithModalWrapper {...props}><Contact /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props}><Contact /></WithModalWrapper>)
     },
     {
         name: "about_us",
-        component: (props) => (<WithModalWrapper {...props}><AboutUs /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props}><AboutUs /></WithModalWrapper>)
     },
     {
         name: "more",
-        component: (props) => (<WithModalWrapper {...props}><More /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props}><More /></WithModalWrapper>)
     },
     {
         name: "messages",
@@ -34,6 +34,6 @@ export default [
     },
     {
         name: "notifications",
-        component: (props) => (<WithModalWrapper {...props}><Notifications /></WithModalWrapper>)
+        component: (props) => (<WithModalWrapper height={"500px"} width={"500px"} {...props}><Notifications /></WithModalWrapper>)
     }
 ]
