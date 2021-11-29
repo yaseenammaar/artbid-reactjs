@@ -6,9 +6,13 @@ function ModalWrapper(props) {
     const {parentUrl} = props
     const history = useHistory()
 
+    const {height = "90vh", width = "90vw"} = props
+
     return (
         <Modal
-            w="25rem"
+            h={height}
+            w={width}
+            maxW={width}
             isOpen={true}
             onClose={() => {
                 history.push(`${parentUrl}`)

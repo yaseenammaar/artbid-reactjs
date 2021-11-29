@@ -1,0 +1,25 @@
+.message_container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  :last-child {
+    flex: 1;
+  }
+
+  .left_pane {
+    margin-right: 2rem;
+    width: 20%;
+  }
+
+  .right_pane {
+    height: 100%;
+    .messages {
+      height: 90%;
+      overflow-y: auto;
+
+      .message_leaf {
+      }
+    }
+  }
+}
